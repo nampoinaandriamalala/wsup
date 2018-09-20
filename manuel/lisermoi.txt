@@ -1,0 +1,110 @@
+Utilisateur pour chaque projet
+------------------------------
+
+Chaque programme possède sa partie administrateur.
+Par défaut, seul les utilisateurs qui ont ?t? renseign? peuvent se connecter ? l'application. 
+
+
+/*Structure de la table utilisateur administrateur de l'application*/
+
+
+CREATE TABLE utilisateur (
+  id SERIAL NOT NULL, 
+  matricule VARCHAR, 
+  date_create TIMESTAMP DEFAULT now(), 
+  consulter BOOLEAN DEFAULT TRUE, 
+  ajouter BOOLEAN DEFAULT FALSE, 
+  editer BOOLEAN DEFAULT FALSE, 
+  supprimer BOOLEAN DEFAULT FALSE, 
+  administrateur BOOLEAN DEFAULT FALSE, 
+  PRIMARY KEY(id)
+) WITHOUT OIDS;
+
+
+/*Ajout utilisateur*/
+
+insert into utilisateur (matricule,consulter,ajouter,editer,supprimer,administrateur) values ('13099',TRUE,TRUE,TRUE,TRUE,TRUE);
+insert into utilisateur (matricule,consulter,ajouter,editer,supprimer,administrateur) values ('13115',TRUE,TRUE,TRUE,TRUE,TRUE);
+
+
+
+
+
+/*Ajout menu*/
+
+CREATE TABLE public.menu (
+                                id SERIAL, 
+                                libelle VARCHAR NOT NULL, 
+                                niveau VARCHAR, 
+                                url VARCHAR(255) DEFAULT '#'::character varying, 
+                                variable_associer TEXT, 
+                                icon TEXT DEFAULT '<i class="fa fa-smile-o" aria-hidden="true"></i>'::text, 
+                                CONSTRAINT menu_pkey PRIMARY KEY(id)
+                              ) WITHOUT OIDS;
+
+                            COMMENT ON COLUMN public.menu.niveau
+                            IS 'Si il y a sous menu ou sous sous menu , 1-1 (le 1 apres le ''-'' veut dire qu''il est enfant num?ro 1 et le 1 avant ''-'' veut dire qu''il apparente au menu 1';
+
+                            COMMENT ON COLUMN public.menu.variable_associer
+                            IS 'exemple : jeSuisAdmin|jeSuisSuperviseur
+                            Ici jeSuisAdmin et jeSuisSuperviseur sont des variables boolean';
+
+                            COMMENT ON COLUMN public.menu.icon
+                            IS 'Font awesome';
+
+
+INSERT 
+        INTO public.menu ("libelle", "niveau", "url", "variable_associer", "icon")
+VALUES 
+        (E'Administration', E'5', E'./utilisateur', E'showAdministrateur', E'<i class="fa fa-user-md" aria-hidden="true"></i> '),
+        (E'Graphique', E'4', E'./graphique', E'', E'<i class="fa fa-line-chart" aria-hidden="true"></i> '),
+        (E'Génération de template', E'3', E'./r-generation', E'showAdministrateur', E'<i class="fa fa-paint-brush" aria-hidden="true"></i> '),
+        (E'Gestion menu', E'2', E'./r-config', E'', E'<i class="fa fa-gears" aria-hidden="true"></i> '),
+        (E'Erreur 404', E'1-2', E'./404', E'', E'<i class="fa fa-smile-o" aria-hidden="true"></i>'),
+        (E'Vérification 1', E'1-1', E'./verif/1', E'', E''),
+        (E'Vérification 0', E'1-0', E'./verif/0', E'', E''),
+        (E'Tableau avec sous menu', E'1', E'./tableau', E'', E'<i class="fa fa-table" aria-hidden="true"></i> '),
+        (E'Accueil', E'0', E'./', E'', E'<i class="fa fa-home" aria-hidden="true"></i> '); 
+
+
+
+/*Les variables du globale du projet */
+
+CREATE TABLE public.raptor (
+  id SERIAL, 
+  identifiant VARCHAR, 
+  valeur VARCHAR, 
+  datemodification TIMESTAMP WITHOUT TIME ZONE DEFAULT now(), 
+  CONSTRAINT raptor_pkey PRIMARY KEY(id)
+) WITHOUT OIDS;
+
+
+INSERT INTO public.raptor ("identifiant", "valeur")
+VALUES (E'titre', E'Projet Raptor');
+
+INSERT INTO public.raptor ("identifiant", "valeur")
+VALUES (E'testmagic', E'Star');
+
+INSERT INTO public.raptor ("identifiant", "valeur")
+VALUES (E'nom_projet', E'RAPTOR');
+
+INSERT INTO public.raptor ("identifiant", "valeur")
+VALUES (E'super_administrateur', E'xtr57dfr@+');
+
+
+/*page par defaut*/
+CREATE TABLE public.raptor_def_page (
+	id SERIAL,
+	variable VARCHAR(255),
+	url VARCHAR(255),
+	CONSTRAINT raptor_def_page_pkey PRIMARY KEY(id)
+                                          ) 
+WITH (oids = false);
+
+
+insert 
+	into raptor_def_page (variable,url) 
+values 
+	('','./'),
+	('showAdministrateur','./r-config');
+

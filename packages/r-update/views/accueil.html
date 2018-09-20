@@ -1,0 +1,80 @@
+<h2>Configuration du fichier route</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Template</th>
+                            <th>Controlleur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" route in listeDesRoutes">
+                            <td>
+                                <input type="text" class="form-control" ng-model="route.url"/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" ng-model="route.template"/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" ng-model="route.controler"/>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="supprimerLigne(route)" ng-tooltip="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Supprimer">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" ng-model="ajout.url" placeholder="url"/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" ng-model="ajout.template" placeholder="chemin template"/>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" ng-model="ajout.controler" placeholder="nom du controlleur"/>
+                            </td>
+                            <td>
+                                <button class="btn btn-success" ng-click="ajouterLigne(ajout)" ng-tooltip="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Ajouter">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="btn btn-danger" ng-click="regenererRoute(listeDesRoutes)" ng-tooltip="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Attention: Vous allez écraser le fichier de routing de votre application!">Regénérer route</button>
+            </div>
+        </div>
+        <div class="row margin-top-10">
+            <div class="col-sm-12">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="txt-menu-r-config">Notes [route]</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <p>Les Urls des routes ne présentent pas de point <span class="success txt-bold">[.]</span>.</p>
+            </div>
+        </div>
+        <div class="row margin-top-10">
+            <div class="col-sm-12">
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-modaldefault></div>
+<div ng-modaldloader></div>
+<div ng-notification></div>
+<toast></toast>
+

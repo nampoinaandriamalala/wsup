@@ -1,0 +1,467 @@
+<h1>Bienvenue</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="width-350">Type</th>
+                    <th>Action</th>
+                    <th>Commentaire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chargement</td>
+                    <td>
+                        <div class="btn-group">
+                            <button ng-click="actionShowLoad()" class="btn btn-secondary">Debut</button>
+                            <button ng-click="actionShowHide()" class="btn btn-secondary">Fin</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-control" >
+                            <p>Permet d'afficher l'image de chargement :</p>
+                            <h3>CONTROLEUR :</h3>
+                            <div class="esp"></div>
+                            <pre>                        
+                                <code class="javascript hljs">
+$rootScope.modalLoading(true);  //Afficher
+$rootScope.modalLoading(false); //Cacher
+                                </code>
+                            </pre>
+                            <h3>TEMPLATE:</h3>
+                            <textarea class="form-control javascript hljs" rows="1">
+<div ng-modaldloader></div>
+                            </textarea>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Afficher modal</td>
+                    <td><button ng-click="actionShowModal()" class="btn btn-secondary">Afficher modal</button></td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Permet d'afficher une boite modal pour mettre en évidence un message ou une action donnée.</p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Dans l'application [app.js]</h3>
+                                        <pre>
+                                            <code class="javascript hljs">
+//Directive modale
+app.directive('ngModaldefault', function () {
+    return {
+        restrict: 'A', 
+        templateUrl: 'packages/default/views/templateDefaultModal.html',
+        link: function (scope, element, attrs) {
+            $(element).on('hidden.bs.modal', function () {
+                try {
+                    //$scope.verificationAjourFournisseur = "";                    
+                } catch (e) {
+                }
+            });
+        }
+    }
+});
+</code>
+                                        </pre>
+                                        <h3>TEMPLATE [templateDefaultModal.html]</h3>
+
+                                        <textarea class="form-control javascript hljs" rows="20">
+<!-- Modal -->
+<div class="modal fade" id="myModalDefault" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    Bonjour modal :) !
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="verif-default" ng-class="etatSuppresion"></span>
+                <button type="button" class="btn btn-success" ng-click="showLoading()">Action</button>
+                <button type="button" class="btn btn-default" ng-click="hideLoading()" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+                                        </textarea>
+                                        <h3>
+
+                                        </h3>
+
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                        <h3>CONTROLEUR:</h3>
+                        <div>
+                            <pre>
+                                <code class="javascript hljs">
+/*EVENT*/
+$scope.actionShowModal = function ()
+{
+    var myModal = $('#myModalDefault');
+    myModal.modal('show');
+}
+</code>
+                            </pre>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saisir une date</td>                    
+                    <td>
+                        <input type="text" class="form-control" ng-datepicker ng-model="modelDate" name="">
+                    </td>                    
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Ajouter ng-datepicker comme element dans l'input.</p>
+                                <h3>CONTROLEUR:</h3>
+                                <pre>                        
+                                <code class="javascript hljs">
+$scope.modelDate = "01/01/2018";    // Il sera affiché comme date par défaut.
+                                </code>
+                                </pre>
+                                <h3>TEMPLATE:</h3>
+                                <textarea class="form-control javascript hljs">
+<input type="text" class="form-control" ng-datepicker ng-model="modelDate" name="" rows="1"/>    
+                                </textarea>
+                            </div>
+
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saisir une date avec heure</td>                                   
+                    <td>
+                        <div moment-picker="dateheure" locale="fr" min-view="month" class="form-control height-30"> {{ dateheure}} </div>
+                    </td>                    
+                    <td>
+                        <h3>CONTROLEUR:</h3>
+                        <pre>                        
+                            <code class="javascript hljs">
+$scope.dateheure = "01/01/2018 12:00:00";    // Il sera affiché comme date par défaut.
+                            </code>
+                        </pre>
+                        <h3>TEMPLATE:</h3>
+                        <textarea class="form-control javascript hljs" rows="1">
+<div moment-picker="dateheure" locale="fr" min-view="month" class="form-control height-30"> { { dateheure } } </div>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Afficher une notification temporaire de 3s</td>                    
+                    <td><button ng-click="actionShowNotification()" class="btn btn-default">Afficher notification</button></td>                 
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Permet d'afficher une notification personnaliser pendant 3 seconds avec trois couleur "success,warning,danger,default" </p>
+                                <h3>CONTROLEUR:</h3>
+                                <pre>                        
+                            <code class="javascript hljs">
+$rootScope.showThisNotification("Bienvenu sur Raptor.",'success');
+                            </code>
+                                </pre>
+                                <h3>TEMPLATE:</h3>
+                                <textarea class="form-control javascript hljs" rows="1">
+<div ng-notification></div>                        
+                                </textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Afficher une notification temporaire avec toast</td>                    
+                    <td><button ng-click="actionShowToast()" class="btn btn-default">Afficher toast</button></td>                 
+                    <td>
+                        <p>Permet d'afficher une notification avec toast voici les infomations du plugin http://tamerayd.in/ngToast/ </p>
+                        <h3>CONTROLEUR:</h3>
+                        <pre>                        
+                            <code class="javascript hljs">
+ngToast.create({
+    className: 'danger',
+    content: '<b>Erreur toast</b>'
+});
+                            </code>
+                        </pre>
+                        <h3>TEMPLATE:</h3>
+                        <textarea class="form-control javascript hljs">
+<toast></toast>
+                        </textarea></td>
+                </tr>
+                <tr>
+                    <td>Filtre saisie clavier</td>                    
+                    <td><input type="text" class="form-control" placeholder="1234567890" ng-numeric ng-model="int"/></td>                 
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Saisie de chiffre seulement NB: il faut ajouter un ng-model pour l'utiliser. Ajouter <span class="txt-bold success">ng-numeric</span> comme attribut dans l'input.</p>                                
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Activation menu</td>                    
+                    <td><button ng-click="actionOuvrirPageDefault()" class="btn btn-default">Ouvrir Default et focus menu</button></td>                
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Permet de changer le menu actif</p>
+                                <h3>CONTROLEUR:</h3>
+                                <pre>
+                                    <code class="javascript hljs">
+//Ouvrir page default
+$scope.actionOuvrirPageDefault = function ()
+{
+    $location.path('/verif/0'); //Ouvrir le contenu menu
+    $rootScope.curseurMenu(1);   //Position curseur
+}                                        
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                </tr>
+                <tr>
+                    <td>Champ avec une taille dynamique</td>                    
+                    <td><textarea class="form-control" data-autogrow rows="3">Textarea avec qui s'agrandi par rapport au contenu</textarea></td>
+                    <td>
+                        <div class="form-control" >
+                            <p>Ajouter <span class="success font-weight-bold">data-autogrow</span> comme attribut dans textarea </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Multiple filtre (utiliser "raptorFilter" au lieu de "filter" natif)</td>                    
+                    <td><input class="form-control" ng-model="superFilter" placeholder="Filtre séparer par un espace"/></td>
+                    <td>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Titre1</th>
+                                <th>Titre2</th>
+                                <th>Titre3</th>
+                            </tr>
+                            <tr ng-repeat=" data in datas_myfilter| raptorFilter : superFilter">
+                                <td ng-bind="data.id"></td>
+                                <td ng-bind="data.name"></td>
+                                <td ng-bind="data.about"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Auto complete</td>                    
+                    <td>
+                        <input 
+                            class="form-control"
+                            required="" 
+                            name="sector" 
+                            type="text" 
+                            ng-model="Projects" 
+                            auto-complete="autoCompAllProjects" />           
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">                                
+                                <p>Autocomplete permet de faire dans un complétion automatique</p>
+                                <h3>CONTROLEUR:</h3>
+                                <pre>                        
+                                <code class="javascript hljs">
+$scope.projectNames = [];   //tableau
+
+$scope.Names = [{"name": "Marisol Hull"}, {"name": "Henry Prince"}, {"name": "Steele Gilbert"}, {"name": "Miriam Cunningham"}, {"name": "Alfreda Molina"}, {"name": "Hinton Campbell"}, {"name": "Angie Luna"}, {"name": "Dudley Brock"}, {"name": "Whitney Brewer"}, {"name": "Eve Macias"}, {"name": "Blevins Meyers"}, {"name": "Curry Brown"}, {"name": "Elvia Gay"}, {"name": "Kerry Peck"}, {"name": "Carlene Kim"}, {"name": "Deana Alexander"}, {"name": "Dickerson Bowen"}, {"name": "Jeannie Shaffer"}, {"name": "Sanchez Schneider"}, {"name": "Webb Pugh"}];
+
+for (var item in $scope.Names) {
+    $scope.projectNames.push($scope.Names[item].name);
+}
+
+$scope.autoCompAllProjects = {
+        minimumChars: 1,
+        dropdownHeight: "100px",
+        data: function (term) {
+            return _.filter($scope.projectNames, function (val) {
+            return val == term || val.includes(term);
+            });
+        },
+        itemSelected: function (item) {}
+};
+                                </code>
+                                </pre>
+                                <h3>TEMPLATE:</h3>
+                                <pre>                        
+                                <textarea class="html hljs form-control" rows="1">
+<input class="form-control" required="" name="sector" type="text" ng-model="Projects" auto-complete="autoCompAllProjects" />  
+                                </textarea>
+                                </pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nom du projet , login et menu</td>                    
+                    <td></td>
+                    <td>
+                        <p>Pour modifier les différentes textes de l'application, voir dans le menu <span class="success txt-bold">Gestion menu / libellé</span>.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tooltip</td>                    
+                    <td>
+                        <button type="button" ng-tooltip class="btn btn-secondary"  data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                            Tooltip on top
+                        </button>
+                    </td>
+                    <td>
+                        <p>Pour pouvoir utiliser Tooltip, ajouter <span class="text-success font-weight-bold">ng-tooltip=""</span> dans votre element.</p>  
+                        <p>Tooltip a été ajouté dans Bootstrap 4. Pour plus d'aide, cliquez <a  class="txt-bold" href="https://v4-alpha.getbootstrap.com/components/tooltips"> ici </a>.</p>
+                        <textarea class="javascript hljs form-control" rows="4">
+<button class="btn btn-success" ng-click="enregistrerMenu(menu)" ng-tooltip="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Ajouter">
+    <i class="fa fa-plus" aria-hidden="true"></i>                 
+</button>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Popover</td>                    
+                    <td>
+                        <button class="btn btn-secondary" type="button" ng-popover="" data-toggle="popover" data-placement="top" data-content="Popover on top">
+                            Popover on top
+                        </button>
+                    </td>
+                    <td>
+                        <p>Pour pouvoir utiliser Popover, ajouter <span class="text-success font-weight-bold">ng-popover=""</span> dans votre element.</p>  
+                        <p>Popover a été ajouté dans Bootstrap 4. Pour plus d'aide, cliquez <a  class="txt-bold" href="https://v4-alpha.getbootstrap.com/components/popovers"> ici </a>.</p>
+                        <textarea class="javascript hljs form-control" rows="4">
+<button type="button" ng-popover="" data-toggle="popover" data-placement="top" data-content="Popover on top">
+    Popover on top
+</button>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Envoyer email notification</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="A..." ng-model="email.a">
+                            </div>
+                        </div>
+                        <div class="row espacetopbot">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="Cc..." ng-model="email.cc">
+                            </div>
+                        </div>
+                        <div class="row espacetopbot">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="Objet" ng-model="email.objet">
+                            </div>
+                        </div>
+                        <div class="row espacetopbot">
+                            <div class="col-sm-12">
+                                <textarea rows="5" class="form-control" ng-model="email.message">Votre text ici ...</textarea>
+                            </div>
+                        </div>
+                        <div class="row espacetopbot">
+                            <div class="col-sm-12">
+                                <button class="btn btn-default" ng-click="envoyerEmailNotification(email)">Envoyer</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <p>Si il y a plusieurs email en copie, il faut les séparer par point virgule [<span class="text-success txt-bold">;</span>]. </p>
+                        <h3>CONTROLEUR</h3>
+                        <div>
+                            <p>Ajouter le factory <span class="txt-bold success">notificationEmail</span> par le système d'injection d'AngularJS dans votre contrôleur pour l'utiliser.</p>
+                            <p>Vous pourrez par la suite vous inspirer du code ci-dessous.</p>
+                        </div>
+                        <div>
+                            <pre>                        
+                    <code class="javascript hljs">
+        //Initialisation des variables
+        $scope.email = {};
+        $scope.email.a = "";
+        $scope.email.cc = "";
+        $scope.email.objet = "";
+        $scope.email.message = "";
+        /*Envoi email*/
+        $scope.envoyerEmailNotification = function (data_email)
+        {
+            //data_email représente les données issues du view
+            $rootScope.modalLoading(true);  //Afficher loading
+            var dataObj = {
+                a: data_email.a,
+                cc: data_email.cc,
+                objet: data_email.objet,
+                message: data_email.message,
+            }
+            notificationEmail.envoyer(dataObj).then(function (datas) {
+                $rootScope.modalLoading(false); //Fermer loading
+            });
+        }
+                    </code>           
+                            </pre>
+                        </div>
+                        <div>
+                            <p>Note:</p>
+                            <p>L'URL qui est utilisé pour l'envoie des notifications se trouve dans "Gestion menu & variables" sous le nom de <span>Notification</span>.</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Chiffre en lettre</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" ng-model="cl.chiffre" ng-change="chiffreEnLettre(cl)" class="form-control"/>
+                            </div>
+                            <div class="col-sm-12">
+                                <p ng-bind="cl.lettre"></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>Pour utiliser l'outil "chiffre en lettre", appeler la fonction javascript <span class="text-success txt-bold">NumberToLetter</span>.</div>
+                        <pre>                        
+                    <code class="javascript hljs">
+        //Chiffre en lettre
+        $scope.cl = {};
+        $scope.cl.chiffre = 0;
+        $scope.cl.lettre = "";
+        $scope.chiffreEnLettre = function(nombre)
+        {
+           var lettre = NumberToLetter(nombre.chiffre);
+           $scope.cl.lettre = lettre;
+        }
+                    </code>           
+                        </pre>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>  
+        <hr>
+    </div>      
+</div>
+<br/>
+<div>
+
+</div>
+<br/>
+<p>Controller :{{yourName}}</p>
+<div>Postgres</div>
+<ul>
+    <li ng-repeat="data in datas">{{data.datid}}</li>
+</ul>
+<div ng-modaldefault></div>
+<div ng-modaldloader></div>
+<div ng-notification></div>
+<toast></toast>
