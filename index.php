@@ -49,10 +49,11 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
         <link rel="stylesheet" href="plugins/calendar/fullcalendar.css"/>
 
         <!-- jquery, moment, and angular have to get included before fullcalendar -->
-<!--        <script type="text/javascript" src="plugins/calendar/moment.js"></script>
+        <script type="text/javascript" src="plugins/calendar/moment.js"></script>
         <script type="text/javascript" src="plugins/calendar/calendar.js"></script>
         <script type="text/javascript" src="plugins/calendar/fullcalendar.js"></script>
-        <script type="text/javascript" src="plugins/calendar/gcal.js"></script>-->
+        <script type="text/javascript" src="plugins/calendar/gcal.js"></script>
+        <script type="text/javascript" src="plugins/calendar/lang/fr.js"></script>
         <!-- Router-->
         <script src="ressources/router.js?version=<?php echo date('Ymdms'); ?>"></script>
 
@@ -304,8 +305,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        }
-                        if (id_droped.indexOf('input') !== -1)
+                        } else if (id_droped.indexOf('input') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -316,8 +316,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        }
-                        if (id_droped.indexOf('label') !== -1)
+                        } else if (id_droped.indexOf('label') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -328,8 +327,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        }
-                        if (id_droped.indexOf('textarea') !== -1)
+                        } else if (id_droped.indexOf('textarea') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -340,8 +338,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        }
-                        if (id_droped.indexOf('table') !== -1)
+                        } else if (id_droped.indexOf('table') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -352,6 +349,8 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
+                        } else {                           
+                            ev.target.appendChild(document.getElementById(id_droped));
                         }
                         break;
                 }

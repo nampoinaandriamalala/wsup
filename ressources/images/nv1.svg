@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2200" height="429" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m988.06 196.88v-81.083h54.395v162.17h-54.395z" fill="#008000" stroke-width="1.4791"/>
+ <g transform="translate(23.061 -98.119)" fill="#f00" stroke-width="1.8316">
+  <path id="11_1b" class="niveau1" d="m835.05 341.26v-13.737h54.947v27.474h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="10_1b" class="niveau1" d="m720 361.26v-13.737h54.947v27.474h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="9_1b" class="niveau1" d="m646.88 361.26v-13.737h53.115v27.474h-53.115z" title="Batiment 1; Lettre B"/>
+  <path id="1_1b" class="niveau1" d="m405.05 422.18v-12.821h54.947v25.642h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="2_1b" class="niveau1" d="m545.05 451.26v-13.737h54.947v27.473h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="3_1b" class="niveau1" d="m650.05 451.26v-13.737h54.947v27.473h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="8_1b" class="niveau1" d="m1075 477.18v-12.821h54.947v25.642h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="7_1b" class="niveau1" d="m1e3 477.18v-12.821h53.115v25.642h-53.115z" title="Batiment 1; Lettre B"/>
+  <path id="6_1b" class="niveau1" d="m915 477.18v-12.821h54.947v25.642h-54.947z" title="Batiment 1; Lettre B"/>
+  <path id="5_1b" class="niveau1" d="m830 477.18v-12.821h53.115v25.642h-53.115z" title="Batiment 1; Lettre B"/>
+  <path id="4_1b" class="niveau1" d="m735.05 477.18v-12.821h54.947v25.642h-54.947z" title="Batiment 1; Lettre B"/>
+  <rect id="12_1b" class="niveau1" x="1230" y="457" width="56" height="28" fill="#f00" title="Batiment 1; Lettre B"/>
+  <path id="2_1d" class="niveau1" d="m2095 257.18v-12.821h54.947v25.642h-54.947z" title="Batiment 1 ; lettre D"/>
+  <path id="1_1d" class="niveau1" d="m2095 153.74v-13.737h54.947v27.474h-54.947z" title="Batiment 1 ; lettre D"/>
+ </g>
+ <g transform="translate(23.061 -98.119)" fill="#00f">
+  <rect id="3_1d" class="niveau1" x="1950" y="140" width="55" height="125" stroke-width=".99209" title="Batiment 1 ; lettre D"/>
+  <rect id="4_1d" class="niveau1" x="1849.8" y="139.59" width="55" height="125.41" stroke-width=".99372" title="Batiment 1 ; lettre D"/>
+  <g stroke-width="1.2951">
+   <path id="5_1d" class="niveau1" d="m1750 202.83v-62.165h54.395v124.33h-54.395z" title="Batiment 1 ; lettre D"/>
+   <path id="6_1d" class="niveau1" d="m1650 202.83v-62.165h54.395v124.33h-54.395z" title="Batiment 1 ; lettre D"/>
+   <path id="7_1d" class="niveau1" d="m1550 202.83v-62.165h53.1v124.33h-53.1z" title="Batiment 1 ; lettre D"/>
+   <path id="8_1d" class="niveau1" d="m1450 202.83v-62.165h53.1v124.33h-53.1z" title="Batiment 1 ; lettre D"/>
+   <path id="9_1d" class="niveau1" d="m1350 202.83v-62.165h54.395v124.33h-54.395z" title="Batiment 1 ; lettre D"/>
+  </g>
+ </g>
+ <g transform="translate(23.061 -98.119)" fill="none" stroke="#000" stroke-width="1px">
+  <path d="m1302 320 858-5v-200h-860"/>
+  <path d="m1300 115 4 205"/>
+  <path d="m1300 115-928 25"/>
+  <path d="m1140 515v-310"/>
+  <path d="m1303 404-163 1"/>
+  <path d="m1304 320-4 195h-580v-20h-385.74c5.7391-20-4.2609-50-34.261-50h-80v-230h-120"/>
+  <path d="m371 164-361 1v280h210"/>
+  <path d="m380 495v-110h130"/>
+  <path d="m510 385v110"/>
+  <path d="m220 275h-210"/>
+  <path d="m100 215v60"/>
+  <path d="m370 140v140h-95v-115"/>
+  <path d="m950 400v-125l-526 4-1-139"/>
+  <path d="m570 280v-145"/>
+  <path d="m785 130v270h280"/>
+  <path d="m1100 125v80h140"/>
+  <path d="m950 275v-70h150"/>
+  <path d="m422 202c-21-1-51 7-50.062 33"/>
+  <path d="m422 278h-50"/>
+  <path d="m422 272h-50"/>
+  <path d="m422 266h-50"/>
+  <path d="m422 260h-50"/>
+  <path d="m422 254h-50"/>
+  <path d="m422 248h-50"/>
+  <path d="m422 242h-50"/>
+  <path d="m422 237h-50"/>
+  <path d="m422 232-49-3"/>
+  <path d="m422 227-45-6"/>
+  <path d="m422 221-37-9"/>
+  <path d="m422 217-23-11"/>
+  <path d="m1139 318c4.72 1.981 10.92 1 16 1h147c-4.72-1.981-10.92-1-16-1h-33z" fill="#1a1a1a"/>
+ </g>
+</svg>

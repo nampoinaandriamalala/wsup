@@ -1,0 +1,19 @@
+.column {
+    background-color: #ccc;
+    float: left;
+    width: 100%;
+    padding: 2px;
+    height: 250px; 
+    border: 1px solid;
+    margin:auto;
+}
+.card{
+    border: solid 1px black;
+    cursor: move;
+}
+.espace-echange{
+    border: solid 1px;
+}
+h5 {
+    color: red;
+}
