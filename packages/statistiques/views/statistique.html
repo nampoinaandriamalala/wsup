@@ -1,0 +1,83 @@
+
+
+
+
+
+<div class="row espacetopbot">        
+    <div class="col-12 text-center">
+        <h3>STATISTIQUE GENERALE DES POSTES</h3>
+    </div>
+</div>
+
+<ul>
+    
+</ul>
+<fieldset>
+<div class="row justify-content-between">
+    <div class="col-sm-12"> 
+        <fieldset>
+            <legend style="width: 180px;">
+                <div class="input-group" id="type-search">
+                    <select class="form-control">
+                        <option value="0" selected>Aujourd'hui</option>
+                        <option value="1">Hier</option>
+                        <option value="2">Semaine dernier</option>
+                        <option value="3">mois dernier</option>
+                        <option value="4">An dernier</option>
+
+                    </select>                            
+                </div>
+            </legend>
+        <div class="row">
+            <div class="col-sm-12 chart_div" google-chart chart="ChartObjectUC" style="height:600px; width:100%;"></div>
+        </div>
+        </fieldset>
+    </div>
+    
+    <div class="col-sm-12 espacetopbot">
+        <fieldset>
+            <legend style="width: 180px;">
+                <div class="input-group" id="type-search">
+                    <select class="form-control">
+                        <option value="0" selected>Aujourd'hui</option>
+                        <option value="1">hier</option>
+                        <option value="2">Semaine dernier</option>
+                        <option value="3">mois dernier</option>
+                        <option value="4">An dernier</option>
+                    </select>                            
+                </div>
+            </legend>
+        
+        <div class="row">
+            <div class="chart_div" google-chart chart="ChartObjectPostes" style="height:600px; width:90%;"></div>
+        </div>
+        </fieldset>
+    </div>
+    
+    <div class="col-sm-12 espacetopbot">
+        <fieldset>
+            <legend style="width: 180px;">
+                <div class="input-group" id="type-search">
+                    <select class="form-control">
+                        <option value="0" selected>Processeur</option>
+                        <option value="1">RAM</option>
+                        <option value="2">HDD</option>
+                    </select>                            
+                </div>
+            </legend>
+        
+        <div class="row">
+            <div class="chart_div" google-chart chart="ChartObjectCarac" style="height:600px; width:90%;"></div>
+        </div>
+        </fieldset>
+    </div>
+    
+</div>
+</fieldset>
+
+
+<div ng-modaldefault></div>
+<div ng-modaldloader></div>
+<div ng-notification></div>
+<toast></toast>
+

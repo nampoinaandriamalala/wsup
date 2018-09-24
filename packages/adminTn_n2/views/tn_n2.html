@@ -1,7 +1,125 @@
-<h1>Bienvenue</h1>
-<h2>Votre page default</h2>
+<div class="" id="svgimg" style="">
+    <div class="container w-100" style="">
+        <div class="row" style="">
+            <div class="col-md-11 w-100 styldiv" style=" overflow:scroll;width:300; height:1000 ;border:#000000 1px solid;">
+                <img class="img-fluid d-block mx-auto rounded" src="/wsup/ressources/images/nv2.svg" alt="batiment niveau 3">
 
-<div ng-modaldefault></div>
-<div ng-modaldloader></div>
-<div ng-notification></div>
-<toast></toast>
+            </div>
+            <div class="col-md-1 h-25 btn-group-vertical justify-content-center" style="padding:2px; ">
+                <button type="button" class="btn btn-primary">Zoom +</button>
+                <button type="button" class="btn btn-warning">Zoom -</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-spy="scroll" data-target="#svgimg" data-offset="0"> </div>
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">       
+                            <div class="input-group" id="type-search">
+                    <select class="form-control">
+                        <option value="0" selected>Tous</option>                       
+                        <option value="1">Postes</option>
+                        <option value="2" selected>UC</option>
+                        <option value="3">Utilisateurs</option>
+
+                    </select>                            
+                </div>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input type="text" class="form-control" name="x" placeholder="Recherche">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span> Recherche</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background" >
+<div class="h-100 w-100">
+    <div class="container w-100 h-100">
+        <div class="row">
+            <div class="col-md-3 h-100 w-100 border border-primary m-2 text-center espace-echange">
+                <div class="row text-center">
+                    <div class="col-md-12 w-100 bg-primary">
+                        <span class="size-font-drag">Espace des échanges</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 h-100 align-items-center justify-content-center">
+                        <div class="w-100 m-0 text-center p-2 h-100 justify-content-center align-items-center">
+                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                
+                            </div>
+
+                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    
+                                    <div class="card text-white mb-3 bg-dark size-note-drag" id="drag1" draggable="true" ondragstart="drag(event)">
+                                        <div class="card-header text-center bg-info">
+                                            <h2 class="text-center"> 3/B/XXX </h2>
+                                            <button class="btn btn-default pull-center" style="background-radius:25%;">Eteindre</button>
+                                            <button class="btn btn-default pull-center">Modifier</button>
+                                        </div>
+                                        <div class="card-body text-center bg-light p-0 m-0">
+                                            <h5 class="card-title">UC_XXXX</h5>
+                                            <img style="border-radius:50%;" src="/wsup/ressources/images/green.png" id="img_etat"> 
+                                        </div>
+                                        <div class="card-footer bg-info">
+                                            <h2 class="text-center" id="possesseur"> Possesseur </h2>
+                                            <h6 class="text-center" id="ip"> 192.168.X.X </h6>
+                                        </div>
+                                    </div>
+
+                            </div>
+
+                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                
+                            </div>
+                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a class="btn btn-primary w-100" href="#"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 h-100 w-100 m-2 border border-dark">
+                <div class="row margin-5">
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="row margin-5">
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="row margin-5">
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="row margin-5">
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="row margin-5">
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+                <div class="row margin-5">
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="column col-md-6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

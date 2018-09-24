@@ -9,7 +9,7 @@ class connexion {
     public $user;
     public $password;
 
-    function __construct($host = "192.168.4.239", $dbname = "raptor", $user = "postgres", $password = "postgres") {
+    function __construct($host = "192.168.4.239", $dbname = "wsup", $user = "postgres", $password = "postgres") {
         $this->host = $host;
         $this->dbname = $dbname;
         $this->user = $user;

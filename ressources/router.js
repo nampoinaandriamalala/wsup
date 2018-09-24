@@ -15,7 +15,7 @@ app.config(function ($routeProvider, $locationProvider) {
     // if you don't wish to set base URL then use this
     $locationProvider.html5Mode({
         enabled: true,
-        requireBase: false
+        requireBase: false 
     });
 //    }
     $routeProvider
@@ -23,17 +23,21 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: "packages/login/views/login.html",
                 controller: 'CtrlLogin',
             })
+            .when("/admst-accueil", {
+                templateUrl: "packages/administrationAccueil/views/administrationAccueil.html",
+                controller: 'CtrlAdminstAccueil',
+            })
             .when("/admin-accueil", {
                 templateUrl: "packages/adminaccueil/views/adminAccueil.html",
                 controller: 'CtrlAdminAccueil',
             })
             .when("/tech-accueil", {
                 templateUrl: "packages/techaccueil/views/techAccueil.html",
-                controller: 'CtrlAdminAccueil',
+                controller: 'CtrlTechnAccueil',
             })
             .when("/sup-accueil", {
                 templateUrl: "packages/supaccueil/views/supAccueil.html",
-                controller: 'CtrlAdminAccueil',
+                controller: 'CtrlSupAccueil',
             })
             .when("/tn-n3", {
                 templateUrl: "packages/adminTn_n3/views/tn_n3.html",
@@ -46,6 +50,10 @@ app.config(function ($routeProvider, $locationProvider) {
             .when("/tn-n1", {
                 templateUrl: "packages/adminTn_n1/views/tn_n1.html",
                 controller: 'CtrlAdminTn_n1',
+            })
+            .when("/stat", {
+                templateUrl: "packages/statistiques/views/statistique.html",
+                controller: 'CtrlStat',
             })
 
             .when("/deconnexion", {
