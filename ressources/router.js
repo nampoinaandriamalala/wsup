@@ -55,6 +55,14 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: "packages/statistiques/views/statistique.html",
                 controller: 'CtrlStat',
             })
+            .when("/notif", {
+                templateUrl: "packages/notification/views/notification.html",
+                controller: 'CtrlNotif',
+            })
+            .when("/droit-group", {
+                templateUrl: "packages/droit/views/droit.html",
+                controller: 'CtrlDroit',
+            })
 
             .when("/deconnexion", {
                 templateUrl: "packages/login/views/login.html",

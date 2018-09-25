@@ -1,0 +1,98 @@
+<div class="espace-user" ng-init="listGroupe()">
+    <div class="add-user">
+        <div class="force-ligne espace-aeration">        
+            <label class="length-label">Ajout groupe administrateur avec leurs droits:</label>
+        </div>
+        <div class="position-tab">
+            <table class="table-add table-bordered table-striped">
+                <tr>
+                    <th class="espace-entre-matricule">Abreviation Groupe</th>
+                    <th class="espace-entre-tableau">(Créer)planifier</th>
+                    <th class="espace-entre-tableau">(Re)planifier</th>
+                    <th class="espace-entre-tableau">(Flex)Supprimer</th>
+                    <th class="espace-entre-tableau">Valider</th>
+                    <th class="espace-entre-tableau">Dévalider</th>
+                    <th class="espace-entre-tableau">Extraction</th>                    
+                    <th class="espace-entre-tableau"></th>                    
+                </tr>
+                <tr>
+                    <td>
+                        <select class="form-control" ng-model="varFlexibilite.abreviation" ng-options="abreviation.abrev_fonction for abreviation in listAbreviations"></select>
+                        <!--<input type="text" placeholder="Abreviation" class="form-control text-center" ng-model="varFlexibilite.abreviation">-->
+                    </td>
+                    <td><input type="checkbox" class="form-control" ng-model="varFlexibilite.creer"></td>
+                    <td><input type="checkbox" class="form-control" ng-model="varFlexibilite.replanifier"></td>
+                    <td><input type="checkbox" class="form-control" ng-model="varFlexibilite.supprimer"></td>
+                    <td><input type="checkbox" class="form-control" ng-model="varFlexibilite.valider"></td>
+                    <td><input type="checkbox" class="form-control" ng-model="varFlexibilite.devalider"></td>
+                    <td><input type="checkbox" class="form-control" ng-model="varFlexibilite.extraction"></td>
+                    <td class="expace-table-btn">
+                        <button class="btn btn-success width-btn force-btn-correction" ng-click="ajouterGroup()">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i> 
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="lister-utilisateur">
+        <div class="force-ligne espace-aeration">        
+            <label class="length-label">Liste des groupe avec ses droits:</label>            
+        </div>
+        <div class="position-recherche">
+            <input type="text" class="form-control" ng-model="filtreAll" placeholder="Recherche par abreviation">
+        </div>
+        <div class="espace-liste-utilisateur">  
+            <div class="content-list">
+                <ul class="ul-style-listview">
+                    <!--<li  class="listview-html active">nomFichier.pdf</li>-->
+                    <li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="group in listGroup| filter: filtreAll">
+                        <table class="table-add table-bordered table-striped">
+                            <tr>
+                                <th class="espace-entre-matricule">Abreviation</th>
+                                <th class="espace-entre-tableau">(Créer)planifier</th>
+                                <th class="espace-entre-tableau">(Re)planifier</th>
+                                <th class="espace-entre-tableau">(Flex)Supprimer</th>
+                                <th class="espace-entre-tableau">Valider</th>
+                                <th class="espace-entre-tableau">Dévalider</th>
+                                <th class="espace-entre-tableau">Extraction</th>
+                                <th class="espace-btn-anime"></th>
+                                <th class="espace-btn-anime"></th>
+                            </tr>
+                            <tr>
+                                <td>{{group.abrev_fonction}}</td>
+                                <td><input type="checkbox" class="form-control" ng-model="creer[$index]"></td>
+                                <td><input type="checkbox" class="form-control" ng-model="replanifier[$index]"></td>                                
+                                <td><input type="checkbox" class="form-control" ng-model="supprimer[$index]"></td>
+                                <td><input type="checkbox" class="form-control" ng-model="valider[$index]"></td>
+                                <td><input type="checkbox" class="form-control" ng-model="devaliderval[$index]"></td>
+                                <td><input type="checkbox" class="form-control" ng-model="extraction[$index]"></td>
+                                <td class="expace-table-btn text-center">
+                                    <div class="block-btn">
+                                        <button class="btn btn-warning" ng-click="saveModifGroup(group.id,creer[$index], replanifier[$index],supprimer[$index], valider[$index], devaliderval[$index], extraction[$index])">
+                                            <i class="fa fa-floppy-o" aria-hidden="true"></i> 
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="expace-table-btn text-center">
+                                    <div class="block-btn">
+                                        <button class="btn btn-danger" ng-click="supprimerGroup(group.id)">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                        </button>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="liste-utilisateur">
+</div>
+<div ng-modaldefault></div>
+<div ng-modaldloader></div>
+<div ng-notification></div>
