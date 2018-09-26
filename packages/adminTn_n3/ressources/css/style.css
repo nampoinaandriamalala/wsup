@@ -17,3 +17,25 @@
 h5 {
     color: red;
 }
+
+.code-svg path{
+    border-radius: 50%;
+    background-color: black;
+}
+
+.code-svg p12{
+    
+}
+
+.poste_douze{
+    fill:#00f;
+}
+.poste_un{
+    fill:#f00;
+}
+
+.code-svg path:hover{
+    fill:black;
+    cursor: pointer;
+}
+

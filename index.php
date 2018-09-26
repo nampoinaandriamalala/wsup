@@ -30,7 +30,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
         <script src="plugins/bootstrap4/js/jquery-3.1.1.slim.min.js"></script>
         <script src="plugins/bootstrap4/js/tether.min.js"></script>
         <script src="plugins/bootstrap4/js/bootstrap.min.js" ></script>
-
+        
         <!-- fin bootstrap 4 test -->
         <!-- bootstrap -->
         <!--        <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
@@ -40,6 +40,11 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
                 <link id="bsdp-css" href="plugins/datepicker3/bootstrap-datepicker3.min.css" rel="stylesheet">
                 <script src="plugins/datepicker3/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>-->
 
+        <!-- svg pan zoom -->
+        <script src="plugins/svg-pan-zoom/js/svg-pan-zoom.min.js" ></script>
+        <script src="plugins/svg-pan-zoom/js/svg-pan-zoom.js" ></script>
+        
+        
         <!-- old datepicker -->
         <script src="plugins/datepicker3/bootstrap-datepicker.min.js"></script>
         <link id="bsdp-css" href="plugins/datepicker3/bootstrap-datepicker3.min.css" rel="stylesheet">
