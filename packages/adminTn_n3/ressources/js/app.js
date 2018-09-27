@@ -33,25 +33,125 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
         /*var panZoomTiger = svgPanZoom('#demo-tiger');*/
 
-
-        $scope.zoom= function () {
-            $scope.panZoomInstance = $scope.svgPanZoom('#demo-tiger', {
-                zoomEnabled: true,
-                controlIconsEnabled: true,
-                fit: true,
-                center: true,
-                minZoom: 0.1
-            });
-
-            // zoom out
-            panZoomInstance.zoom(0.2)
-
-            $("#move").on("click", function () {
-                // Pan by any values from -80 to 80
-                panZoomInstance.panBy({x: Math.round(Math.random() * 160 - 80), y: Math.round(Math.random() * 160 - 80)})
-            });
+        $scope.IsVisible01=false;
+        $scope.IsVisible02=false;
+        $scope.IsVisible03=false;
+        $scope.IsVisible04=false;
+        $scope.IsVisible05=false;
+        $scope.IsVisible06=false;
+        $scope.IsVisible07=false;
+        $scope.IsVisible08=false;
+        $scope.IsVisible09=false;
+        $scope.IsVisible10=false;
+        $scope.IsVisible11=false;
+        $scope.IsVisible12=false;
+        
+        
+        $scope.Show1=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= false;
+            $scope.IsVisible03= false;
+            $scope.IsVisible04= false;
+            $scope.IsVisible05= false;
+            $scope.IsVisible06= false;
+            $scope.IsVisible07= false;
+            $scope.IsVisible08= false;
+            $scope.IsVisible09= false;
+            $scope.IsVisible10= false;
+            $scope.IsVisible11= false;
+            $scope.IsVisible12= false;
+            
         }
-        $scope.zoom();
+        $scope.Show2=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= true;
+            $scope.IsVisible03= false;
+            $scope.IsVisible04= false;
+            $scope.IsVisible05= false;
+            $scope.IsVisible06= false;
+            $scope.IsVisible07= false;
+            $scope.IsVisible08= false;
+            $scope.IsVisible09= false;
+            $scope.IsVisible10= false;
+            $scope.IsVisible11= false;
+            $scope.IsVisible12= false;
+            
+        }
+        $scope.Show3=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= true;
+            $scope.IsVisible03= true;
+            $scope.IsVisible04= false;
+            $scope.IsVisible05= false;
+            $scope.IsVisible06= false;
+            $scope.IsVisible07= false;
+            $scope.IsVisible08= false;
+            $scope.IsVisible09= false;
+            $scope.IsVisible10= false;
+            $scope.IsVisible11= false;
+            $scope.IsVisible12= false;
+            
+        }
+        $scope.Show4=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= true;
+            $scope.IsVisible03= true;
+            $scope.IsVisible04= true;
+            $scope.IsVisible05= false;
+            $scope.IsVisible06= false;
+            $scope.IsVisible07= false;
+            $scope.IsVisible08= false;
+            $scope.IsVisible09= false;
+            $scope.IsVisible10= false;
+            $scope.IsVisible11= false;
+            $scope.IsVisible12= false;
+            
+        }
+        $scope.Show5=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= true;
+            $scope.IsVisible03= true;
+            $scope.IsVisible04= true;
+            $scope.IsVisible05= true;
+            $scope.IsVisible06= false;
+            $scope.IsVisible07= false;
+            $scope.IsVisible08= false;
+            $scope.IsVisible09= false;
+            $scope.IsVisible10= false;
+            $scope.IsVisible11= false;
+            $scope.IsVisible12= false;
+            
+        }
+        $scope.Show6=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= true;
+            $scope.IsVisible03= true;
+            $scope.IsVisible04= true;
+            $scope.IsVisible05= true;
+            $scope.IsVisible06= true;
+            $scope.IsVisible07= false;
+            $scope.IsVisible08= false;
+            $scope.IsVisible09= false;
+            $scope.IsVisible10= false;
+            $scope.IsVisible11= false;
+            $scope.IsVisible12= false;
+            
+        }
+        
+        $scope.Show12=function (){
+            $scope.IsVisible01= true;
+            $scope.IsVisible02= true;
+            $scope.IsVisible03= true;
+            $scope.IsVisible04= true;
+            $scope.IsVisible05= true;
+            $scope.IsVisible06= true;
+            $scope.IsVisible07= true;
+            $scope.IsVisible08= true;
+            $scope.IsVisible09= true;
+            $scope.IsVisible10= true;
+            $scope.IsVisible11= true;
+            $scope.IsVisible12= true;
+        }
     }]);
 
 /*
