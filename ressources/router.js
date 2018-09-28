@@ -63,6 +63,10 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: "packages/droit/views/droit.html",
                 controller: 'CtrlDroit',
             })
+            .when("/my-account", {
+                templateUrl: "packages/myaccount/views/myaccount.html",
+                controller: 'CtrlMyAccount',
+            })
 
             .when("/deconnexion", {
                 templateUrl: "packages/login/views/login.html",

@@ -46,6 +46,18 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         $scope.IsVisible11=false;
         $scope.IsVisible12=false;
         
+        var i=1;
+        
+        $scope.zoomplus=function (){
+            for(i=1;i<10;i++){
+                
+            }
+            
+        }
+        
+        $scope.zoommoins=function (){
+            
+        }
         
         $scope.Show1=function (){
             $scope.IsVisible01= true;
