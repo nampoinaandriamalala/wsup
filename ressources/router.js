@@ -174,11 +174,42 @@ app.run(['$rootScope', '$http', '$cookies', '$cookieStore', '$location', functio
             //For banner
             $rootScope.showBanner = true;
 
+                    
+            $rootScope.admindb = $cookieStore.get('consulter') == "t";
+            if ($rootScope.admindb)
+                $rootScope.showA = true;
+            else
+                $rootScope.showA = false;
+
+            $rootScope.admindb = $cookieStore.get('ajouter') == "t";
+            if ($rootScope.admindb)
+                $rootScope.showB = true;
+            else
+                $rootScope.showB = false;
+
+            $rootScope.admindb = $cookieStore.get('editer') == "t";
+            if ($rootScope.admindb)
+                $rootScope.showC = true;
+            else
+                $rootScope.showC = false;
+
+            $rootScope.admindb = $cookieStore.get('supprimer') == "t";
+            if ($rootScope.admindb)
+                $rootScope.showD = true;
+            else
+                $rootScope.showD = false;
+
             $rootScope.admindb = $cookieStore.get('admin') == "t";
             if ($rootScope.admindb)
                 $rootScope.showAdministrateur = true;
             else
                 $rootScope.showAdministrateur = false;
+            
+            
+            
+            
+            
+            
             //end for banner
         }
         // FIN SPECIAL LOGIN //
