@@ -20,9 +20,12 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
 });
 
 //Controller par defaut
-angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
+angular.module('raptorApp').controller('CtrlTechnAccueil', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
 
     /*Votre code ici*/
+    $scope.deplacePage = function (page) {
+            $location.path(page);
+        }
 
 }]);
 

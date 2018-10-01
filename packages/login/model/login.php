@@ -33,7 +33,7 @@ $sql_pass_admin = "select r.valeur from raptor r where r.identifiant = 'super_ad
 $dataOut_pass_admin = $postgres->getSQL($conn_pass, $sql_pass_admin);
 
 $password_bdd = "sgxVIHtzRHOWimGDmUBb6O0qR3ryNvDY";
-if(is_array($dataOut_pass_admin))
+if (is_array($dataOut_pass_admin))
     $password_bdd = $dataOut_pass_admin[0]['valeur'];
 
 

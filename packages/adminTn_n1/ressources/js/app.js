@@ -47,6 +47,29 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
         $scope.IsVisible12=false;
         
         
+        $scope.scale = 1;
+        $scope.zoomplus = function () {
+
+            $scope.scale += 0.1;
+            var str = 'scale(' + $scope.scale + ')';
+            $('svg#demo-tiger').css(
+                    {
+                        'transform': str
+                    });
+
+
+        };
+
+        $scope.zoommoins = function () {
+            $scope.scale -= 0.1;
+            var str = 'scale(' + $scope.scale + ')';
+            $('svg#demo-tiger').css(
+                    {
+                        'transform': str
+                    });
+        };
+        
+        
         $scope.Show1=function (){
             $scope.IsVisible01= true;
             $scope.IsVisible02= false;

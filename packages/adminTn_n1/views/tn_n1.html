@@ -8,7 +8,7 @@
 
 
 
-                    <svg width="2200" height="429" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <svg id="demo-tiger" width="2200" height="429" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
                         <path ng-click="Show4()" d="m988.06 196.88v-81.083h54.395v162.17h-54.395z" fill="#008000" stroke-width="1.4791"/>
                         <g class="poste_un" transform="translate(23.061 -98.119)" fill="#f00" stroke-width="1.8316">
@@ -81,8 +81,8 @@
 
             </div>
             <div class="col-md-1 h-25 btn-group-vertical justify-content-center" style="padding:2px; ">
-                <button type="button" class="btn btn-primary">Zoom +</button>
-                <button type="button" class="btn btn-warning">Zoom -</button>
+                <button type="button" class="btn btn-primary" ng-click="zoomplus()" >Zoom +</button>
+                <button type="button" class="btn btn-warning" ng-click="zoommoins()">Zoom -</button>
             </div>
         </div>
     </div>
