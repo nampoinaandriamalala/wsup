@@ -14,7 +14,7 @@ $dbParams = array(
     'user'     => 'postgres',
     'password' => 'postgres',
     'host'   => '192.168.4.239',
-    'dbname'   => 'draptor',
+    'dbname'   => 'wsup',
 );
 
 $paths = array("src"); //Dossier des entity

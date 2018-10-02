@@ -1,30 +1,15 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of emplacement
- *
- * @author OS
- */
-
 /**
  * @Entity
  * @Table (name="emplacement")
  * */
-class Emplacement {
-    //put your code here
-    
+class Emplacement {    
     /**
      * @Id
      * @Column(type="integer") @GeneratedValue
      * */
-    private $id_emplacement;
-    
+    private $id_emplacement;    
     
     /**
      * @Column(type="string")
