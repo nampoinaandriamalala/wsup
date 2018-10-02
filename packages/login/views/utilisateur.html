@@ -7,21 +7,19 @@
             <table class="table-add">
                 <tr>
                     <th class="espace-entre-matricule">Matricule</th>
-                    <th class="espace-entre-tableau">Consulter</th>
-                    <th class="espace-entre-tableau">Ajouter</th>
-                    <th class="espace-entre-tableau">Editer</th>
-                    <th class="espace-entre-tableau">Supprimer</th>
+                    <th class="espace-entre-tableau">Superviseur</th>
+                    <th class="espace-entre-tableau">Tecnicien</th>
                     <th class="espace-entre-tableau font-bold">Administrateur</th>
-                    <th class="espace-entre-tableau"></th>
+                    
                     <th></th>
                 </tr>
                 <tr>
                     <td><input type="text" placeholder="matricule" class="form-control text-center" ng-model="varUser.matricule"></td>
-                    <td><input type="checkbox" class="form-control" ng-model="varUser.consulter"></td>
-                    <td><input type="checkbox" class="form-control" ng-model="varUser.ajouter"></td>
-                    <td><input type="checkbox" class="form-control" ng-model="varUser.editer"></td>
-                    <td><input type="checkbox" class="form-control" ng-model="varUser.supprimer"></td>
-                    <td><input type="checkbox" class="form-control" ng-model="varUser.admin"></td>
+                    <td><input type="radio" name="userType" class="form-control" ng-model="varUser.consulter"></td>
+                    <td><input type="radio" name="userType" class="form-control" ng-model="varUser.ajouter"></td>
+                    <td><input type="radio" name="userType" class="form-control" ng-model="varUser.editer"></td>
+                    <td><input type="radio" name="userType" class="form-control" ng-model="varUser.supprimer"></td>
+                    <td><input type="radio" name="userType" class="form-control" ng-model="varUser.admin"></td>
                     <td class="expace-table-btn">
                         <button class="btn btn-success width-btn force-btn-correction" ng-click="ajouterUtilisateur(varUser)">
                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -48,10 +46,10 @@
                         <table class="table-add">
                             <tr>
                                 <th class="espace-entre-matricule">Matricule</th>
-                                <th class="espace-entre-tableau">Consulter</th>
-                                <th class="espace-entre-tableau">Ajouter</th>
-                                <th class="espace-entre-tableau">Editer</th>
-                                <th class="espace-entre-tableau">Supprimer</th>
+                                
+                                <th class="espace-entre-tableau">Superviseur</th>
+                                <th class="espace-entre-tableau">Technicien</th>
+
                                 <th class="espace-entre-tableau">Administrateur</th>
                                 <th class="espace-btn-anime"></th>
                                 <th class="espace-btn-anime"></th>

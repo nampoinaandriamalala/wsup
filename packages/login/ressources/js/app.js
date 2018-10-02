@@ -660,5 +660,5 @@ angular.module("raptorApp")
                     }
                 }
 
-                $rootScope.version = "1.2.9";
+                
             }]);
