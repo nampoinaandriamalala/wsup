@@ -12,17 +12,22 @@ class Emplacement {
     private $id_emplacement;    
     
     /**
-     * @Column(type="string")
+     * @Column(type="string" , nullable=true)
      */
     private $siege;
     
+     /**
+     * @Column(type="string", nullable=true)
+     */
+    private $niveau;
+    
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $batiment;
     
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      */
     private $lettre;
     
@@ -32,14 +37,11 @@ class Emplacement {
     private $numero;
     
     /**
-     * @Column(type="integer")
+     * @Column(type="integer", nullable=true)
      */
     private $id_pc;
     
-    /**
-     * @Column(type="string")
-     */
-    private $possesseur;
+
     
     function getId_emplacement() {
         return $this->id_emplacement;
@@ -65,10 +67,6 @@ class Emplacement {
         return $this->id_pc;
     }
 
-    function getPossesseur() {
-        return $this->possesseur;
-    }
-
     function setId_emplacement($id_emplacement) {
         $this->id_emplacement = $id_emplacement;
     }
@@ -92,10 +90,5 @@ class Emplacement {
     function setId_pc($id_pc) {
         $this->id_pc = $id_pc;
     }
-
-    function setPossesseur($possesseur) {
-        $this->possesseur = $possesseur;
-    }
-
 
 }

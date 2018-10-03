@@ -26,6 +26,11 @@ class Poste {
      */
     private $etat;
     
+        /**
+     * @Column(type="string", nullable=true)
+     */
+    private $possesseur;
+    
     function getId() {
         return $this->id;
     }
@@ -58,5 +63,11 @@ class Poste {
         $this->etat = $etat;
     }
 
+    function getPossesseur() {
+        return $this->possesseur;
+    }
 
+    function setPossesseur($possesseur) {
+        $this->possesseur = $possesseur;
+    }
 }

@@ -38,11 +38,7 @@ h5 {
     fill:#f00;
 }
 
-.code-svg path:hover{
-    fill:black;
-    cursor: pointer;
-}
-.code-svg rect:hover{
+.code-svg .niveau1:hover{
     fill:black;
     cursor: pointer;
 }
