@@ -37,9 +37,9 @@ class Emplacement {
     private $numero;
     
     /**
-     * @Column(type="integer", nullable=true)
+     * @Column(type="string", nullable=true)
      */
-    private $id_pc;
+    private $id_bloc_svg;
     
 
     
@@ -63,9 +63,6 @@ class Emplacement {
         return $this->numero;
     }
 
-    function getId_pc() {
-        return $this->id_pc;
-    }
 
     function setId_emplacement($id_emplacement) {
         $this->id_emplacement = $id_emplacement;
@@ -87,8 +84,22 @@ class Emplacement {
         $this->numero = $numero;
     }
 
-    function setId_pc($id_pc) {
-        $this->id_pc = $id_pc;
+    function getNiveau() {
+        return $this->niveau;
     }
+
+    function getId_bloc_svg() {
+        return $this->id_bloc_svg;
+    }
+
+    function setNiveau($niveau) {
+        $this->niveau = $niveau;
+    }
+
+    function setId_bloc_svg($id_bloc_svg) {
+        $this->id_bloc_svg = $id_bloc_svg;
+    }
+
+
 
 }

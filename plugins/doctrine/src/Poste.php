@@ -26,10 +26,15 @@ class Poste {
      */
     private $etat;
     
-        /**
+    /**
      * @Column(type="string", nullable=true)
      */
     private $possesseur;
+    
+    /**
+     * @Column(type="string", nullable=true)
+     */
+    private $id_emplacement;
     
     function getId() {
         return $this->id;
@@ -70,4 +75,14 @@ class Poste {
     function setPossesseur($possesseur) {
         $this->possesseur = $possesseur;
     }
+    
+    function getId_emplacement() {
+        return $this->id_emplacement;
+    }
+
+    function setId_emplacement($id_emplacement) {
+        $this->id_emplacement = $id_emplacement;
+    }
+
+
 }
