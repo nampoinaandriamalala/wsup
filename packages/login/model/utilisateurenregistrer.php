@@ -20,11 +20,12 @@ $ajouter = $_POST['ajouter'];
 $editer = $_POST['editer'];
 $supprimer = $_POST['supprimer'];
 $admin = $_POST['admin'];
+$adresseemail = pg_escape_string($_POST['adresseemail']);
 
 //$montant_bon = ($montant_bon != "") ? $montant_bon : 0;
 
 //On met à ajour les données
-$sql = "update utilisateur set consulter = $consulter,ajouter = $ajouter, editer=$editer ,supprimer=$supprimer,administrateur=$admin where id = $id RETURNING id";
+$sql = "update utilisateur set consulter = $consulter,ajouter = $ajouter, editer=$editer ,supprimer=$supprimer,administrateur=$admin, email = '$adresseemail' where id = $id RETURNING id";
 
 $dataOut = $postgres->updateSQL($conn, $sql);
 

@@ -18,23 +18,29 @@
                 <div class="profile-head">
                     <div class="col-md-12 text-dedansmat">
                         <h1>
-                            Matricule
+                            {{matricule}}
                         </h1>
                     </div>
 
                     <div class="col-md-12 text-dedans">
                         <h3>
-                            Nom
+                           {{nom}}
                         </h3>
                     </div>
                     <div class="col-md-12 text-dedans">
                         <h3>
-                            Prenom
+                            {{prenom}}
                         </h3>
                     </div>
                     <div class="col-md-12 text-dedans">
                         <h6>
-                            Groupe
+                           Superviseur : {{sup}}
+                        </h6>
+                        <h6>
+                            Technicien : {{tech}}
+                        </h6>
+                        <h6>
+                            Administrateur : {{adm}}
                         </h6>
                     </div>
                 </div>
@@ -47,10 +53,10 @@
 
             <div class="col-md-6">
                 <div class="profile-img">
-                    <img src="/wsup/ressources/images/profil.png" alt=""/>
+                    <img src={{img}} alt=""/>
                     <div class="file btn btn-lg btn-primary">
                         Changer l'avatar
-                        <input type="file" name="file"/>
+                        <input type="file" name="file" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)"/>
                     </div>
                 </div>
             </div>

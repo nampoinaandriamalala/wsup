@@ -1,3 +1,4 @@
+
 //FACTORY
 angular.module('raptorApp').factory('myRaptorData', function ($http, $q) {
 
@@ -53,6 +54,7 @@ angular.module('raptorApp').factory('myPostgres', function ($http, $q) {
     };
     return factory;
 });
+
 angular.module('raptorApp').factory('raConnexion', function ($http, $q) {
 
     var factory = {
@@ -138,8 +140,29 @@ angular.module('raptorApp').factory('utilisateurDroit', function ($http, $q) {
     return factory;
 });
 
+angular.module('raptorApp').factory('operateur', function ($http, $q) {
+
+    var factory = {
+        banner: false,
+        information: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/login/model/operateur.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
+        }
+    };
+    return factory;
+});
+
 angular.module('raptorApp')
-        .controller('CtrlUtilisateur', ['$scope', '$rootScope', '$http', 'raConnexion', '$location', '$cookies', '$cookieStore', '$window', '$sce', 'utilisateurDroit', 'ngToast', function ($scope, $rootScope, $http, raConnexion, $location, $cookies, $cookieStore, $window, $sce, utilisateurDroit, ngToast) {
+        .controller('CtrlUtilisateur', ['$scope', '$rootScope', '$http', 'raConnexion', '$location', '$cookies', '$cookieStore', '$window', '$sce', 'utilisateurDroit', 'ngToast', 'operateur', function ($scope, $rootScope, $http, raConnexion, $location, $cookies, $cookieStore, $window, $sce, utilisateurDroit, ngToast, operateur) {
                 // Initialisation
                 $scope.login = $cookieStore.get('login');
                 $scope.password = $cookieStore.get('password');
@@ -174,6 +197,9 @@ angular.module('raptorApp')
                 }
                 $scope.varUser = {}
                 $scope.varUser.matricule = "";
+                $scope.varUser.nom = "";
+                $scope.varUser.prenoms = "";
+                $scope.varUser.adresseemail = "";
                 $scope.varUser.consulter = false;
                 $scope.varUser.ajouter = false;
                 $scope.varUser.editer = false;
@@ -192,6 +218,7 @@ angular.module('raptorApp')
                     var editer = data.editer;
                     var supprimer = data.supprimer;
                     var admin = data.admin;
+                    var adresseemail = data.adresseemail;
 
                     var dataObj = {
                         matricule: matricule,
@@ -199,8 +226,10 @@ angular.module('raptorApp')
                         ajouter: ajouter,
                         editer: editer,
                         supprimer: supprimer,
-                        admin: admin
+                        admin: admin,
+                        adresseemail: adresseemail
                     };
+                    console.log(dataObj);
                     utilisateurDroit.AddUser(dataObj).then(function (datas) {
                         //List utilisateur     
                         listUtilisateur();
@@ -211,6 +240,7 @@ angular.module('raptorApp')
                         });
 
                         $scope.varUser.matricule = "";
+                        $scope.varUser.adresseemail = "";
                         $scope.varUser.consulter = false;
                         $scope.varUser.ajouter = false;
                         $scope.varUser.editer = false;
@@ -220,7 +250,7 @@ angular.module('raptorApp')
 
                 };
 
-                $scope.saveModif = function (id, index, consulter, ajouter, editer, supprimer, admin) {
+                $scope.saveModif = function (id, index, consulter, ajouter, editer, supprimer, admin, adresseemail) {
                     var dataObj = {
                         id: id,
                         consulter: consulter,
@@ -228,6 +258,7 @@ angular.module('raptorApp')
                         editer: editer,
                         supprimer: supprimer,
                         admin: admin,
+                        adresseemail: adresseemail,
                     };
                     utilisateurDroit.saveModifUser(dataObj).then(function (datas) {
                         ngToast.create({
@@ -252,6 +283,20 @@ angular.module('raptorApp')
                     });
                 };
 
+                $scope.voirInformationsOperateur = function (matricule)
+                {
+                    var dataObj = {
+                        matricule: matricule
+                    }
+                    operateur.information(dataObj).then(function (datas) {
+                        console.log(datas);
+
+                        $scope.varUser.nom = datas.data.datas[0].nom;
+                        $scope.varUser.prenoms = datas.data.datas[0].prenoms;
+
+                    });
+                }
+
                 //Function
                 function listUtilisateur() {
                     $rootScope.modalLoading(true);  //Afficher
@@ -265,6 +310,7 @@ angular.module('raptorApp')
                         var editer = [];
                         var supprimer = [];
                         var admin = [];
+                        var adresseemail = [];
 
                         for (var item in utilisateurs) {
                             valstrikeFacture.push("");
@@ -294,6 +340,7 @@ angular.module('raptorApp')
                             } else {
                                 admin.push(false);
                             }
+                            adresseemail.push(utilisateurs[item].email);
                             //////console.log(utilisateurs[item]);
                         }
 
@@ -304,7 +351,8 @@ angular.module('raptorApp')
                         $scope.editer = editer;
                         $scope.supprimer = supprimer;
                         $scope.admin = admin;
-
+                        $scope.adresseemail = adresseemail;
+                        console.log($scope.adresseemail);
                         $scope.listAllUtilisateur = utilisateurs;
                         //////console.log(utilisateurs);
                         $rootScope.modalLoading(false); //Cacher
@@ -660,5 +708,6 @@ angular.module("raptorApp")
                     }
                 }
 
-                
+                $rootScope.version = "1.2.8";
+
             }]);

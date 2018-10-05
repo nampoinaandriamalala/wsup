@@ -20,10 +20,30 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
 });
 
 //Controller par defaut
-angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
+angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
 
     /*Votre code ici*/
+    $scope.matricule=$cookieStore.get('login');
+    $scope.nom=$cookieStore.get('nom');
+    $scope.prenom=$cookieStore.get('prenoms');
+    
+    $scope.sup=$cookieStore.get('editer');
+    $scope.tech=$cookieStore.get('supprimer');
+    $scope.adm=$cookieStore.get('admin');
+    
+    $scope.img = "/wsup/ressources/images/profil.png";
 
+    $scope.imageUpload = function(element){
+        var reader = new FileReader();
+        reader.onload = $scope.imageIsLoaded;
+        reader.readAsDataURL(element.files[0]);
+    }
+
+    $scope.imageIsLoaded = function(e){
+        $scope.$apply(function() {
+            $scope.img.push(e.target.result);
+        });
+    }
 }]);
 
 /*

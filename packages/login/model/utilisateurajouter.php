@@ -29,6 +29,12 @@ $ajouter = $_POST['ajouter'];
 $editer = $_POST['editer'];
 $supprimer = $_POST['supprimer'];
 $admin = $_POST['admin'];
+//<<<<<<< HEAD
+$adresseemail = pg_escape_string($_POST['adresseemail']);
+//=======
+//$prenom = $_POST['prenom'];
+
+//>>>>>>> d6674ae438fa7d8b28bdce64201aae1abe82f1fb
 
 //Si existe 
 
@@ -44,7 +50,13 @@ if ($nombre > 0) {
 }
 
 //On selectionne le fournisseur corespondant au nom fournisseur et on enregistre le nouveau donné
-$sql = "insert into utilisateur (matricule,consulter,ajouter,editer,supprimer,administrateur) values ('$matricule',$consultater,$ajouter,$editer,$supprimer,$admin) RETURNING id";
+//<<<<<<< HEAD
+$sql = "insert into utilisateur (matricule,consulter,ajouter,editer,supprimer,administrateur,email) values ('$matricule',$consultater,$ajouter,$editer,$supprimer,$admin,'$adresseemail') RETURNING id";
+//=======
+//$sql = "insert into utilisateur (matricule,consulter,ajouter,editer,supprimer,administrateur, prenom) values ('$matricule',$consultater,$ajouter,$editer,$supprimer,$admin, '$prenom') RETURNING id";
+/*print_r($sql);
+exit();*/
+//>>>>>>> d6674ae438fa7d8b28bdce64201aae1abe82f1fb
 
 $dataOut = $postgres->insertSQL($conn, $sql);
 
