@@ -176,28 +176,28 @@
                                             </div>
                                             <div class="col-md-8 h-100 w-100 m-2 border border-dark">
                                                 <div class="row margin-5">
-                                                    <div id="place1" class="column col-md-6" ng-show="IsVisible01" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                    <div id="place2" class="column col-md-6" ng-show="IsVisible02" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place1" class="column col-md-6" ng-show="IsVisible01" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place2" class="column col-md-6" ng-show="IsVisible02" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                                                 </div>
                                                 <div class="row margin-5">
-                                                    <div id="place3" class="column col-md-6" ng-show="IsVisible03"ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                    <div id="place4" class="column col-md-6" ng-show="IsVisible04" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place3" class="column col-md-6" ng-show="IsVisible03" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place4" class="column col-md-6" ng-show="IsVisible04" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                                                 </div>
                                                 <div class="row margin-5">
-                                                    <div id="place5" class="column col-md-6" ng-show="IsVisible05" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                    <div id="place6" class="column col-md-6" ng-show="IsVisible06" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place5" class="column col-md-6" ng-show="IsVisible05" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place6" class="column col-md-6" ng-show="IsVisible06" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                                                 </div>
                                                 <div class="row margin-5">
-                                                    <div id="place7" class="column col-md-6" ng-show="IsVisible07" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                    <div id="place8" class="column col-md-6" ng-show="IsVisible08" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place7" class="column col-md-6" ng-show="IsVisible07" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place8" class="column col-md-6" ng-show="IsVisible08" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                                                 </div>
                                                 <div class="row margin-5">
-                                                    <div id="place9" class="column col-md-6" ng-show="IsVisible09" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                    <div id="place10" class="column col-md-6" ng-show="IsVisible10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place9" class="column col-md-6" ng-show="IsVisible09" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place10" class="column col-md-6" ng-show="IsVisible10" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                                                 </div>
                                                 <div class="row margin-5">
-                                                    <div id="place11" class="column col-md-6" ng-show="IsVisible11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                    <div id="place12" class="column col-md-6" ng-show="IsVisible12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place11" class="column col-md-6" ng-show="IsVisible11" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                                    <div id="place12" class="column col-md-6" ng-show="IsVisible12" data-toggle="modal" href="#myModal" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,3 +205,102 @@
                                 </div>
                             </div>
 
+<div class="modal fade" id="myModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                                <div class="modal-dialog" >
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title" id="titre">Ajout ou modification des Postes</h1>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body p-4">
+
+                                            <div class="row p-4">
+                                                <fieldset class="col-md-12 ">    	
+                                                    <legend>Emplacement</legend>
+
+                                                    <div class="row p-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span><span class="input-group-addon">Siège</span>
+                                                            <select class="form-control" ng-model="" id="siege" disabled="">
+                                                                <option value="">Antsirabe</option>
+                                                                <option value="">Antananarivo</option>
+                                                                
+                                                            </select>                                      
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row p-2">
+                                                        <div class="input-group"> 
+                                                            <span class="input-group-addon"><i class="fa fa-navicon" aria-hidden="true"></i></span><span class="input-group-addon">Niveau</span>
+                                                            <select class="form-control" ng-model="" id="niveau" >
+                                                                <option value=""></option>
+                          
+                                                                
+                                                            </select>                                    
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row p-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></span><span class="input-group-addon">Lettre</span>
+                                                            <select class="form-control" ng-model="" id="lettre" >
+                                                                <option value=""></option>
+                          
+                                                                
+                                                            </select>                                    
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row p-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span>
+                                                            <input id="numero" type="number" class="form-control" name="" value="" placeholder="Numero">                                        
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row p-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span>
+                                                            <input id="batiment" type="text" class="form-control" name="" value="" placeholder="Batiment">                                        
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                            </div>
+
+                                            <div class="row p-4">
+                                                <fieldset class="col-md-12 p-4">    	
+                                                    <legend>Poste</legend>
+                                                    <select class="form-control" ng-model="" id="poste" >
+                                                                <option value=""></option>
+                          
+                                                                
+                                                            </select> 
+                                                </fieldset>
+                                            </div>
+
+                                            <div class="row p-4">
+                                                <fieldset class="col-md-12 p-4">   	
+                                                    <legend>IP</legend>
+                                                    <div class="col-md-12"><input type="number" class="form-control form-control-lg" placeholder="192.168.XX.XX"></div>
+                                                </fieldset>	
+                                            </div>
+
+                                            <div class="row p-4">
+                                                <fieldset class="col-md-12 p-4">    	
+                                                    <legend>Utilisateur</legend>
+                                                    <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur"></div>
+                                                </fieldset>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                            <button type="button" class="btn btn-primary">Sauvegarder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>

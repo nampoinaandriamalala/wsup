@@ -33,17 +33,16 @@ angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope',
     
     $scope.img = "/wsup/ressources/images/profil.png";
 
-    $scope.imageUpload = function(element){
-        var reader = new FileReader();
-        reader.onload = $scope.imageIsLoaded;
-        reader.readAsDataURL(element.files[0]);
-    }
-
-    $scope.imageIsLoaded = function(e){
-        $scope.$apply(function() {
-            $scope.img.push(e.target.result);
+    $scope.ouvrirIMG = function () {
+            $("#fileToUpload").trigger("click");
+        }
+        $("#fileToUpload").on("change", function () {
+            var leFichier = $('#fileToUpload').val();
+            $("#indication_fichier").val(leFichier);
+            
         });
-    }
+
+
 }]);
 
 /*
