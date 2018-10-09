@@ -18,6 +18,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 <!--        <script src="plugins/angular/1.4.8/angular.min.js"></script>
         <script src="plugins/angular/1.4.8/angular-route.js"></script>
         <script src="plugins/angular/1.4.8/angular-cookies.js"></script>-->
+
         <!-- Angular and module-->
         <script src="plugins/angular/1.6.7/angular.min.js"></script>
         <script src="plugins/angular/1.6.7/angular-route.js"></script>
@@ -40,11 +41,6 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
                 <link id="bsdp-css" href="plugins/datepicker3/bootstrap-datepicker3.min.css" rel="stylesheet">
                 <script src="plugins/datepicker3/bootstrap-datepicker.fr.min.js" charset="UTF-8"></script>-->
 
-        <!-- svg pan zoom -->
-        <script src="plugins/svg-pan-zoom/js/svg-pan-zoom.min.js" ></script>
-        <script src="plugins/svg-pan-zoom/js/svg-pan-zoom.js" ></script>
-        
-        
         <!-- old datepicker -->
         <script src="plugins/datepicker3/bootstrap-datepicker.min.js"></script>
         <link id="bsdp-css" href="plugins/datepicker3/bootstrap-datepicker3.min.css" rel="stylesheet">

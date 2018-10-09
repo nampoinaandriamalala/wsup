@@ -109,17 +109,6 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'CtrlOtherwise',
             });
 
-
-
-
-
-
-
-
-
-
-
-
 });
 
 //ROUTER Administration RAPTOR à ne pas modifier

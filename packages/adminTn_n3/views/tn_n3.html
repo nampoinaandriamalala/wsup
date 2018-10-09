@@ -182,7 +182,7 @@
                                             </div>
                                             <div class="col-md-8 h-100 w-100 m-2 border border-dark">
                                                 <div class="row margin-5">
-                                                    <div id="place1" class="column col-md-6" ng-show="IsVisible01" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
+                                                    <div id="place1" class="column col-md-6" ng-show="IsVisible01" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)" ng-click="initialisationEmplacement()"></div>
                                                     <div id="place2" class="column col-md-6" ng-show="IsVisible02" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
                                                 </div>
                                                 <div class="row margin-5">
@@ -229,10 +229,9 @@
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span><span class="input-group-addon">Siège</span>
-                                                            <select class="form-control" ng-model="" id="siege" disabled="">
-                                                                <option value="">Antsirabe</option>
-                                                                <option value="">Antananarivo</option>
-                                                                
+                                                            <select class="form-control" ng-model="emplac.siege" id="siege" >
+                                                                <option ng-repeat="emplacement in emplacements | unique : 'siege' | orderBy: 'siege'  " value="{{emplacement.id_emplacement}}">{{emplacement.siege}}</option>
+
                                                             </select>                                      
                                                         </div>
                                                     </div>
@@ -240,10 +239,9 @@
                                                     <div class="row p-2">
                                                         <div class="input-group"> 
                                                             <span class="input-group-addon"><i class="fa fa-navicon" aria-hidden="true"></i></span><span class="input-group-addon">Niveau</span>
-                                                            <select class="form-control" ng-model="" id="niveau" >
-                                                                <option value=""></option>
-                          
+                                                            <select class="form-control" ng-model="emplac.niveau" id="niveau" ng-disabled="emplac.siege === '' || !emplac.siege">
                                                                 
+                                                                <option ng-repeat="emplacement in emplacements | filter: {id_emplacement: emplac.siege} | unique : 'niveau'| orderBy: 'niveau'  " value="{{emplacement.id_emplacement}}">{{emplacement.niveau}}</option>
                                                             </select>                                    
                                                         </div>
                                                     </div>
@@ -251,25 +249,27 @@
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></span><span class="input-group-addon">Lettre</span>
-                                                            <select class="form-control" ng-model="" id="lettre" >
-                                                                <option value=""></option>
-                          
-                                                                
+                                                            <select class="form-control" ng-model="emplac.lettre" id="lettre" ng-disabled="emplac.niveau === '' || !emplac.niveau">
+                                                                <option ng-repeat="emplacement in emplacements | filter: {id_emplacement: emplac.niveau} | unique : 'lettre'| orderBy: 'lettre'  " value="{{emplacement.id_emplacement}}">{{emplacement.lettre}}</option>
+
                                                             </select>                                    
                                                         </div>
                                                     </div>
 
                                                     <div class="row p-2">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span>
-                                                            <input id="numero" type="number" class="form-control" name="" value="" placeholder="Numero">                                        
+                                                            <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span><span class="input-group-addon">Numero</span>
+                                                            <select class="form-control" ng-model="emplac.numero" id="numero" ng-disabled="emplac.lettre === '' || !emplac.lettre">
+                                                                <option ng-repeat="emplacement in emplacements | filter: {lettre : emplac.lettre} | orderBy: 'numero'  " value="{{emplacement.id_emplacement}}">{{emplacement.numero}}</option>
+
+                                                            </select>                                         
                                                         </div>
                                                     </div>
 
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span>
-                                                            <input id="batiment" type="text" class="form-control" name="" value="" placeholder="Batiment">                                        
+                                                            <input id="batiment" type="text" class="form-control" name="" value="" placeholder="Batiment" ng-model="emplac.batiment">                                        
                                                         </div>
                                                     </div>
 
@@ -279,25 +279,25 @@
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
                                                     <legend>Poste</legend>
-                                                    <select class="form-control" ng-model="" id="poste" >
-                                                                <option value=""></option>
-                          
-                                                                
-                                                            </select> 
+                                                    <select class="form-control" ng-model="poste" id="poste" >
+                                                        <option value=""></option>
+
+
+                                                    </select> 
                                                 </fieldset>
                                             </div>
 
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">   	
                                                     <legend>IP</legend>
-                                                    <div class="col-md-12"><input type="number" class="form-control form-control-lg" placeholder="192.168.XX.XX"></div>
+                                                    <div class="col-md-12"><input type="number" class="form-control form-control-lg" placeholder="192.168.XX.XX" ng-model="adressip"></div>
                                                 </fieldset>	
                                             </div>
 
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
                                                     <legend>Utilisateur</legend>
-                                                    <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur"></div>
+                                                    <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur" ng-model="possesseur"></div>
                                                 </fieldset>
                                             </div>
 
