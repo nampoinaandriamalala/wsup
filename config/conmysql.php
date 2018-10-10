@@ -9,7 +9,7 @@ class conmysql {
     public $user;
     public $password;
 
-    function __construct($host = "192.168.12.235", $dbname = "grr", $user = "jouve", $password = "xtr57ec") {
+    function __construct($host = "192.168.2.220", $dbname = "glpi", $user = "dev", $password = "passdev") {
         $this->host = $host;
         $this->dbname = $dbname;
         $this->user = $user;

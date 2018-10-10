@@ -250,7 +250,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></span><span class="input-group-addon">Lettre</span>
                                                             <select class="form-control" ng-model="emplac.lettre" id="lettre" ng-disabled="emplac.niveau === '' || !emplac.niveau">
-                                                                <option ng-repeat="emplacement in emplacements | filter: {id_emplacement: emplac.niveau} | unique : 'lettre'| orderBy: 'lettre'  " value="{{emplacement.id_emplacement}}">{{emplacement.lettre}}</option>
+                                                                <option ng-repeat="emplacement in emplacements | unique : 'lettre'| orderBy: 'lettre' " value="{{emplacement.id_emplacement}}">{{emplacement.lettre}}</option>
 
                                                             </select>                                    
                                                         </div>
@@ -260,7 +260,7 @@
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span><span class="input-group-addon">Numero</span>
                                                             <select class="form-control" ng-model="emplac.numero" id="numero" ng-disabled="emplac.lettre === '' || !emplac.lettre">
-                                                                <option ng-repeat="emplacement in emplacements | filter: {lettre : emplac.lettre} | orderBy: 'numero'  " value="{{emplacement.id_emplacement}}">{{emplacement.numero}}</option>
+                                                                <option ng-repeat="emplacement in emplacements | unique : 'numero' | orderBy: 'numero' " value="{{emplacement.id_emplacement}}">{{emplacement.numero}}</option>
 
                                                             </select>                                         
                                                         </div>
@@ -279,10 +279,8 @@
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
                                                     <legend>Poste</legend>
-                                                    <select class="form-control" ng-model="poste" id="poste" >
-                                                        <option value=""></option>
-
-
+                                                    <select class="form-control" ng-model="poste.poste" id="poste" >
+                                                        <option ng-repeat="pst in listposteglpi " value="{{pst.id_poste}}">{{pst.nom_poste}}</option>
                                                     </select> 
                                                 </fieldset>
                                             </div>

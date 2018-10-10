@@ -21,11 +21,6 @@ class Poste {
      */
     private $ip;
     
-     /**
-     * @Column(type="boolean")
-     */
-    private $etat;
-    
     /**
      * @Column(type="string", nullable=true)
      */
