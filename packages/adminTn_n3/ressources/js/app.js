@@ -71,15 +71,22 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             }, function (error) {
                 console.log(error);
             });
-        }
-        $scope.getListPostesGlpi = function (data) {
-            tanaAdminFactory.getListEmplacement(data).then(function (response) {
-                $scope.listposteglpi = response.datas;
-                console.log($scope.emplacements);
-            }, function (error) {
-                console.log(error);
-            });
-        }
+        };
+//        $scope.getListPostesGlpi = function (data) {
+//            tanaAdminFactory.getListPostesGlpi(data).then(function (response) {
+//                $scope.listposteglpi = response.datas;
+//                console.log($scope.listposteglpi);
+//            }, function (error) {
+//                console.log(error);
+//            });
+//        }
+        
+        var dataObj = {};
+        tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
+            console.log(datas.data);
+            $scope.listposteglpi = datas.data;
+
+        });
 
         $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
 

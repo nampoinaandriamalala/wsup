@@ -30,8 +30,10 @@ class conmysql {
 
     public function getSQL($conn, $sql) {
         $result = mysqli_query($conn, $sql);
-        $alldata = mysqli_fetch_all($result);
-        return $alldata;
+        $d = array();
+        while ($alldata = mysqli_fetch_object($result))
+                array_push($d, $alldata);
+        return $d;
     }
     
     //besoin de retourner Id

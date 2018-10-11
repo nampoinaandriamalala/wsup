@@ -279,9 +279,10 @@
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
                                                     <legend>Poste</legend>
-                                                    <select class="form-control" ng-model="poste.poste" id="poste" >
-                                                        <option ng-repeat="pst in listposteglpi " value="{{pst.id_poste}}">{{pst.nom_poste}}</option>
+                                                    <select class="form-control" ng-model="poste.poste" id="poste" ng-options="p.id_poste as p.nom_poste for p in listposteglpi" >
                                                     </select> 
+<!--                                                    <select ng-options="poste.nom_poste for poste in listposteglpi" ng-model="poste.nom_poste" class="form-control">
+                                                    </select>  -->
                                                 </fieldset>
                                             </div>
 

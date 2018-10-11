@@ -9,10 +9,11 @@
  * @author     YOUR NAME <YOUREMAIL@jouve.com>
  */
 include '../../../config/autoload.php';
+include '../../../config/conmysql.php';
 
 //BDD
-$postgres = new conmysql();
-$conn = $postgres->connect();
+$mysql = new conmysql();
+$conn = $mysql->connect();
 
 
 //SQL
@@ -22,8 +23,8 @@ $sql = "select glpi.glpi_computers.id as id_poste,
     from (glpi.glpi_computers
     inner join glpi.glpi_plugin_fusioninventory_inventorycomputercomputers 
     on glpi.glpi_computers.id=glpi.glpi_plugin_fusioninventory_inventorycomputercomputers.computers_id)";
-$dataOut = $postgres->getSQL($conn, $sql);
+$dataOut = $mysql->getSQL($conn, $sql);
 
-$sortie = array("datas" => $dataOut);
-echo json_encode($sortie);
+//$sortie = array("datas" => $dataOut);
+echo json_encode($dataOut);
 ?>
