@@ -54,7 +54,7 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
         <script type="text/javascript" src="plugins/calendar/calendar.js"></script>
         <script type="text/javascript" src="plugins/calendar/fullcalendar.js"></script>
         <script type="text/javascript" src="plugins/calendar/gcal.js"></script>
-        <script type="text/javascript" src="plugins/calendar/lang/fr.js"></script>
+<!--        <script type="text/javascript" src="plugins/calendar/lang/fr.js"></script>-->
         <!-- Router-->
         <script src="ressources/router.js?version=<?php echo date('Ymdms'); ?>"></script>
 

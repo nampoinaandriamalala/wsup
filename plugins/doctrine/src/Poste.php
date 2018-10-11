@@ -14,7 +14,7 @@ class Poste {
      /**
      * @Column(type="string")
      */
-    private $id_pc;
+    private $nom_poste;
     
      /**
      * @Column(type="string")
@@ -35,9 +35,6 @@ class Poste {
         return $this->id;
     }
 
-    function getId_pc() {
-        return $this->id_pc;
-    }
 
     function getIp() {
         return $this->ip;
@@ -50,11 +47,6 @@ class Poste {
     function setId($id) {
         $this->id = $id;
     }
-
-    function setId_pc($id_pc) {
-        $this->id_pc = $id_pc;
-    }
-
     function setIp($ip) {
         $this->ip = $ip;
     }
@@ -77,6 +69,14 @@ class Poste {
 
     function setId_emplacement($id_emplacement) {
         $this->id_emplacement = $id_emplacement;
+    }
+
+    function getNom_poste() {
+        return $this->nom_poste;
+    }
+
+    function setNom_poste($nom_poste) {
+        $this->nom_poste = $nom_poste;
     }
 
 
