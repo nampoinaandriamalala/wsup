@@ -1,0 +1,32 @@
+body{
+background-color:#c0c0c0;	
+}
+.col-md-11{
+	background-color:#ffffff;
+	overflow-y:scroll;
+	width:300;
+	height:1000;
+	border:#000000 1px solid;
+}
+.row{
+	background-color:#ffffff;
+	border:#000000 1px solid;
+	width:100%;
+	height: auto;
+	position: relative;
+}
+svg{
+position: relative;
+}
+.col{
+	
+	position:relative;
+	width:100%;
+}
+
+.container {
+	background-color:#ffffff;
+	position:relative;
+	width:100%;
+	height:auto;	
+}

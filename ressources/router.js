@@ -51,6 +51,10 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: "packages/adminTn_n1/views/tn_n1.html",
                 controller: 'CtrlAdminTn_n1',
             })
+            .when("/ts-n1", {
+                templateUrl: "packages/adminAntsi_n1/views/adminAntsi_n1.html",
+                controller: 'CtrlAdminAntsi_n1',
+            })
             .when("/stat", {
                 templateUrl: "packages/statistiques/views/statistique.html",
                 controller: 'CtrlStat',
