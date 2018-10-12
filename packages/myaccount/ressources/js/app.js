@@ -1,10 +1,11 @@
 //FACTORY
 angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) {    //Exemple de service
-    
+
     var factory = {
         banner: false,
         getDefautl: function (dataObj) {
-            var deferred = $q.defer();$http({
+            var deferred = $q.defer();
+            $http({
                 method: 'POST',
                 url: 'packages/default/model/default.php',
                 data: $.param(dataObj),
@@ -14,112 +15,118 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
                         deferred.resolve(datas);
                     });
             return deferred.promise;
-        }
+        },
+
+//        readAsDataUrl = function () {
+//            if (!$window.FileReader) {
+//                throw new Error('Browser does not support FileReader');
+//            }
+//
+//            function readAsDataUrl(file) {
+//                var deferred = $q.defer(),
+//                        reader = new $window.FileReader();
+//
+//                reader.onload = function () {
+//                    deferred.resolve(reader.result);
+//                };
+//
+//                reader.onerror = function () {
+//                    deferred.reject(reader.error);
+//                };
+//
+//                reader.readAsDataURL(file);
+//
+//                return deferred.promise;
+//            }
+//
+//            return {
+//                readAsDataUrl: readAsDataUrl
+//            };
+//        }
     };
     return factory;
 });
 
 //Controller par defaut
-angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
+angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
 
-    /*Votre code ici*/
-    $scope.matricule=$cookieStore.get('login');
-    $scope.nom=$cookieStore.get('nom');
-    $scope.prenom=$cookieStore.get('prenoms');
-    
-    $scope.sup=$cookieStore.get('editer');
-    $scope.tech=$cookieStore.get('supprimer');
-    $scope.adm=$cookieStore.get('admin');
-    
-    $scope.stepsModel = "/wsup/ressources/images/profil.png";
+        /*Votre code ici*/
+        $scope.matricule = $cookieStore.get('login');
+        $scope.nom = $cookieStore.get('nom');
+        $scope.prenom = $cookieStore.get('prenoms');
 
-    $scope.ouvrirIMG = function () {
-            $("#fileToUpload").trigger("click");
-        }
-        $("#fileToUpload").on("change", function () {
-            var leFichier = $('#fileToUpload').val();
-            $("#indication_fichier").val(leFichier);
-            
-        });
-        
-        $scope.imageUpload = function(event){
-         var files = event.target.files; //FileList object
-         
-         for (var i = 0; i < files.length; i++) {
-             var file = files[i];
-                 var reader = new FileReader();
-                 reader.onload = $scope.imageIsLoaded; 
-                 reader.readAsDataURL(file);
-         }
-    };
-    $scope.imageIsLoaded = function(e){
-        $scope.$apply(function() {
-            $scope.stepsModel.push(e.target.result);
-        });
-    };
+        $scope.sup = $cookieStore.get('editer');
+        $scope.tech = $cookieStore.get('supprimer');
+        $scope.adm = $cookieStore.get('admin');
 
-}]);
+        $scope.imageSrc = "/wsup/ressources/images/profil.png";
+
+//        $scope.testcl = UploadController();
+//
+//        var UploadController = function (fileReader) {
+//            console.log(fileReader);
+//            $scope.getFile = function () {
+//                fileReader.readAsDataUrl($scope.file, $scope)
+//                        .then(function (result) {
+//                            $scope.imageSrc = result;
+//                        });
+//            };
+//        };
+
+    }]);
+
+
+//directive('fileChanged', function () {
+//    return {
+//        restrict: 'A',
+//        require: '?ngModel',
+//        link: function ($scope, element, attrs, ngModel) {
+//            if (!ngModel) {
+//                return;
+//            }
+//
+//            ngModel.$render = angular.noop;
+//
+//            element.bind('change', function (event) {
+//                ngModel.$setViewValue(event.target.files[0]);
+//                $scope.$apply();
+//            });
+//        }
+//    };
+//});
+//
+//directive('filePreview', function (FileReader) {
+//    return {
+//        restrict: 'A',
+//        scope: {
+//            filePreview: '='
+//        },
+//        link: function (scope, element, attrs) {
+//            scope.$watch('filePreview', function (filePreview) {
+//                if (filePreview && filePreview.name) {
+//                    FileReader.readAsDataUrl(filePreview).then(function (result) {
+//                        element.attr('src', result);
+//                    });
+//                }
+//            });
+//        }
+//    };
+//});
 
 /*
-//Directive modale
-app.directive('ngModaldefault', function () {
-    return {
-        restrict: 'A', 
-        templateUrl: 'packages/default/views/templateDefaultModal.html',
-        link: function (scope, element, attrs) {
-            $(element).on('hidden.bs.modal', function () {
-                try {
-                    //$scope.verificationAjourFournisseur = "";                    
-                } catch (e) {
-                }
-            });
-        }
-    }
-});
-//Directive modale
-app.directive('ngModaldloader', function () {
-    return {
-        restrict: 'A', 
-        template: '<div class="modal-hide"></div>',
-        link: function (scope, element, attrs) {
-            $(element).on('hidden.bs.modal', function () {
-                try {
-                } catch (e) {
-                }
-            });
-
-        }
-    }
-});
-
-//Directive modale
-app.directive('ngDatepicker', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            $(element).datepicker({
-                todayBtn: true,
-                language: "fr",
-                autoclose: true
-            });
-        }
-    }
-});
- app.directive('ngNumeric', function(){
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attrs, modelCtrl) {
-
-            modelCtrl.$parsers.push(function (inputValue) {
-                var transformedInput = inputValue ? inputValue.replace(/[^\d.-]/g,'') : null;
-
-                if (transformedInput!=inputValue) {
-                    modelCtrl.$setViewValue(transformedInput);
-                    modelCtrl.$render();
-                }
-                return transformedInput;
-            });
-        }
-    };
-});
- **/
+ //Directive modale
+ app.directive('ngModaldefault', function () {
+ return {
+ restrict: 'A', 
+ templateUrl: 'packages/default/views/templateDefaultModal.html',
+ link: function (scope, element, attrs) {
+ $(element).on('hidden.bs.modal', function () {
+ try {
+ //$scope.verificationAjourFournisseur = "";                    
+ } catch (e) {
+ }
+ });
+ }
+ }
+ });
+ */

@@ -17,7 +17,7 @@ class Etat {
     private $id_poste;
     
     /**
-     * @Column(type="boolean")
+     * @Column(type="string")
      */
     private $etat;
     

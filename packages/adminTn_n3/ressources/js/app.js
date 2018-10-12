@@ -30,6 +30,19 @@ angular.module('raptorApp').factory('tanaAdminFactory', function ($http, $q) {
                         deferred.resolve(datas);
                     });
             return deferred.promise;
+        },
+        ajoutPoste: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/adminTn_m3/model/ajoutPoste.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
         }
     };
     return factory;
@@ -45,6 +58,35 @@ angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http'
     }]);
 
 angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope', '$http', 'tanaAdminFactory', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, tanaAdminFactory, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
+
+        $scope.login = $cookieStore.get('login');
+
+        $scope.poste = {};
+        $scope.poste.id = "";
+        $scope.poste.possesseur = "";
+        $scope.poste.nomposte = "";
+
+        $scope.savePoste = function (poste) {
+            var dataObj = {
+                matricule: $cookieStore.get('login'),
+                poste: poste
+            };
+            tanaAdminFactory.ajoutPoste(dataObj).then(function (datas) {
+
+                $scope.poste.id = "";
+                $scope.poste.possesseur = "";
+                $scope.poste.nomposte = "";
+
+                ngToast.create({
+                    className: datas.data.notification,
+                    content: datas.data.message
+                });
+            });
+
+
+        };
+
+
         $scope.tabn = [1, 2, 3, 4, 5, 6];
         $scope.scale = 1;
         $scope.zoomplus = function () {
@@ -72,22 +114,22 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
                 console.log(error);
             });
         };
-        
+
         var dataObj = {};
         tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
             console.log(datas.data);
             $scope.listposteglpi = datas.data;
 
         });
-        
-        $scope.recuperIP=function(nomposte){
+
+        $scope.recuperIP = function (nomposte) {
             var dataObj = {
-                         nom_poste:nomposte
-                    }
-                    tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
-                        console.log(datas.data);
-                        $scope.posteip = datas.data[2].ip_adress;
-                    });
+                nom_poste: nomposte
+            }
+            tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
+                console.log(datas.data);
+                $scope.posteip = datas.data[2].ip_adress;
+            });
         };
 
         $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
@@ -97,32 +139,32 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             $scope.IsVisible01 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = false;
 
-        }
+        };
         $scope.Show2 = function () {
             $scope.IsVisible01 = $scope.IsVisible02 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = false;
-        }
+        };
         $scope.Show3 = function () {
             $scope.IsVisible01 = $scope.IsVisible03 = $scope.IsVisible02 = true;
 
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = false;
-        }
+        };
         $scope.Show4 = function () {
             $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible02 = $scope.IsVisible01 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = false;
-        }
+        };
         $scope.Show5 = function () {
             $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = false;
 
-        }
+        };
         $scope.Show6 = function () {
             $scope.IsVisible01 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = false;
-        }
+        };
         $scope.Show12 = function () {
             $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = $scope.IsVisible06 = $scope.IsVisible07 = $scope.IsVisible08 = $scope.IsVisible09 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
-        }
+        };
 
         //Action sur l'ajout ou modification des emplacements
 
@@ -134,7 +176,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
                 console.log(datas.data.datas);
 
             });
-        }
+        };
         $scope.initialisationPosteGlpi = function ()
         {
             var dataObj = {};
@@ -143,7 +185,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
                 console.log(datas.data.datas);
 
             });
-        }
+        };
     }]);
 
 

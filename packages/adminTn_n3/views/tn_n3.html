@@ -1,8 +1,3 @@
-
-<head>
-    <script src="/wsup/plugins/svg-pan-zoom/js/svg-pan-zoom.js" ></script>
-</head>
-
 <div class="" id="svgimg" style="">
     <div class="container w-100" style="">
         <div class="row" style="">
@@ -276,7 +271,7 @@
                                                     <legend>Poste</legend>
 
 
-                                                    <input type="text" name="nomPoste" placeholder="Nom poste" list="_poste" ng-model="nomposte" ng-blur="recuperIP(nomposte)" style='width:100%'>
+                                                    <input type="text" name="nomPoste" placeholder="Nom poste" list="_poste" ng-model="poste.nomposte" ng-blur="recuperIP(nomposte)" style='width:100%'>
                                                         <datalist id="_poste">
                                                             <option ng-repeat="p in listposteglpi">{{p.nom_poste}}</option>
                                                         </datalist>
@@ -295,7 +290,7 @@
 
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
-                                                    <legend>Utilisateur</legend>
+                                                    <legend>Possesseur</legend>
                                                     <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur" ng-model="poste.possesseur"></div>
                                                 </fieldset>
                                             </div>
@@ -304,7 +299,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                            <button type="button" class="btn btn-primary">Sauvegarder</button>
+                                            <button type="button" class="btn btn-primary" ng-click="savePoste(poste)">Sauvegarder</button>
                                         </div>
                                     </div>
                                 </div>

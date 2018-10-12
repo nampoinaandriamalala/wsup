@@ -31,6 +31,16 @@ class Poste {
      */
     private $id_emplacement;
     
+    /**
+     * @Column(type="string", nullable=true)
+     */
+    private $matricule_responsable;
+    
+    /**
+     * @Column(type="date", nullable=true)
+     */
+    private $date;
+    
     function getId() {
         return $this->id;
     }
@@ -77,6 +87,21 @@ class Poste {
 
     function setNom_poste($nom_poste) {
         $this->nom_poste = $nom_poste;
+    }
+
+    function getDate() {
+        return $this->date;
+    }
+
+    function setDate($date) {
+        $this->date = $date;
+    }
+    function getMatricule_responsable() {
+        return $this->matricule_responsable;
+    }
+
+    function setMatricule_responsable($matricule_responsable) {
+        $this->matricule_responsable = $matricule_responsable;
     }
 
 

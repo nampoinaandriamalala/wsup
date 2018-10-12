@@ -54,10 +54,11 @@
             <div class="col-md-6">
                 
                 <div class="profile-img">
-                    <img src={{stepsModel}} alt=""/>
-                    <form action="./packages/cadence/model/uploadfile.php" method="post" enctype="multipart/form-data" class="hidden" id="mystupidform">
-                                        <input type="file" class="btn btn-default" name="fileToUpload" id="fileToUpload" ng-model="myfile" ng-model-instant onchange="angular.element(this).scope().imageUpload(event)">
-                                        <input type="submit" class="btn btn-default" value="Valider" name="submit" id="downloadToLocal" ng-model="imgvaleur">
+                   
+                    <img id="image_profil" src={{imageSrc}} alt=""/>
+                    <form method="post" enctype="multipart/form-data" class="hidden" id="mystupidform">
+                                        <input type="file" class="btn btn-default" ng-model="newImage" file-changed>
+                                        <input type="submit" class="btn btn-default" value="Valider" name="submit" id="downloadToLocal" ng-model="imgvaleur" ng-click="testcl()">
                         </form>
                     
                     <!--http://jsbin.com/uboqu3/1/edit?html,js,output-->
