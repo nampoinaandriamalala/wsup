@@ -1,39 +1,13 @@
 //FACTORY
-angular.module('raptorApp').factory('tanaAdminFactory', function ($http, $q) {
+angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) {    //Exemple de service
 
     var factory = {
         banner: false,
-        getListEmplacement: function (dataObj) {
+        getDefautl: function (dataObj) {
             var deferred = $q.defer();
             $http({
                 method: 'POST',
-                url: 'packages/adminTn_n3/model/listEmplacement.php',
-                data: $.param(dataObj),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).
-                    then(function (datas) {
-                        deferred.resolve(datas);
-                    });
-            return deferred.promise;
-        },
-        getListPostesGlpi: function (dataObj) {
-            var deferred = $q.defer();
-            $http({
-                method: 'POST',
-                url: 'packages/adminTn_n3/model/listPostes.php',
-                data: $.param(dataObj),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).
-                    then(function (datas) {
-                        deferred.resolve(datas);
-                    });
-            return deferred.promise;
-        },
-        ajoutPoste: function (dataObj) {
-            var deferred = $q.defer();
-            $http({
-                method: 'POST',
-                url: 'packages/adminTn_m3/model/ajoutPoste.php',
+                url: 'packages/default/model/default.php',
                 data: $.param(dataObj),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).

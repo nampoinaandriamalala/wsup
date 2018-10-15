@@ -223,7 +223,7 @@
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span><span class="input-group-addon">Siège</span>
-                                                            <select class="form-control" ng-model="emplac.siege" id="siege" ng-options="e.id_emplacement as e.siege for e in emplacements| unique :'siege'">
+                                                            <select class="form-control" ng-model="poste.siege" id="siege" ng-options="e.id_emplacement as e.siege for e in emplacements| unique :'siege'">
 
                                                             </select>                                      
                                                         </div>
@@ -232,7 +232,7 @@
                                                     <div class="row p-2">
                                                         <div class="input-group"> 
                                                             <span class="input-group-addon"><i class="fa fa-navicon" aria-hidden="true"></i></span><span class="input-group-addon">Niveau</span>
-                                                            <select class="form-control" ng-model="emplac.niveau" id="niveau" ng-disabled="emplac.siege === '' || !emplac.siege" ng-options="e.id_emplacement as e.niveau for e in emplacements| unique : 'niveau'">
+                                                            <select class="form-control" ng-model="poste.niveau" id="siege" ng-disabled="poste.siege === '' || !poste.siege" ng-options="e.id_emplacement as e.niveau for e in emplacements| unique :'niveau'">
 
                                                             </select>                                    
                                                         </div>
@@ -241,7 +241,7 @@
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></span><span class="input-group-addon">Lettre</span>
-                                                            <select class="form-control" ng-model="emplac.lettre" id="lettre" ng-disabled="emplac.niveau === '' || !emplac.niveau" ng-options="e.id_emplacement as e.lettre for e in emplacements| unique : 'lettre'">
+                                                            <select class="form-control" ng-model="poste.lettre" id="siege" ng-disabled="poste.niveau === '' || !poste.niveau" ng-options="e.id_emplacement as e.lettre for e in emplacements| unique :'lettre'">
 
                                                             </select>                                    
                                                         </div>
@@ -250,7 +250,7 @@
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span><span class="input-group-addon">Numero</span>
-                                                            <select class="form-control" ng-model="emplac.numero" id="numero" ng-disabled="emplac.lettre === '' || !emplac.lettre" ng-options="e.id_emplacement as e.numero for e in emplacements| unique :'numero'">                                                                
+                                                            <select class="form-control" ng-model="poste.lettre" id="siege" ng-disabled="poste.lettre === '' || !poste.lettre" ng-options="e.id_emplacement as e.numero for e in emplacements| unique :'numero'">                                                                
 
                                                             </select>                                         
                                                         </div>
@@ -259,7 +259,7 @@
                                                     <div class="row p-2">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span>
-                                                            <input id="batiment" type="text" ng-model="emplac.batiment" class="form-control" name="" value="" placeholder="Batiment" >                                        
+                                                            <input id="batiment" type="text" ng-model="poste.batiment" class="form-control" name="" value="" placeholder="Batiment" >                                        
                                                         </div>
                                                     </div>
 
@@ -269,33 +269,35 @@
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
                                                     <legend>Poste</legend>
-
-
-                                                    <input type="text" name="nomPoste" placeholder="Nom poste" list="_poste" ng-model="poste.nomposte" ng-blur="recuperIP(nomposte)" style='width:100%'>
+                                                    <input type="text" name="nomPoste" placeholder="Nom poste" list="_poste" ng-model="poste.nomposte" style='width:100%'>
                                                         <datalist id="_poste">
                                                             <option ng-repeat="p in listposteglpi">{{p.nom_poste}}</option>
                                                         </datalist>
-
-                                                        <!--<select class="form-control" ng-model="poste.nomposte" id="poste" ng-options="p.id_poste as p.nom_poste for p in listposteglpi" ng-blur="recuperIP(poste.nomposte)">
-                                                         </select> -->
                                                 </fieldset>
                                             </div>
 
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">   	
                                                     <legend>IP</legend>
-                                                    <div class="col-md-12"><input type="text" class="form-control form-control-lg" ng-model="poste.ip" placeholder="192.168.XXX.XXX" readonly=""></div>
+                                                    <div class="col-md-12">
+
+                                                        <select class="form-control" ng-model="poste.ip" id="ip" ng-disabled="poste.nomposte === '' || !poste.nomposte" ng-options="p.id_poste as p.ip_adress for p in listposteglpi| filter: {nom_poste : poste.nomposte}"></select>
+                                                        
+<!--                                                        <select class="form-control" ng-model="poste.ip" id="ip" >             
+                                                            <option ng-repeat="p in listposteglpi| filter: {nom_poste : poste.nomposte} " value="{{p.id_poste}}">{{p.ip_adress}}</option>
+                                                        </select>-->
+
+                                                        <!--<input type="text" class="form-control form-control-lg" ng-model="poste.ip" placeholder="192.168.XXX.XXX" readonly="" ng-options="p.nom_poste as p in listposteglpi | filter : { nom_poste : poste.nomposte}" >-->
+                                                    </div>
                                                 </fieldset>	
                                             </div>
 
                                             <div class="row p-4">
                                                 <fieldset class="col-md-12 p-4">    	
                                                     <legend>Possesseur</legend>
-                                                    <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur" ng-model="poste.possesseur"></div>
+                                                    <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur" ng-model="poste.possesseur" ></div>
                                                 </fieldset>
                                             </div>
-
-
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

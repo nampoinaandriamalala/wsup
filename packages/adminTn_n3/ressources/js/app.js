@@ -59,6 +59,9 @@ angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http'
 
 angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope', '$http', 'tanaAdminFactory', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, tanaAdminFactory, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
 
+//        $scope.emplacements=[];
+//        $scope.listposteglpi=[];
+
         $scope.login = $cookieStore.get('login');
 
         $scope.poste = {};
@@ -106,31 +109,18 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
                     });
         };
 
-        $scope.getListEmplacement = function (data) {
-            tanaAdminFactory.getListEmplacement(data).then(function (response) {
-                $scope.emplacements = response.datas;
-                console.log($scope.emplacements);
-            }, function (error) {
-                console.log(error);
-            });
-        };
+        var dataObj = {};
+        tanaAdminFactory.getListEmplacement(dataObj).then(function (datas) {
+            console.log(datas.data);
+            $scope.emplacements = datas.data;
 
+        });
         var dataObj = {};
         tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
             console.log(datas.data);
             $scope.listposteglpi = datas.data;
 
         });
-
-        $scope.recuperIP = function (nomposte) {
-            var dataObj = {
-                nom_poste: nomposte
-            }
-            tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
-                console.log(datas.data);
-                $scope.posteip = datas.data[2].ip_adress;
-            });
-        };
 
         $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
 
@@ -189,6 +179,82 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
     }]);
 
 
+//angular.module('raptorApp').filter('filterWithOr', function ($filter) {
+//    var comparator = function (actual, expected) {
+//        if (angular.isUndefined(actual)) {
+//            // No substring matching against `undefined`
+//            return false;
+//        }
+//        if ((actual === null) || (expected === null)) {
+//            // No substring matching against `null`; only match against `null`
+//            return actual === expected;
+//        }
+//        if ((angular.isObject(expected) && !angular.isArray(expected)) || (angular.isObject(actual) && !hasCustomToString(actual))) {
+//            // Should not compare primitives against objects, unless they have custom `toString` method
+//            return false;
+//        }
+//
+//        actual = angular.lowercase('' + actual);
+//        if (angular.isArray(expected)) {
+//            var match = false;
+//            expected.forEach(function (e) {
+//                e = angular.lowercase('' + e);
+//                if (actual.indexOf(e) !== -1) {
+//                    match = true;
+//                }
+//            });
+//            return match;
+//        } else {
+//            expected = angular.lowercase('' + expected);
+//            return actual.indexOf(expected) !== -1;
+//        }
+//    };
+//    return function (campaigns, filters) {
+//        return $filter('filter')(campaigns, filters, comparator);
+//    };
+//});
+
+//Filtre sur les selections multiuples
+angular.module('raptorApp').filter('filterMultiple', ['$filter', function ($filter) {
+
+        return function (items, keyObj) {
+            var filterObj = {
+                data: items,
+                filteredData: [],
+                applyFilter: function (obj, key) {
+                    var fData = [];
+                    if (this.filteredData.length == 0)
+                        this.filteredData = this.data;
+                    if (obj) {
+                        var fObj = {};
+                        if (!angular.isArray(obj)) {
+                            fObj[key] = obj;
+                            fData = fData.concat($filter('filter')(this.filteredData, fObj));
+                        } else if (angular.isArray(obj)) {
+                            if (obj.length > 0) {
+                                for (var i = 0; i < obj.length; i++) {
+                                    if (angular.isDefined(obj[i])) {
+                                        fObj[key] = obj[i];
+                                        fData = fData.concat($filter('filter')(this.filteredData, fObj));
+                                    }
+                                }
+
+                            }
+                        }
+                        if (fData.length > 0) {
+                            this.filteredData = fData;
+                        }
+                    }
+                }
+            };
+            if (keyObj) {
+                angular.forEach(keyObj, function (obj, key) {
+                    filterObj.applyFilter(obj, key);
+                });
+            }
+            return filterObj.filteredData;
+        };
+    }]);
 
 //Filtre unique pour les resultats dupliqués
 angular.module('raptorApp').filter('unique', function () {

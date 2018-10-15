@@ -16,11 +16,7 @@ $conn = $postgres->connect();
 
 //Sut la table emplacement
 $id_emplacement = $_POST['id_emplacement'];
-$siege = $_POST['siege'];
-$niveau = $_POST['niveau'];
-$batiment = $_POST['batiment'];
-$lettre = $_POST['lettre'];
-$numero = $_POST['numero'];
+
 $id_bloc_svg = $_POST['id_bloc_svg'];
 
 
@@ -32,9 +28,6 @@ $possesseur=$_POST['possesseur'];
 $matricule_responsable=$_POST['matricule_responsable'];
 $date=$_POST['date'];
 
-$sql = "select id_emplacement from emplacement where siege=$siege and niveau=$niveau and lettre=$lettre and numero=$numero";
-$results = $postgres->getSQL($conn, $sql);
-
 
 if (is_array($results) && count($results) > 0) {
     $id_emplacement = $results[0]['id_emplacement'];
@@ -42,6 +35,6 @@ if (is_array($results) && count($results) > 0) {
     http_response_code(404);
     die("etape not found: $sql");
 }
-$sqlinsert_poste="insert into poste (id, id_pc, ip, possesseur, id_emplacement,matricule_responsable,date) values ($id,$nom_poste,$ip,$possesseur,$id_emplacement,$matricule_responsable,$date)";
-
+$sql="insert into poste (id, id_pc, ip, possesseur, id_emplacement,matricule_responsable,date) values ($id,$nom_poste,$ip,$possesseur,$id_emplacement,$matricule_responsable,$date)";
+$results = $postgres->getSQL($conn, $sql);
 ?>
