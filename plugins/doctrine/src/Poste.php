@@ -7,27 +7,28 @@
 class Poste {    
     /**
      * @Id
-     * @Column(type="integer") @GeneratedValue
-     * */
+     * @Column(type="integer", nullable=false)
+     * @GeneratedValue(strategy="IDENTITY")
+     */
     private $id;
     
      /**
-     * @Column(type="string")
+     * @Column(type="string", unique=true)
      */
     private $nom_poste;
     
      /**
-     * @Column(type="string")
+     * @Column(type="string", unique=true)
      */
     private $ip;
     
     /**
-     * @Column(type="string", nullable=true)
+     * @Column(type="string", nullable=true, unique=true)
      */
     private $possesseur;
     
     /**
-     * @Column(type="string", nullable=true)
+     * @Column(type="string", nullable=true, unique=true)
      */
     private $id_emplacement;
     

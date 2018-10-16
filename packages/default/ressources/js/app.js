@@ -927,6 +927,38 @@ app.filter("raptorFilter", function () {
     }
 });
 
+// app.directive('ngTokenfield', function () {
+//     return {
+//         require: 'ngModel',
+//         restrict: 'A', /*Attribut*/
+//         scope: {
+//             source: '=ngSource',
+//             min: '=ngMin',
+//             duplicate: '=ngDuplicate',
+//         },
+//         link: function (scope, element, attrs, ngModel) {
+//             console.log('token', scope.source, element);
+//             var token = $(element).tokenfield({
+//               autocomplete: {
+//                 source: scope.source,
+//                 delay: 100,
+//                 minLength: scope.min
+//               },
+//               showAutocompleteOnFocus: true
+//             });
+//             if (scope.duplicate == 'false') {
+//                 token.on('tokenfield:createtoken', function (e) {
+//                     var existingTokens = $(this).tokenfield('getTokens');
+//                     console.log('existing', existingTokens, existingTokens.length != 0);
+//                     if (existingTokens.length != 0) {
+//                         e.preventDefault();
+//                     }
+//                 })
+//             }
+//         }
+//     }
+// });
+
 //Prototype
 
 //Array.prototype.toLowerCase = function () {

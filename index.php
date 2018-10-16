@@ -28,10 +28,18 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
         <!--bootstrap 4 test -->
         <link rel="stylesheet" href="plugins/bootstrap4/css/bootstrap.css"/>
-        <script src="plugins/bootstrap4/js/jquery-3.1.1.slim.min.js"></script>
+        <!-- <script src="plugins/bootstrap4/js/jquery-3.1.1.slim.min.js"></script> -->
+        <script src="plugins/jquery/jquery-3.2.0.min.js"></script>
         <script src="plugins/bootstrap4/js/tether.min.js"></script>
         <script src="plugins/bootstrap4/js/bootstrap.min.js" ></script>
-        
+        <!-- tokenfield -->
+        <script src="plugins/jquery/jquery-3.2.0.min.js"></script>
+        <script src="plugins/jquery-ui-dist/jquery-ui.min.js"></script>
+        <script src="plugins/bootstrap-tokenfield/dist/bootstrap-tokenfield.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="plugins/bootstrap-tokenfield/dist/css/bootstrap-tokenfield.min.css">
+        <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-dist/jquery-ui.min.css">
+
+
         <!-- fin bootstrap 4 test -->
         <!-- bootstrap -->
         <!--        <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">

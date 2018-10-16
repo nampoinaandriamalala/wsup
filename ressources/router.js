@@ -28,27 +28,27 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller: 'CtrlAdminstAccueil',
             })
             .when("/admin-accueil", {
-                templateUrl: "packages/adminaccueil/views/adminAccueil.html",
+                templateUrl: "packages/accueil/views/adminAccueil.html",
                 controller: 'CtrlAdminAccueil',
             })
             .when("/tech-accueil", {
-                templateUrl: "packages/techaccueil/views/techAccueil.html",
+                templateUrl: "packages/accueil/views/techAccueil.html",
                 controller: 'CtrlTechnAccueil',
             })
             .when("/sup-accueil", {
-                templateUrl: "packages/supaccueil/views/supAccueil.html",
+                templateUrl: "packages/accueil/views/supAccueil.html",
                 controller: 'CtrlSupAccueil',
             })
             .when("/tn-n3", {
-                templateUrl: "packages/adminTn_n3/views/tn_n3.html",
+                templateUrl: "packages/adminTn/views/tn_n3.html",
                 controller: 'CtrlAdminTn_n3',
             })
             .when("/tn-n2", {
-                templateUrl: "packages/adminTn_n2/views/tn_n2.html",
+                templateUrl: "packages/adminTn/views/tn_n2.html",
                 controller: 'CtrlAdminTn_n2',
             })
             .when("/tn-n1", {
-                templateUrl: "packages/adminTn_n1/views/tn_n1.html",
+                templateUrl: "packages/adminTn/views/tn_n1.html",
                 controller: 'CtrlAdminTn_n1',
             })
             .when("/ts-n1", {
