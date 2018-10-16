@@ -31,6 +31,19 @@ angular.module('raptorApp').factory('tanaAdminFactory', function ($http, $q) {
                     });
             return deferred.promise;
         },
+        getListPosteLocal: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/adminTn/model/getPosteLocal.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
+        },
         ajoutPoste: function (dataObj) {
             var deferred = $q.defer();
             $http({
@@ -167,6 +180,12 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             $scope.listposteglpi = datas.data;
 
         });
+        
+        var dataObj = {};
+        tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
+            console.log(datas.data);
+
+        });
 
         $scope.initialisationEmplacement = function ()
         {
@@ -187,41 +206,55 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
             });
         };
+        
+        $scope.initializeListePosteLocal = function ()
+        {
+            var dataObj = {};
+            tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
+                console.log(datas.data.datas);
+
+            });
+        };
 
         $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
 
         //Afichage des postes suivants les nombres des emplacements
-        $scope.Show1 = function () {
+        $scope.Show1 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible01 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = false;
-
+            
+            console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
         };
-        $scope.Show2 = function () {
+        $scope.Show2 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible01 = $scope.IsVisible02 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = false;
+        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
         };
-        $scope.Show3 = function () {
+        $scope.Show3 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible01 = $scope.IsVisible03 = $scope.IsVisible02 = true;
-
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = false;
+       console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+        
         };
-        $scope.Show4 = function () {
+        $scope.Show4 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible02 = $scope.IsVisible01 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = false;
+        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
         };
-        $scope.Show5 = function () {
+        $scope.Show5 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = false;
-
+            console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
         };
-        $scope.Show6 = function () {
+        $scope.Show6 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible01 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = true;
             $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = false;
+        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
         };
-        $scope.Show12 = function () {
+        $scope.Show12 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = $scope.IsVisible06 = $scope.IsVisible07 = $scope.IsVisible08 = $scope.IsVisible09 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
+        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
         };
-
         //Action sur l'ajout ou modification des emplacements
 
 
