@@ -13,7 +13,7 @@ $conn = $postgres->connect();
 
 //var_dump($_POST);
 //SQL
-$sql = "select * from emplacement poste";
+$sql = "select * from poste";
 $dataOut = $postgres->getSQL($conn, $sql);
 
 $sortie = array("datas" => $dataOut);

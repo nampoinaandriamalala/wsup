@@ -139,12 +139,12 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12 h-100 align-items-center justify-content-center">
-                                                        <div class="w-100 m-0 text-center p-2 h-100 justify-content-center align-items-center">
-                                                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                                        <div class="w-100 m-0 text-center p-2 h-100 justify-content-center align-items-center" >
+                                                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)" >
 
                                                             </div>
 
-                                                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                                            <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)" ng-repeat="postelocal in postelocals">
 
                                                                 <div class="card text-white mb-3 bg-dark size-note-drag" id="drag1" draggable="true" ondragstart="drag(event)">
                                                                     <div class="card-header text-center bg-info">
@@ -157,7 +157,7 @@
                                                                         <img style="border-radius:50%;" src="/wsup/ressources/images/green.png" id="img_etat"> 
                                                                     </div>
                                                                     <div class="card-footer bg-info">
-                                                                        <h2 class="text-center" id="possesseur"> Possesseur </h2>
+                                                                        <h2 class="text-center" id="possesseur"> {{postelocal.nom_poste}} </h2>
                                                                         <h6 class="text-center" id="ip"> 192.168.X.X </h6>
                                                                     </div>
                                                                 </div>
@@ -181,28 +181,13 @@
                                             </div>
                                             <div class="col-md-8 h-100 w-100 m-2 border border-dark">
                                                 <div class="row margin-5">
-                                                    <div id="place1" class="column col-md-6" ng-show="IsVisible01" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)" ng-click="initialisationEmplacement()"></div>
-                                                    <div id="place2" class="column col-md-6" ng-show="IsVisible02" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                </div>
-                                                <div class="row margin-5">
-                                                    <div id="place3" class="column col-md-6" ng-show="IsVisible03"ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                    <div id="place4" class="column col-md-6" ng-show="IsVisible04" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                </div>
-                                                <div class="row margin-5">
-                                                    <div id="place5" class="column col-md-6" ng-show="IsVisible05" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                    <div id="place6" class="column col-md-6" ng-show="IsVisible06" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                                </div>
-                                                <div class="row margin-5">
-                                                    <div id="place7" class="column col-md-6" ng-show="IsVisible07" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                    <div id="place8" class="column col-md-6" ng-show="IsVisible08" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                </div>
-                                                <div class="row margin-5">
-                                                    <div id="place9" class="column col-md-6" ng-show="IsVisible09" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                    <div id="place10" class="column col-md-6" ng-show="IsVisible10" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                </div>
-                                                <div class="row margin-5">
-                                                    <div id="place11" class="column col-md-6" ng-show="IsVisible11" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
-                                                    <div id="place12" class="column col-md-6" ng-show="IsVisible12" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)"></div>
+                                                    <div id="place1" class="column col-md-6" ng-repeat="tbn in tabnbr" ng-show="IsVisible{{tbn}}" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)" ng-click="initialisationEmplacement()">
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

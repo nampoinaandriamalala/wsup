@@ -78,7 +78,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 //        $scope.listposteglpi=[];
 
         $scope.login = $cookieStore.get('login');
-
+        $scope.tabnbr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.poste = {
             siege: '',
             niveau: '',
@@ -98,7 +98,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             var possesseur = data.possesseur;
             var matricule_responsable = $cookieStore.get('login');
             var date = data.date;
-            
+
             console.log(data);
 
             //Données sur les emplacements
@@ -110,46 +110,46 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
 
             var dataObj = {
-                
+
                 //variables sur les postes
                 nomposte: nom_poste,
                 ip: ip,
                 possesseur: possesseur,
                 matricule_responsable: matricule_responsable,
                 date: date,
-                
-                //Variable sur les emplacements
-                siege:siege,
-                niveau:niveau, 
-                lettre:lettre, 
-                numero:numero
 
-            };          
+                //Variable sur les emplacements
+                siege: siege,
+                niveau: niveau,
+                lettre: lettre,
+                numero: numero
+
+            };
             console.log(dataObj);
             tanaAdminFactory.ajoutPoste(dataObj).then(function (datas) {
                 ngToast.create({
                     className: 'success',
-                    content: 'Ajout avec succès'                   
+                    content: 'Ajout avec succès'
                 });
-                $scope.poste.siege="";
-                $scope.poste.niveau="";
-                $scope.poste.lettre="";
-                $scope.poste.numero="";
-                $scope.poste.nomposte="";
-                $scope.poste.ip="";
-                $scope.poste.date="";
-                $scope.poste.possesseur="";                
+                $scope.poste.siege = "";
+                $scope.poste.niveau = "";
+                $scope.poste.lettre = "";
+                $scope.poste.numero = "";
+                $scope.poste.nomposte = "";
+                $scope.poste.ip = "";
+                $scope.poste.date = "";
+                $scope.poste.possesseur = "";
             }, function (errors) {
                 ngToast.create({
                     className: 'danger',
-                    content: errors.error                  
+                    content: errors.error
                 });
                 console.log('controller', errors);
             });
         };
 
 
-        $scope.tabn = [1, 2, 3, 4, 5, 6];
+
         $scope.scale = 1;
         $scope.zoomplus = function () {
             $scope.scale += 0.1;
@@ -180,9 +180,10 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             $scope.listposteglpi = datas.data;
 
         });
-        
+
         var dataObj = {};
         tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
+            $scope.postelocals=datas.data;
             console.log(datas.data);
 
         });
@@ -191,7 +192,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         {
             var dataObj = {};
             tanaAdminFactory.getListEmplacement(dataObj).then(function (datas) {
-                $scope.emplacements = datas.data.datas;                
+                $scope.emplacements = datas.data.datas;
                 $scope.emplacements.push('');
                 console.log(datas.data.datas);
 
@@ -206,7 +207,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
             });
         };
-        
+
         $scope.initializeListePosteLocal = function ()
         {
             var dataObj = {};
@@ -216,44 +217,44 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             });
         };
 
-        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
+        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = $scope.IsVisible1 = false;
 
         //Afichage des postes suivants les nombres des emplacements
         $scope.Show1 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible01 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = false;
-            
-            console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+            $scope.IsVisible1 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = false;
+
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
         };
         $scope.Show2 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible01 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = false;
-        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+            $scope.IsVisible1 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = false;
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
         };
         $scope.Show3 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible01 = $scope.IsVisible03 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = false;
-       console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
-        
+            $scope.IsVisible1 = $scope.IsVisible3 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = false;
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
+
         };
         $scope.Show4 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible02 = $scope.IsVisible01 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = false;
-        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+            $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible2 = $scope.IsVisible1 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = false;
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
         };
         $scope.Show5 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = false;
-            console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = false;
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
         };
         $scope.Show6 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible01 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = false;
-        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+            $scope.IsVisible1 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = false;
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
         };
         $scope.Show12 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = $scope.IsVisible06 = $scope.IsVisible07 = $scope.IsVisible08 = $scope.IsVisible09 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
-        console.log('niveau : '+$niveau+' lettre : '+$lettre+' ordre : '+$ordre);
+            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
+            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
         };
         //Action sur l'ajout ou modification des emplacements
 
@@ -324,8 +325,8 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
                         'transform': str
                     });
         };
-        
-        
+
+
         $scope.getListEmplacement = function (data) {
             tanaAdminFactory.getListEmplacement(data).then(function (response) {
                 $scope.emplacements = response.datas;
@@ -341,16 +342,6 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
             $scope.listposteglpi = datas.data;
 
         });
-
-        $scope.recuperIP = function (nomposte) {
-            var dataObj = {
-                nom_poste: nomposte
-            }
-            tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
-                console.log(datas.data);
-                $scope.posteip = datas.data[2].ip_adress;
-            });
-        };
 
         //Action sur l'ajout ou modification des emplacements
 
@@ -372,40 +363,40 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
 
             });
         };
-        
-        
-        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
+
+
+        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = $scope.IsVisible1 = false;
 
         //Afichage des postes suivants les nombres des emplacements
         $scope.Show1 = function () {
-            $scope.IsVisible01 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = false;
+            $scope.IsVisible1 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = false;
 
         };
         $scope.Show2 = function () {
-            $scope.IsVisible01 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = false;
+            $scope.IsVisible1 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = false;
         };
         $scope.Show3 = function () {
-            $scope.IsVisible01 = $scope.IsVisible03 = $scope.IsVisible02 = true;
+            $scope.IsVisible1 = $scope.IsVisible3 = $scope.IsVisible2 = true;
 
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = false;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = false;
         };
         $scope.Show4 = function () {
-            $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible02 = $scope.IsVisible01 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = false;
+            $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible2 = $scope.IsVisible1 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = false;
         };
         $scope.Show5 = function () {
-            $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = false;
+            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = false;
 
         };
         $scope.Show6 = function () {
-            $scope.IsVisible01 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = false;
+            $scope.IsVisible1 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = false;
         };
         $scope.Show12 = function () {
-            $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = $scope.IsVisible06 = $scope.IsVisible07 = $scope.IsVisible08 = $scope.IsVisible09 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
+            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
         };
 
     }]);
@@ -417,8 +408,8 @@ angular.module('raptorApp').controller('CtrlAdminTn_n2', ['$scope', '$rootScope'
         /*Votre code ici*/
 
         /*var panZoomTiger = svgPanZoom('#demo-tiger');*/
-        
-        
+
+
         $scope.scale = 1;
         $scope.zoomplus = function () {
 
@@ -438,7 +429,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n2', ['$scope', '$rootScope'
                         'transform': str
                     });
         };
-        
+
         $scope.getListEmplacement = function (data) {
             tanaAdminFactory.getListEmplacement(data).then(function (response) {
                 $scope.emplacements = response.datas;
@@ -455,17 +446,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n2', ['$scope', '$rootScope'
 
         });
 
-        $scope.recuperIP = function (nomposte) {
-            var dataObj = {
-                nom_poste: nomposte
-            }
-            tanaAdminFactory.getListPostesGlpi(dataObj).then(function (datas) {
-                console.log(datas.data);
-                $scope.posteip = datas.data[2].ip_adress;
-            });
-        };
-        
-        
+
         //Action sur l'ajout ou modification des emplacements
 
         $scope.initialisationEmplacement = function ()
@@ -487,41 +468,41 @@ angular.module('raptorApp').controller('CtrlAdminTn_n2', ['$scope', '$rootScope'
             });
         };
 
-        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = $scope.IsVisible01 = false;
+        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = $scope.IsVisible1 = false;
 
         //Afichage des postes suivants les nombres des emplacements
         $scope.Show1 = function () {
-            $scope.IsVisible01 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = false;
+            $scope.IsVisible1 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = false;
 
         };
         $scope.Show2 = function () {
-            $scope.IsVisible01 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = false;
+            $scope.IsVisible1 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = false;
         };
         $scope.Show3 = function () {
-            $scope.IsVisible01 = $scope.IsVisible03 = $scope.IsVisible02 = true;
+            $scope.IsVisible1 = $scope.IsVisible3 = $scope.IsVisible2 = true;
 
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = false;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = false;
         };
         $scope.Show4 = function () {
-            $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible02 = $scope.IsVisible01 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = $scope.IsVisible05 = false;
+            $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible2 = $scope.IsVisible1 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = false;
         };
         $scope.Show5 = function () {
-            $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = $scope.IsVisible06 = false;
+            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = false;
 
         };
         $scope.Show6 = function () {
-            $scope.IsVisible01 = $scope.IsVisible06 = $scope.IsVisible05 = $scope.IsVisible04 = $scope.IsVisible03 = $scope.IsVisible02 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible09 = $scope.IsVisible08 = $scope.IsVisible07 = false;
+            $scope.IsVisible1 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = true;
+            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = false;
         };
         $scope.Show12 = function () {
-            $scope.IsVisible01 = $scope.IsVisible02 = $scope.IsVisible03 = $scope.IsVisible04 = $scope.IsVisible05 = $scope.IsVisible06 = $scope.IsVisible07 = $scope.IsVisible08 = $scope.IsVisible09 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
+            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
         };
 
-        
+
     }]);
 
 
