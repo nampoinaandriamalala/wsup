@@ -258,6 +258,32 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         };
         //Action sur l'ajout ou modification des emplacements
 
+        $scope.testPostList = [];
+
+        for (let i = 0; i < 24; i++) {
+
+            for (let j = 0; j < 2; j++) {
+                $scope.testPostList.push({
+                    position: `${j}-${i}`, 
+                    nom_poste: `Post numer ${j}-${i}`
+                })
+            }
+        }
+
+        console.log('testPostList', $scope.testPostList);
+
+        $scope.populatePlan = function (listPoste) {
+            listPoste.forEach((item) => {
+                $(`#${item.position}`).append(`
+                    <div class="post">
+                        <h2>${item.nom_poste}</h2>
+                    </div>
+                `);
+            });
+        }
+
+        $scope.populatePlan($scope.testPostList);
+        
 
     }]);
 

@@ -47,6 +47,10 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: "packages/adminTn/views/tn_n2.html",
                 controller: 'CtrlAdminTn_n2',
             })
+            .when("/tn-test", {
+                templateUrl: "packages/adminTn/views/testplan.html",
+                controller: 'CtrlAdminTn_n3',
+            })
             .when("/tn-n1", {
                 templateUrl: "packages/adminTn/views/tn_n1.html",
                 controller: 'CtrlAdminTn_n1',
