@@ -212,8 +212,8 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         {
             var dataObj = {};
             tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
-                console.log(datas.data.datas);
-
+                $scope.postelocals=datas.data.datas;
+                console.log('listpost local',$scope.listepostelocal);
             });
         };
 
@@ -266,7 +266,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
                 $scope.testPostList.push({
                     position: `${j}-${i}`, 
                     nom_poste: `Post numer ${j}-${i}`
-                })
+                });
             }
         }
 
@@ -280,11 +280,16 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
                     </div>
                 `);
             });
-        }
+        };
 
         $scope.populatePlan($scope.testPostList);
         
-
+        $scope.blocDeTest="";
+        
+        $scope.insertBloc=function(){
+            $('#columnTest').append(`<h1>Bonjour le monde</h1>`);
+        };
+       
     }]);
 
 //Filtre sur les selections multiuples
@@ -311,7 +316,6 @@ angular.module('raptorApp').filter('filterMultiple', ['$filter', function ($filt
                                         fData = fData.concat($filter('filter')(this.filteredData, fObj));
                                     }
                                 }
-
                             }
                         }
                         if (fData.length > 0) {

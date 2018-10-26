@@ -76,3 +76,37 @@ legend
     cursor: pointer;
 }
 
+/* test */
+
+.plan-container {
+    overflow: scroll;
+    height: 300px;
+}
+
+.plan {
+    border: solid 1px black;
+    /* min-height: 2000px; */
+    min-height: 2000px;
+    min-width: 8000px;
+    background-image: url(../../../../ressources/images/nv3.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.post-table {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.post-range {
+    border: solid 1px red;
+    height: 200px;
+    width: 4.16%;
+}
+.post {
+    height: 100%;
+    width: 100%;
+    background: gray;
+}
