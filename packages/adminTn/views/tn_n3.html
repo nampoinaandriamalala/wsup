@@ -112,14 +112,6 @@
                 <button type="button" class="btn btn-warning" ng-click="zoommoins()">Zoom -</button>
             </div>
             
-            <div ng-repeat="postelocal in postelocals">
-                <ul>
-                    <li>
-                        {{postelocal.ip}}
-                    </li>
-                </ul>
-            </div>
-            
         </div>
     </div>
 </div>
@@ -177,12 +169,12 @@
                                                                         <button class="btn btn-default pull-center" data-toggle="modal" href="#myModal">Modifier</button>
                                                                     </div>
                                                                     <div class="card-body text-center bg-light p-0 m-0">
-                                                                        <h5 class="card-title">UC_XXXX</h5>
+                                                                        <h5 class="card-title">{{postelocal.nom_poste}}</h5>
                                                                         <img style="border-radius:50%;" src="/wsup/ressources/images/green.png" id="img_etat"> 
                                                                     </div>
                                                                     <div class="card-footer bg-info">
-                                                                        <h2 class="text-center" id="possesseur"> {{postelocal.nom_poste}} </h2>
-                                                                        <h6 class="text-center" id="ip"> 192.168.X.X </h6>
+                                                                        <h2 class="text-center" id="possesseur"> {{postelocal.possesseur}} </h2>
+                                                                        <h6 class="text-center" id="ip"> {{postelocal.ip}} </h6>
                                                                     </div>
                                                                 </div>
 
@@ -203,7 +195,7 @@
                                             </div>
                                             <div class="col-md-8 h-100 w-100 m-2 border border-dark">
                                                 <div class="row margin-5">
-                                                    <div id="place1" class="column col-md-6" ng-repeat="tbn in tabnbr" ng-show="IsVisible{{tbn}}" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)" ng-click="initialisationEmplacement()">
+                                                    <div id="place{{tbn}}" class="column col-md-6" ng-repeat="tbn in tabnbr" ng-show="IsVisible{{tbn}}" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)" ng-click="initialisationEmplacement()">
 
                                                     </div>
                                                 </div>

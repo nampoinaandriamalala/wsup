@@ -79,6 +79,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
         $scope.login = $cookieStore.get('login');
         $scope.tabnbr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        $scope.nombreplace=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.poste = {
             siege: '',
             niveau: '',
@@ -255,7 +256,40 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         $scope.Show12 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
             console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
+            
+            
+            $scope.tabnbr.forEach((item)=>{
+                $(`#place`+item).append(`
+                    <div >
+                        <h2>Poste ${item} </h2>
+                    </div>
+                `);
+                
+            });   
         };
+        
+        $scope.populateNumtable=function(niveau, lettre, ordre){
+            switch (ordre){
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    
+                    break;
+                default:
+
+            }
+        };
+        
         //Action sur l'ajout ou modification des emplacements
 
         $scope.testPostList = [];
@@ -283,12 +317,6 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         };
 
         $scope.populatePlan($scope.testPostList);
-        
-        $scope.blocDeTest="";
-        
-        $scope.insertBloc=function(){
-            $('#columnTest').append(`<h1>Bonjour le monde</h1>`);
-        };
        
     }]);
 
@@ -427,6 +455,9 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
         };
         $scope.Show12 = function () {
             $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
+        
+            
+        
         };
 
     }]);
