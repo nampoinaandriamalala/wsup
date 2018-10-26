@@ -183,8 +183,8 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
         var dataObj = {};
         tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
-            $scope.postelocals=datas.data;
-            console.log(datas.data);
+            $scope.postelocals=datas.data.datas;
+            console.log(datas.data.datas);
 
         });
 
