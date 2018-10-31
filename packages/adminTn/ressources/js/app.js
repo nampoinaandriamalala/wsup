@@ -58,6 +58,39 @@ angular.module('raptorApp').factory('tanaAdminFactory', function ($http, $q) {
                         deferred.reject(errors.data);
                     });
             return deferred.promise;
+        },
+
+        addEmplacement: function (dataObj) {
+            var deferred = $q.defer();
+            dataObj['action'] = 'addEmplacement';
+            $http({
+                method: 'POST',
+                url: 'packages/default/model/getplanAndPoste.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas.data);
+                    }, function (errors) {
+                        deferred.reject(errors.data);
+                    });
+            return deferred.promise;
+        },
+        getPostes: function (dataObj) {
+            var deferred = $q.defer();
+            dataObj['action'] = 'getPostes';
+            $http({
+                method: 'POST',
+                url: 'packages/default/model/getplanAndPoste.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas.data);
+                    }, function (errors) {
+                        deferred.reject(errors.data);
+                    });
+            return deferred.promise;
         }
     };
     return factory;
@@ -79,7 +112,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
         $scope.login = $cookieStore.get('login');
         $scope.tabnbr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        $scope.nombreplace=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        $scope.nombreplace = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.poste = {
             siege: '',
             niveau: '',
@@ -153,19 +186,23 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
         $scope.scale = 1;
         $scope.zoomplus = function () {
+
             $scope.scale += 0.1;
             var str = 'scale(' + $scope.scale + ')';
-            $('svg#demo-tiger').css(
+            $('div#svgidzoom').css(
                     {
                         'transform': str
                     });
         };
+
         $scope.zoommoins = function () {
             $scope.scale -= 0.1;
             var str = 'scale(' + $scope.scale + ')';
-            $('svg#demo-tiger').css(
+
+            $('div#svgidzoom').css(
                     {
                         'transform': str
+
                     });
         };
 
@@ -184,7 +221,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
 
         var dataObj = {};
         tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
-            $scope.postelocals=datas.data.datas;
+            $scope.postelocals = datas.data.datas;
             console.log(datas.data.datas);
 
         });
@@ -213,8 +250,8 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         {
             var dataObj = {};
             tanaAdminFactory.getListPosteLocal(dataObj).then(function (datas) {
-                $scope.postelocals=datas.data.datas;
-                console.log('listpost local',$scope.listepostelocal);
+                $scope.postelocals = datas.data.datas;
+                console.log('listpost local', $scope.listepostelocal);
             });
         };
 
@@ -256,50 +293,50 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         $scope.Show12 = function ($niveau, $lettre, $ordre) {
             $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
             console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-            
-            
-            $scope.tabnbr.forEach((item)=>{
-                $(`#place`+item).append(`
+
+
+            $scope.tabnbr.forEach((item) => {
+                $(`#place` + item).append(`
                     <div >
                         <h2>Poste ${item} </h2>
                     </div>
                 `);
-                
-            });   
+
+            });
         };
-        
-        $scope.populateNumtable=function(niveau, lettre, ordre){
-            switch (ordre){
+
+        $scope.populateNumtable = function (niveau, lettre, ordre) {
+            switch (ordre) {
                 case 1:
-                    
+
                     break;
                 case 2:
-                    
+
                     break;
                 case 3:
-                    
+
                     break;
                 case 4:
-                    
+
                     break;
                 case 5:
-                    
+
                     break;
                 default:
 
             }
         };
-        
+
         //Action sur l'ajout ou modification des emplacements
 
         $scope.testPostList = [];
 
-        for (let i = 0; i < 24; i++) {
+        for (let i = 0; i <= 19; i++) {
 
-            for (let j = 0; j < 2; j++) {
+            for (let j = 0; j <= 72; j++) {
                 $scope.testPostList.push({
-                    position: `${j}-${i}`, 
-                    nom_poste: `Post numer ${j}-${i}`
+                    position: `${i}-${j}`,
+                    nom_poste: `Post numer ${i}-${j}`
                 });
             }
         }
@@ -307,17 +344,101 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
         console.log('testPostList', $scope.testPostList);
 
         $scope.populatePlan = function (listPoste) {
+//             listPoste.forEach((item) => {
+//                 $(`#n3_${item.position}`).append(`
+//                     <div class="post">
+//                         <h2>${item.nom_poste}</h2>
+//                     </div>
+//                 `);
+//             });
+        };
+
+        $scope.listCols = [];
+        $scope.listRows = [];
+
+        for (var i = 0; i <= 19; i++) {
+            $scope.listRows.push(i);
+        }
+
+        for (var i = 0; i <= 71; i++) {
+            $scope.listCols.push(i);
+        }
+
+        setTimeout(function () {
+            $scope.populatePlan($scope.testPostList);
+
+        }, 1000);
+
+        $scope.selectedGlpi = $cookies.get("selectedGlpi");
+
+
+        $timeout(function () {
+            var paths = document.querySelectorAll('path');
+
+            // console.log(paths);
+
+            paths.forEach((item) => {
+                // console.log(item);
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    console.log(e.target.getAttribute('id'));
+                    $scope.selectedGlpi = e.target.getAttribute('id');
+                    $cookies.put("selectedGlpi", $scope.selectedGlpi);
+                })
+            });
+
+        }, 2000);
+
+
+        $scope.saveEmplacement = function (data) {
+            tanaAdminFactory.addEmplacement(data).then(function (response) {
+                console.log('result of save', response);
+            }, function (errors) {
+                console.error(errors);
+            });
+        }
+
+        $scope.getPostes = function (data) {
+            tanaAdminFactory.getPostes(data).then(function (response) {
+                $scope.postes = response;
+                $scope.populatePlanPostes($scope.postes);
+                console.log('postes', response);
+            }, function (errors) {
+                console.error(errors);
+            });
+        }
+
+        $scope.getPostes({});
+
+        $scope.populatePlanPostes = function (listPoste) {
             listPoste.forEach((item) => {
-                $(`#${item.position}`).append(`
-                    <div class="post">
-                        <h2>${item.nom_poste}</h2>
+                if (!item.plan_id) { return }
+                $(`#${item.plan_id}`).append(`               
+                <div class="card">
+                     <div class="card-content">
+                         <div class="card-title green white-text">
+                            <h1>${item.location}</h1>
+                            <h5>${item.nom_poste}</h5>
+                            </div>                                              
+                        </div>
+                    <div class="card-action">   
+                    <h2 class="text-center" id="possesseur"> ${item.possesseur} </h2>
+                            <h6 class="text-center" id="ip"> ${item.ip} </h6>
                     </div>
+                    </div>
+                    
                 `);
             });
         };
 
-        $scope.populatePlan($scope.testPostList);
-       
+        // .map((item) => {
+        //     console.log(item);
+        //         // item.addEventListener('click', function (e) {
+        //         //     e.preventDefault();
+        //         //     console.log(e);
+        //         // })
+        // });
+
     }]);
 
 //Filtre sur les selections multiuples
@@ -369,7 +490,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
 
             $scope.scale += 0.1;
             var str = 'scale(' + $scope.scale + ')';
-            $('svg#demo-tiger').css(
+            $('div#svgidzoom').css(
                     {
                         'transform': str
                     });
@@ -378,7 +499,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
         $scope.zoommoins = function () {
             $scope.scale -= 0.1;
             var str = 'scale(' + $scope.scale + ')';
-            $('svg#demo-tiger').css(
+            $('div#svgidzoom').css(
                     {
                         'transform': str
                     });
@@ -455,9 +576,9 @@ angular.module('raptorApp').controller('CtrlAdminTn_n1', ['$scope', '$rootScope'
         };
         $scope.Show12 = function () {
             $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
-        
-            
-        
+
+
+
         };
 
     }]);

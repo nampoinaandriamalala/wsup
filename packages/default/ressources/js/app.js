@@ -893,6 +893,16 @@ app.directive('ngNotification', function () {
         }
     }
 });
+
+app.directive('n3Svg', function () {
+    return {
+        restrict: 'E', /*Attribut*/
+        replace: true,
+        templateUrl: 'ressources/images/nv3.svg',
+        link: function (scope, element, attrs) {
+        }
+    }
+});
 //filtre
 app.filter("raptorFilter", function () {
     return function (input, searchText) {

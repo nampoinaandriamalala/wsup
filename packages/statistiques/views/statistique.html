@@ -32,16 +32,11 @@
         <div class="col-sm-12 espacetopbot">
             <fieldset class="fielset00">
                 <legend style="width: 180px;">
-                    <div class="input-group" id="type-search">
-                        <select class="form-control">
-                            <option value="0" selected>Aujourd'hui</option>
-                            <option value="1">hier</option>
-                            <option value="2">Semaine dernier</option>
-                            <option value="3">mois dernier</option>
-                            <option value="4">An dernier</option>
-                        </select>                            
-                    </div>
-                </legend>
+                <div class="input-group" id="type-search">
+                    <select class="form-control" ng-options="annee.mois for annee in Lesannees" ng-model="lalistedesannees" ng-change="changeranne(lalistedesannees)">                         
+                    </select>                            
+                </div>
+            </legend>
 
                 <div class="row">
                     <div class="chart_div" google-chart chart="ChartObjectPostes" style="height:600px; width:90%;"></div>

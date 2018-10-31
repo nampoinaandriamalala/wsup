@@ -15,7 +15,7 @@ app.config(function ($routeProvider, $locationProvider) {
     // if you don't wish to set base URL then use this
     $locationProvider.html5Mode({
         enabled: true,
-        requireBase: false 
+        requireBase: false
     });
 //    }
     $routeProvider
@@ -49,6 +49,10 @@ app.config(function ($routeProvider, $locationProvider) {
             })
             .when("/tn-test", {
                 templateUrl: "packages/adminTn/views/testplan.html",
+                controller: 'CtrlAdminTn_n3',
+            })
+            .when("/tn-testun", {
+                templateUrl: "packages/adminTn/views/testplan2.html",
                 controller: 'CtrlAdminTn_n3',
             })
             .when("/tn-n1", {
@@ -171,7 +175,7 @@ app.run(['$rootScope', '$http', '$cookies', '$cookieStore', '$location', functio
             //For banner
             $rootScope.showBanner = true;
 
-                    
+
             $rootScope.admindb = $cookieStore.get('consulter') == "t";
             if ($rootScope.admindb)
                 $rootScope.showA = true;
@@ -201,12 +205,12 @@ app.run(['$rootScope', '$http', '$cookies', '$cookieStore', '$location', functio
                 $rootScope.showAdministrateur = true;
             else
                 $rootScope.showAdministrateur = false;
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             //end for banner
         }
         // FIN SPECIAL LOGIN //

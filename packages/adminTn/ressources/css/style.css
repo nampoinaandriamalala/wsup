@@ -3,15 +3,53 @@
     float: left;
     width: 100%;
     padding: 2px;
-    height: 250px; 
+    height: 250px;
     border: 1px solid;
     margin:auto;
 
 }
-.card{
+/*.card{
     border: solid 1px black;
     cursor: move;
+    display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}*/
+
+
+
+.card-title {
+    padding: 10px;
+    cursor:move;
 }
+.card-content {
+    text-align: center;
+    padding: 0px !important;
+}
+.card {
+    transition: .5s;
+    max-height: 190px;
+    max-width: 190px;
+    min-height: 190px;
+    min-width: 190px;
+    border-top: solid;
+/*    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);*/
+}
+.card:hover {
+    transform: scale(1.02);
+    transition: .5s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color: rgba(150, 150, 255, 1);
+}
+.card-title{
+    background-color: green;
+}
+.card h1{
+    color: white;
+}
+
+
 .espace-echange{
     border: solid 1px;
 }
@@ -35,27 +73,27 @@ h5 {
     cursor: pointer;
 }
 
-fieldset 
+fieldset
 {
     border: 1px solid #ddd !important;
     margin: 0;
     xmin-width: 0;
-    padding: 10px;       
+    padding: 10px;
     position: relative;
     border-radius:4px;
     background-color:#f5f5f5;
     padding-left:10px!important;
-}	
+}
 
 legend
 {
     font-size:14px;
     font-weight:bold;
-    margin-bottom: 0px; 
-    width: 35%; 
+    margin-bottom: 0px;
+    width: 35%;
     border: 1px solid #ddd;
-    border-radius: 4px; 
-    padding: 5px 5px 5px 10px; 
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
     background-color: #ffffff;
 }
 .code-svg rect{
@@ -80,33 +118,66 @@ legend
 
 .plan-container {
     overflow: scroll;
-    height: 300px;
+    height: 400px;
+    position: static !important;
 }
 
 .plan {
     border: solid 1px black;
     /* min-height: 2000px; */
-    min-height: 2000px;
-    min-width: 8000px;
-    background-image: url(../../../../ressources/images/nv3.svg);
+    min-height: 2800px;
+    min-width: 14400px;
+    background-image: url(../../../../ressources/images/nv3modifie.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+.plantest {
+    border: solid 1px black;
+    /* min-height: 2000px; */
+    width: auto;
+    height: auto;
+    background-image: url(../../../../ressources/images/nv3modifie.svg);
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .post-table {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 0.29rem;
     width: 100%;
     height: 100%;
+}
+.post-table-test {
+    width: auto;
+    height: 20px;
 }
 
 .post-range {
     border: solid 1px red;
     height: 200px;
-    width: 4.16%;
+    width: 200px;
 }
 .post {
-    height: 100%;
-    width: 100%;
+    height: 98%;
+    width: 98%;
+    background: rgba(255, 255, 255, 0.3);
+    max-width: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    margin: 0 !important;
+}
+
+
+.place_input {
+    position: fixed;
+    width: 200px;
+    padding: 2px;
     background: gray;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+

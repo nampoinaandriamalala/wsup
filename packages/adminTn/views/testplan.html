@@ -4,61 +4,19 @@
         <div class="plan">
             <table class="post-table">
                 <tbody>
-                    <tr>
-                        <td class="post-range post-0-0" id="0-0">
-                        </td>
-                        <td class="post-range post-0-1" id="0-1"></td>
-                        <td class="post-range post-1-0" id="1-0"></td>
-                        <td class="post-range post-1-1" id="1-1"></td>
-                        <td class="post-range post-1-2" id="1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                    </tr>
-                    <tr>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
-                        <td class="post-range post-1-2"></td>
+                    <tr ng-repeat="i in listRows">
+                        <td ng-repeat="j in listCols" class="post-range post-n3_{{i + '-' + j}}" id="n3_{{i + '-' + j}}"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="col-md-12 plan-container">
+        <n3-svg></n3-svg>
+    </div>
+    <div class="form-group place_input">
+        <label>{{selectedGlpi}}</label>
+        <input type="text" ng-model="current_place" class="form-control"  >
+        <button type="button" class="btn btn-primary" ng-click="saveEmplacement({plan_id: 'n3_' + current_place, placement_glpi: selectedGlpi})">Save</button>
     </div>
 </div>

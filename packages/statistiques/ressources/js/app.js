@@ -19,6 +19,29 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
     };
     return factory;
 });
+
+angular.module('raptorApp').factory('stat', function ($http, $q) {
+
+    var factory = {
+        banner: false,
+        statEmplacement: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/statistiques/model/statEmplacementPoste.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
+        },
+
+    };
+    return factory;
+
+});
 //Controller par defaut
 angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
 
@@ -29,9 +52,123 @@ angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http'
     }]);
 
 
-angular.module('raptorApp').controller('CtrlStat', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
+angular.module('raptorApp').controller('CtrlStat', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast','stat', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast,stat) {
 
         /*Votre code ici*/
+        
+        stat.statEmplacement.then(function (datas) {
+            $scope.ChartObjectPostes = {
+                    "type": "LineChart",
+                    "displayed": false,
+                    "data": {
+                        "cols": [
+                            {
+                                "id": "demande",
+                                "label": "Demande",
+                                "type": "string",
+                                "p": {}
+                            },
+
+                            {
+                                "id": "AnPrec-id",
+                                "label": "Année actuelle",
+                                "type": "number",
+                                "p": {}
+                            },
+                            {
+                                "id": "An-id",
+                                "label": "Année précédente",
+                                "type": "number",
+                                "p": {}
+                            },
+                        ],
+                        "rows": datas.data[0]
+                    },
+                    "options": {
+                        "title": "Courbes de variation des demandes dans l'année",
+                        "isStacked": "true",
+                        "fill": 20,
+                        "displayExactValues": true,
+                        "vAxis": {
+                            "title": "Nombre de demande",
+                            "gridlines": {
+                                "count": 10
+                            }
+                        },
+                        "hAxis": {
+                            "title": "Mois"
+                        }
+                    },
+                    "formatters": {}
+                }
+        });
+
+        $scope.Lesannees = [
+
+            {
+                "numero": "00",
+                mois: 'Mois en cours'
+            },
+            {
+                "numero": "01",
+                mois: 'Janvier'
+            },
+            {
+                "numero": "02",
+                mois: 'Février'
+            }
+            ,
+            {
+                "numero": "03",
+                mois: 'Mars'
+            }
+            ,
+            {
+                "numero": "04",
+                mois: 'Avril'
+            }
+            ,
+            {
+                "numero": "05",
+                mois: 'Mai'
+            }
+            ,
+            {
+                "numero": "06",
+                mois: 'Juin'
+            }
+            ,
+            {
+                "numero": "07",
+                mois: 'Juillet'
+            }
+            ,
+            {
+                "numero": "08",
+                mois: 'Août'
+            }
+            ,
+            {
+                "numero": "09",
+                mois: 'Septembre'
+            }
+            ,
+            {
+                "numero": "10",
+                mois: 'Octobre'
+            }
+            ,
+            {
+                "numero": "11",
+                mois: 'Novembre'
+            }
+            ,
+            {
+                "numero": "12",
+                mois: 'Décembre'
+            }
+        ];
+        $scope.lalistedesannees = $scope.Lesannees[0];
 
         $scope.ChartObjectUC = {};
 
@@ -74,55 +211,45 @@ angular.module('raptorApp').controller('CtrlStat', ['$scope', '$rootScope', '$ht
         };
 
 
-
-
-
-
-        $scope.ChartObjectPostes = {};
-
-        $scope.ChartObjectPostes.type = "PieChart";
-
-        $scope.onions = [
-            {v: "Onions"},
-            {v: 3},
-        ];
-
-        $scope.ChartObjectPostes.data = {"cols": [
-                {id: "occupe", label: "Occupé", type: "string"},
-                {id: "libre", label: "Libre", type: "string"}
-            ], "rows": [
-                {c: [
-                        {v: "Libre"},
-                        {v: 74},
-                    ]},
-                {c: [
-                        {v: "Occupé"},
-                        {v: 1200},
-                    ]}
-            ]};
-
-        $scope.ChartObjectPostes.options = {
-            "title": "Statistiques de Postes Libres",
-            "isStacked": "true",
-            "fill": 20,
-            "displayExactValues": true,
-            "vAxis": {
-                "title": "test titre",
-                "gridlines": {
-                    "count": 10
-                }
-            },
-            "hAxis": {
-                "title": "Semaine"
-            },
-            "formatters": {}
-        };
-
-
-
-
-
-
+//        $scope.ChartObjectPostes = {};
+//
+//        $scope.ChartObjectPostes.type = "PieChart";
+//
+//        $scope.onions = [
+//            {v: "Onions"},
+//            {v: 3},
+//        ];
+//
+//        $scope.ChartObjectPostes.data = {"cols": [
+//                {id: "occupe", label: "Occupé", type: "string"},
+//                {id: "libre", label: "Libre", type: "string"}
+//            ], "rows": [
+//                {c: [
+//                        {v: "Libre"},
+//                        {v: 74},
+//                    ]},
+//                {c: [
+//                        {v: "Occupé"},
+//                        {v: 1200},
+//                    ]}
+//            ]};
+//
+//        $scope.ChartObjectPostes.options = {
+//            "title": "Statistiques de Postes Libres",
+//            "isStacked": "true",
+//            "fill": 20,
+//            "displayExactValues": true,
+//            "vAxis": {
+//                "title": "test titre",
+//                "gridlines": {
+//                    "count": 10
+//                }
+//            },
+//            "hAxis": {
+//                "title": "Semaine"
+//            },
+//            "formatters": {}
+//        };
 
         $scope.ChartObjectCarac = {};
 
@@ -180,76 +307,4 @@ angular.module('raptorApp').controller('CtrlStat', ['$scope', '$rootScope', '$ht
             "formatters": {}
         };
 
-
-
-
     }]);
-
-
-
-
-
-
-/*
- //Directive modale
- app.directive('ngModaldefault', function () {
- return {
- restrict: 'A', 
- templateUrl: 'packages/default/views/templateDefaultModal.html',
- link: function (scope, element, attrs) {
- $(element).on('hidden.bs.modal', function () {
- try {
- //$scope.verificationAjourFournisseur = "";                    
- } catch (e) {
- }
- });
- }
- }
- });
- //Directive modale
- app.directive('ngModaldloader', function () {
- return {
- restrict: 'A', 
- template: '<div class="modal-hide"></div>',
- link: function (scope, element, attrs) {
- $(element).on('hidden.bs.modal', function () {
- try {
- } catch (e) {
- }
- });
- 
- }
- }
- });
- 
- //Directive modale
- app.directive('ngDatepicker', function () {
- return {
- restrict: 'A',
- link: function (scope, element, attrs) {
- $(element).datepicker({
- todayBtn: true,
- language: "fr",
- autoclose: true
- });
- }
- }
- });
- app.directive('ngNumeric', function(){
- return {
- require: 'ngModel',
- link: function(scope, element, attrs, modelCtrl) {
- 
- modelCtrl.$parsers.push(function (inputValue) {
- var transformedInput = inputValue ? inputValue.replace(/[^\d.-]/g,'') : null;
- 
- if (transformedInput!=inputValue) {
- modelCtrl.$setViewValue(transformedInput);
- modelCtrl.$render();
- }
- return transformedInput;
- });
- }
- };
- });
- **/
