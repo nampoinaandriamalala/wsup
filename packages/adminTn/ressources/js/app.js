@@ -305,28 +305,6 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             });
         };
 
-        $scope.populateNumtable = function (niveau, lettre, ordre) {
-            switch (ordre) {
-                case 1:
-
-                    break;
-                case 2:
-
-                    break;
-                case 3:
-
-                    break;
-                case 4:
-
-                    break;
-                case 5:
-
-                    break;
-                default:
-
-            }
-        };
-
         //Action sur l'ajout ou modification des emplacements
 
         $scope.testPostList = [];
@@ -414,18 +392,18 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$rootScope'
             listPoste.forEach((item) => {
                 if (!item.plan_id) { return }
                 $(`#${item.plan_id}`).append(`               
-                <div class="card">
-                     <div class="card-content">
-                         <div class="card-title green white-text">
+                <div class="card" id="drag1" draggable="true" ondragstart="drag(event)">
+                    <div class="card-content">
+                        <div class="card-title green white-text">
                             <h1>${item.location}</h1>
                             <h5>${item.nom_poste}</h5>
-                            </div>                                              
-                        </div>
+                        </div>                                              
+                    </div>
                     <div class="card-action">   
-                    <h2 class="text-center" id="possesseur"> ${item.possesseur} </h2>
-                            <h6 class="text-center" id="ip"> ${item.ip} </h6>
+                        <h2 class="text-center" id="possesseur"> ${item.possesseur} </h2>
+                        <h3 class="text-center" id="ip"> ${item.ip_adress} </h3>
                     </div>
-                    </div>
+                </div>
                     
                 `);
             });

@@ -1,12 +1,14 @@
 <div class="" id="svgimg" style="">
     <div class="container w-100" style="">
         <div class="row" style="">
-            <div  class="col-md-11 plan-container">
+            <div  class="col-md-11 plan-container" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <div id="svgidzoom" class="plan">
                     <table class="post-table">
                         <tbody>
                             <tr ng-repeat="i in listRows">
-                                <td ng-repeat="j in listCols" class="post-range post-n3_{{i + '-' + j}}" id="n3_{{i + '-' + j}}"></td>
+                                <td ng-repeat="j in listCols" class="post-range post-n3_{{i + '-' + j}}" id="n3_{{i + '-' + j}}" ng-click="ajoutEmplacement(n3_{{i + '-' + j}})">
+                                    
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -91,23 +93,6 @@
                                                 
                                             </div>
                                         </div>
-                                 
-
-                                    <!--                                                                        <div class="card text-white mb-3 bg-dark size-note-drag" id="drag1" draggable="true" ondragstart="drag(event)">
-                                                                                                                <div class="card-header text-center bg-info">
-                                                                                                                    <h2 class="text-center"> 3/B/XXX </h2>
-                                                                                                                    <button class="btn btn-default pull-center" style="background-radius:25%;">Eteindre</button>
-                                                                                                                    <button class="btn btn-default pull-center" data-toggle="modal" href="#myModal">Modifier</button>
-                                                                                                                </div>
-                                                                                                                <div class="card-body text-center bg-light p-0 m-0">
-                                                                                                                    <h5 class="card-title">{{postelocal.nom_poste}}</h5>
-                                                                                                                    <img style="border-radius:50%;" src="/wsup/ressources/images/green.png" id="img_etat"> 
-                                                                                                                </div>
-                                                                                                                <div class="card-footer bg-info">
-                                                                                                                    <h2 class="text-center" id="possesseur"> {{postelocal.possesseur}} </h2>
-                                                                                                                    <h6 class="text-center" id="ip"> {{postelocal.ip}} </h6>
-                                                                                                                </div>
-                                                                                                            </div>-->
 
                                 </div>
                                 <div class="column col-md-12" id="columnTest" ondrop="drop(event)" ng-model="insertBloc" ng-bind-html="htmlbindtest" ondragover="allowDrop(event)">
