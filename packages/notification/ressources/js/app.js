@@ -1,12 +1,13 @@
 //FACTORY
-angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) {    //Exemple de service
-    
+angular.module('raptorApp').factory('tanaNotifFactory', function ($http, $q) {
+
     var factory = {
         banner: false,
-        getDefautl: function (dataObj) {
-            var deferred = $q.defer();$http({
+        getListNotif: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
                 method: 'POST',
-                url: 'packages/default/model/default.php',
+                url: 'packages/notification/model/notification.php',
                 data: $.param(dataObj),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).
@@ -20,9 +21,25 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
 });
 
 //Controller par defaut
-angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
+angular.module('raptorApp').controller('CtrlNotif', ['$scope', '$rootScope', '$http', 'tanaNotifFactory','myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout','ngToast', function ($scope, $rootScope, $http,tanaNotifFactory, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout,ngToast) {
 
-    /*Votre code ici*/
+    var dataObj = {};
+        tanaNotifFactory.getListNotif(dataObj).then(function (datas) {
+            console.log(datas.data);
+            $scope.listnotif = datas.data;
+
+        });
+        
+        $scope.initialisationNotif = function ()
+        {
+            var dataObj = {};
+            tanaNotifFactory.getListNotif(dataObj).then(function (datas) {
+                $scope.listnotif = datas.data.datas;
+                $scope.listnotif.push('');
+                console.log(datas.data.datas);
+
+            });
+        };
 
 }]);
 

@@ -499,7 +499,9 @@ h1.page-header {
 .couleur-gris {
     color: #636c72;
 }
-fieldset 
+
+
+/*fieldset 
 {
     border: 1px solid #ddd !important;
     margin: 0;
@@ -521,4 +523,4 @@ legend
     border-radius: 4px; 
     padding: 5px 5px 5px 10px; 
     background-color: #ffffff;
-}
+}*/

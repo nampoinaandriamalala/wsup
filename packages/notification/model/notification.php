@@ -9,17 +9,39 @@
  * @author     YOUR NAME <YOUREMAIL@jouve.com>
  */
 include '../../../config/autoload.php';
+include '../../../config/conmysql.php';
+include '../../../config/catcherrors.php';
+
+try {
 
 //BDD
-$postgres = new connexion();
-$conn = $postgres->connect();
+    $mysql = new conmysql();
+    $connMySQL = $mysql->connect();
 
-//var_dump($_POST);
+
 //SQL
-$sql = "select * from pg_stat_activity";
-$dataOut = $postgres->getSQL($conn, $sql);
+    $sql = "select * from glpi_tickets order by date desc";
+    $dataOut = $mysql->getSQL($connMySQL, $sql);
 
+//$sortie = array("datas" => $dataOut);
+    
 
-$sortie = array("erreur" => "non", "notification" => "success", "message" => "Opération terminée avec succès", "datas" => $dataOut);
-echo json_encode($sortie);
+    //echo json_encode(array(utf8_encode($dataOut)));
+//    $result = [];
+//    
+//    foreach ($dataOut as $data) {
+//        $data->name = utf8_encode($data->name);
+//        $result[] = $data;
+//    }
+    
+//    print_r($dataOut);
+    print_r(json_encode( $dataOut, JSON_UNESCAPED_UNICODE ));
+    
+//        echo $encoded = json_encode($dataOut) ;
+//        print_r(json_decode($encoded));
+    
+} catch (Exception $ex) {
+    http_response_code(400);
+    echo json_encode(['error' => $ex->getMessage()]);
+}
 ?>
