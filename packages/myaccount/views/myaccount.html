@@ -2,70 +2,72 @@
 
 <div class="py-5 ac-entete">       
     <div class="container ">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center display-4">Mon compte</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center display-4">Mon compte</h1>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
 <div class="container emp-profile">
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <div class="col-md-12 text-dedansmat">
-                        <h1>
-                            {{matricule}}
-                        </h1>
-                    </div>
-
-                    <div class="col-md-12 text-dedans">
-                        <h3>
-                           {{nom}}
-                        </h3>
-                    </div>
-                    <div class="col-md-12 text-dedans">
-                        <h3>
-                            {{prenom}}
-                        </h3>
-                    </div>
-                    <div class="col-md-12 text-dedans">
-                        <h6>
-                           Superviseur : {{sup}}
-                        </h6>
-                        <h6>
-                            Technicien : {{tech}}
-                        </h6>
-                        <h6>
-                            Administrateur : {{adm}}
-                        </h6>
-                    </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <div class="col-md-12 text-dedansmat">
+                    <h1>
+                        {{matricule}}
+                    </h1>
                 </div>
 
-                <div class="btnmdp">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Changer le mot de passe"/>
+                <div class="col-md-12 text-dedans">
+                    <h3>
+                        {{nom}}
+                    </h3>
+                </div>
+                <div class="col-md-12 text-dedans">
+                    <h3>
+                        {{prenom}}
+                    </h3>
+                </div>
+                <div class="col-md-12 text-dedans">
+                    <h6>
+                        Superviseur : {{sup}}
+                    </h6>
+                    <h6>
+                        Technicien : {{tech}}
+                    </h6>
+                    <h6>
+                        Administrateur : {{adm}}
+                    </h6>
                 </div>
             </div>
 
+            <div class="btnmdp">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Changer le mot de passe"/>
+            </div>
+        </div>
 
-            <div class="col-md-6">
+
+        <div class="col-md-6">
+
+            <div class="profile-img">
                 
-                <div class="profile-img">
-                   
-                    <img id="image_profil" src={{imageSrc}} alt=""/>
-                    <form method="post" enctype="multipart/form-data" class="hidden" id="mystupidform">
-                                        <input type="file" class="btn btn-default" ng-model="newImage" file-changed>
-                                        <input type="submit" class="btn btn-default" value="Valider" name="submit" id="downloadToLocal" ng-model="imgvaleur" ng-click="testcl()">
-                        </form>
-                    
-                    <!--http://jsbin.com/uboqu3/1/edit?html,js,output-->
-                    
-                   <!-- <input type="text" class="form-control correction-groupe-btn-input" placeholder="Non du fichier" disabled="" id="indication_fichier"/> -->
-                    </div>
-                </div>
-                              
+                <img ng-if="isImage(fileExt)" ngf-src="picFile[0]" class="thumb">
+                <!--<img id="image_profil" src={{imageSrc}} alt=""/>-->
+                <form method="post" enctype="multipart/form-data" class="hidden" id="mystupidform">
+                    <input type="file" id="file" class="input-text" ngf-change="onChange($files)" ngf-select ng-model="picFile" name="attachement" accept="image/png, image/jpeg, image/jpg, application/msword, application/vnd.ms-excel, application/pdf " />
+<!--                    <img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}" />-->
+<!--                    <input type="submit" class="btn btn-default" value="Valider" name="submit" id="downloadToLocal" ng-model="imgvaleur" ng-click="testcl()">-->
+                </form>
+
+                <!--http://jsbin.com/uboqu3/1/edit?html,js,output-->
+
+                <!-- <input type="text" class="form-control correction-groupe-btn-input" placeholder="Non du fichier" disabled="" id="indication_fichier"/> -->
             </div>
-        </div>  
+        </div>
+
+    </div>
+</div>  

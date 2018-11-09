@@ -51,6 +51,18 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
 angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
 
         /*Votre code ici*/
+        
+        $scope.onChange = function (files) {
+          if(files[0] == undefined) return;
+          $scope.fileExt = files[0].name.split(".").pop()
+        };
+        
+        $scope.isImage = function(ext) {
+          if(ext) {
+            return ext == "jpg" || ext == "jpeg"|| ext == "gif" || ext=="png"
+          }
+        };
+        
         $scope.matricule = $cookieStore.get('login');
         $scope.nom = $cookieStore.get('nom');
         $scope.prenom = $cookieStore.get('prenoms');

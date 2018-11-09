@@ -1,3 +1,35 @@
+<div class="py-4">
+    <div class="col-md-12">
+        <div class="input-group p-5">
+            <div class="input-group">
+                <div class="input-group-btn search-panel">       
+                    <div class="input-group" id="type-search">
+                        <select class="form-control" ng-model="rechercheTypes" ng-change="recherchetype()">
+                                <option value="0" >Nom-UC</option>                       
+                                <option value="1">Utilisateur</option>
+                                <option value="2">Emplacement</option>
+                                <option value="3">Adresse IP</option>
+                                <option value="4">Processeurs</option>
+                                <option value="5">OS Installé</option>
+                                <option value="6">Memoire Vive Total</option>
+                                <option value="7">Frequence memoire</option>
+                                <option value="8">Carte Graphique</option>
+                                <option value="9">Adresse MAC</option>
+
+                            </select>
+                    </div>
+                </div>
+                <input type="text" class="form-control" name="y" ng-model="posseseur" placeholder="Recherche" ng-change="filtreposte(posseseur)">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="" id="svgimg" style="">
     <div class="container w-100" style="">
         <div class="row" style="">
@@ -6,8 +38,8 @@
                     <table class="post-table">
                         <tbody>
                             <tr ng-repeat="i in listRows">
-                                <td ng-repeat="j in listCols" class="post-range post-n3_{{i + '-' + j}}" id="n3_{{i + '-' + j}}" ng-click="ajoutEmplacement(n3_{{i + '-' + j}})">
-                                    
+                                <td ng-repeat="j in listCols" class="post-range post-n3_{{i + '-' + j}}" id="n3_{{i + '-' + j}}">
+                                     <!--ng-click="ajoutEmplacement(n3_{{i + '-' + j}})"-->
                                 </td>
                             </tr>
                         </tbody>
@@ -30,35 +62,8 @@
         </div>
     </div>
 </div>
-<!--<div data-spy="scroll" data-target="#svgimg" data-offset="0"> </div>-->
-<div class="py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <div class="input-group-btn search-panel">       
-                        <div class="input-group" id="type-search">
-                            <select class="form-control">
-                                <option value="0" selected>Tous</option>                       
-                                <option value="1">Postes</option>
-                                <option value="2" selected>UC</option>
-                                <option value="3">Utilisateurs</option>
 
-                            </select>                            
-                        </div>
-                    </div>
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Recherche">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span> Recherche</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="background" >
+<!--<div class="background" >
     <div class="h-100 w-100">
         <div class="container w-100 h-100">
             <div class="row">
@@ -72,10 +77,6 @@
                         <div class="col-md-12 h-100 align-items-center justify-content-center">
                             <div class="w-100 m-0 text-center p-2 h-100 justify-content-center align-items-center" >
                                 <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)" >
-
-
-
-
 
                                 </div>
 
@@ -119,9 +120,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<div class="modal fade" id="myModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<!--<div class="modal fade" id="myModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 
     <div class="modal-dialog" >
         <div class="modal-content">
@@ -227,6 +228,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <toast></toast>

@@ -163,7 +163,23 @@ angular.module('raptorApp').factory('operateur', function ($http, $q) {
 
 angular.module('raptorApp')
         .controller('CtrlUtilisateur', ['$scope', '$rootScope', '$http', 'raConnexion', '$location', '$cookies', '$cookieStore', '$window', '$sce', 'utilisateurDroit', 'ngToast', 'operateur', function ($scope, $rootScope, $http, raConnexion, $location, $cookies, $cookieStore, $window, $sce, utilisateurDroit, ngToast, operateur) {
-                // Initialisation
+              
+              // Choix 1 pour type utilisateurs
+      
+//      $scope.selectiontypeuseradm=function(){
+//          $scope.varUser.ajouter.cheked=false;
+//          $scope.varUser.consulter.cheked=false;
+//      };
+//      $scope.selectiontypeusertech=function(){
+//          $scope.varUser.admin.cheked=false;
+//          $scope.varUser.consulter.cheked=false;
+//      };
+//      $scope.selectiontypeusersup=function(){
+//          $scope.varUser.ajouter.cheked=false;
+//          $scope.varUser.admin.cheked=false;
+//      };
+                        
+                        // Initialisation
                 $scope.login = $cookieStore.get('login');
                 $scope.password = $cookieStore.get('password');
                 if ($scope.login == undefined && $scope.login == undefined) {

@@ -71,19 +71,51 @@ try {
             $mysql = new conmysql();
             $connMySQL = $mysql->connect();
 
-            $sql = "select gc.id as id_poste,
-					gl.name as location,
-					'' as plan_id,
-				    gc.name as nom_poste,
-				    gc.contact as possesseur,
-				    gc.contact as ip,
-				    glpi.glpi_plugin_fusioninventory_inventorycomputercomputers.remote_addr as ip_adress
-				    from glpi.glpi_computers as gc
-				    inner join glpi.glpi_plugin_fusioninventory_inventorycomputercomputers 
-				    	on gc.id=glpi.glpi_plugin_fusioninventory_inventorycomputercomputers.computers_id
-				    inner join glpi.glpi_locations as gl on gc.locations_id=gl.id
-                                    
-				    ";
+            $sql = "select DISTINCT
+                        gc.id as id_poste,
+                        gl.name as location,
+                        gc.name as nom_poste,
+                        gc.contact as possesseur,
+                        gc.operatingsystems_id as operatingsystem_id,
+                        gpficc.remote_addr as ip_adress,
+                        gdp.designation as processors_designation,
+                        gop.name as name_system,
+                        gidp.itemtype as itemtype_processors,
+                        gdm.designation as designation_processeurs,
+                        gdm.frequence as frequence_proc,
+                        gidm.size as size_memories,
+                        gdm.frequence as frequence_memory,
+                        gdgc.designation as designation_graphic_card,
+                        gidnc.mac as mac,
+                        gdnc.designation as designation_mac,
+                        gidhd.capacity as capacity_hdd
+	
+
+                                from glpi_computers as gc
+
+                                inner join glpi_plugin_fusioninventory_inventorycomputercomputers as gpficc on gpficc.computers_id = gc.id
+                                inner join glpi_operatingsystems as gop on gop.id = gc.operatingsystems_id 
+
+                                left join glpi.glpi_locations as gl on gl.id = gc.locations_id
+
+                                inner join glpi_items_deviceprocessors as gidp on gidp.items_id = gc.id
+                                inner join glpi_deviceprocessors as gdp on gdp.id = gidp.deviceprocessors_id
+
+                                inner join glpi_items_devicememories as gidm on gidm.items_id = gc.id
+                                inner join glpi_devicememories as gdm on gdm.id = gidm.devicememories_id
+
+                                inner join glpi_items_devicegraphiccards as gidgc on gidgc.items_id = gc.id
+                                inner join glpi_devicegraphiccards as gdgc on gdgc.id = gidgc.devicegraphiccards_id
+
+                                inner join glpi_items_devicenetworkcards as gidnc on gidnc.items_id = gc.id
+                                inner join glpi_devicenetworkcards as gdnc on gdnc.id = gidnc.devicenetworkcards_id
+
+                                inner join glpi_items_devicesoundcards as gidsc on gidsc.items_id = gc.id
+                                inner join glpi_devicesoundcards as gdsc on gdsc.id = gidsc.devicesoundcards_id
+
+                                inner join glpi_items_deviceharddrives as gidhd on gidhd.items_id = gc.id
+                                inner join glpi_deviceharddrives as gdhd on gdhd.id = gidhd.deviceharddrives_id";
+            
 //                        		where gl.name in ('3/G/0001', '3/A/0007', '3/K/0013')	    
 
 

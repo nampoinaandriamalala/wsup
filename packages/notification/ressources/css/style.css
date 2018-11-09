@@ -29,10 +29,17 @@ h3{
 .box-part-notif:hover .text ,
 .box-part-notif:hover a{
     color:#FFF;
-    -webkit-transition: all 1s ease-out;
-    -moz-transition: all 1s ease-out;
-    -o-transition: all 1s ease-out;
-    transition: all 1s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    transform: scale(1.02);
+}
+
+.box-part-notif:hover{
+    transition: .5s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color: rgba(150, 150, 255, 1);
 }
 
 .text{

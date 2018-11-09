@@ -15,6 +15,21 @@
             </div>
         </div>
     </div>
+    <div class="col-md-2">
+        <div class="input-group p-5">
+            <div class="input-group">
+                <div class="input-group-btn">       
+                    
+                </div>
+                
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="ListNotifTout()" value={{affichervalue}} >{{affichervalue}}<i class={{icon}} aria-hidden="true"></i>
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--    <div class="col-md-2 p-2">
         <button class="btn btn-danger" type="button">
             <span class="glyphicon glyphicon-delete"></span> Supprimer tous les historiques</button>
@@ -32,20 +47,20 @@
         <div class="box-part-notif text-center">
             <i class="fa  fa-3x" aria-hidden="true"></i>
             <div class="title">
-                <h3>{{lsnt.date}}</h3>
+                <h2>{{lsnt.date}}</h2>
                 <h1>{{lsnt.name}}</h1>
             </div>
 
             <div class="">
                 <a href="#" class="btn btn-outline-info" ng-click="checked = !checked">Afficher / cacher le contenu </a>
                 <div class="panel panel-default espacetopbot" ng-show="checked">
-                    <h2 class=" text-center">{{lsnt.content}}</h2>
+                    <h6 class=" text-center">{{lsnt.content}}</h6>
                 </div>
             </div>
 
             <div class="text">
-                <span>UC numero
-                    <h4> UC_XXXX </h4> n'est pas allumé depuis 4 jours </span>
+                <span>Type demande
+                    <h3> {{lsnt.typedemnde}} </h3> </span>
             </div>
             <a href="#">Supprimer de l'historique</a>
         </div>

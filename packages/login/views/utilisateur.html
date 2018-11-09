@@ -48,7 +48,10 @@
                             Superviseur
                         </div>
                         <div class="col-sm-10">
-                            <input type="checkbox" class="form-control float-left" ng-model="varUser.consulter">
+                            <label class="switch ">
+                            <input type="checkbox" class="form-control primary" ng-disabled="varUser.ajouter || varUser.admin" ng-model="varUser.consulter">
+                            <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="row espacetopbot">
@@ -56,7 +59,10 @@
                             Technicien
                         </div>
                         <div class="col-sm-10">
-                            <input type="checkbox" class="form-control" ng-model="varUser.ajouter">
+                            <label class="switch ">
+                            <input type="checkbox" class="form-control primary" ng-disabled="varUser.admin || varUser.consulter" ng-model="varUser.ajouter">
+                            <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="row espacetopbot">
@@ -64,7 +70,16 @@
                             Administrateur
                         </div>
                         <div class="col-sm-10">
-                            <input type="checkbox" class="form-control" ng-model="varUser.admin">
+                            
+<!--                            <label class="switch ">
+                            <input type="checkbox" class="default">
+                            <span class="slider round"></span>
+                            </label>-->
+                            
+                            <label class="switch ">
+                            <input type="checkbox" class="form-control primary" ng-disabled="varUser.ajouter || varUser.consulter" ng-model="varUser.admin">
+                            <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
                     <div class="row espacetopbot">
@@ -87,45 +102,45 @@
             <div class="espace-liste-utilisateur">  
                 <div class="content-list">
                     <!--<ul class="ul-style-listview">-->
-                        <!--<li  class="listview-html active">nomFichier.pdf</li>-->
-                        <!--<li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">-->
-                        <!--<li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">-->
-                            <table class="table table-striped table-bordered">
-                                <tr>
-                                    <th class="espace-entre-matricule">Matricule</th>
-                                    <th class="espace-entre-matricule">Nom</th>
-                                    <th class="espace-entre-matricule">Prénom</th>
-                                    <th class="espace-entre-matricule">Adresse message</th>
-                                    <th class="espace-entre-tableau">Superviseur</th>
-                                    <th class="espace-entre-tableau">Technicien</th>
-                                    <th class="espace-entre-tableau">Administrateur</th>
-                                    <th class="espace-btn-anime">Enregistrer modificaiton</th>
-                                    <th class="espace-btn-anime">Supprimer</th>
-                                </tr>
-                                <tr ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">
-                                    <td>{{utilisateur.matricule}}</td>
-                                    <td>{{utilisateur.nom}}</td>
-                                    <td>{{utilisateur.prenoms}}</td>
-                                    <td>
-                                        <input type="text" ng-model="utilisateur.adresseemail" class="form-control width-250"/>
-                                    </td>
-                                    <td><input type="checkbox" class="form-control" ng-model="consulter[$index]"></td>
-                                    <td><input type="checkbox" class="form-control" ng-model="ajouter[$index]"></td>
-                                    <td><input type="checkbox" class="form-control" ng-model="admin[$index]"></td>
-                                    <td class="expace-table-btn">
-                                        <button class="btn btn-warning" ng-click="saveModif(utilisateur.id, $index, consulter[$index], ajouter[$index], editer[$index], supprimer[$index], admin[$index],adresseemail[$index])">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                    <td class="expace-table-btn">
-                                        <button class="btn btn-danger" ng-click="supprimerUser(utilisateur.id, $index)">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
+                    <!--<li  class="listview-html active">nomFichier.pdf</li>-->
+                    <!--<li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">-->
+                    <!--<li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">-->
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th class="espace-entre-matricule">Matricule</th>
+                            <th class="espace-entre-matricule">Nom</th>
+                            <th class="espace-entre-matricule">Prénom</th>
+                            <th class="espace-entre-matricule">Adresse message</th>
+                            <th class="espace-entre-tableau">Superviseur</th>
+                            <th class="espace-entre-tableau">Technicien</th>
+                            <th class="espace-entre-tableau">Administrateur</th>
+                            <th class="espace-btn-anime">Enregistrer modificaiton</th>
+                            <th class="espace-btn-anime">Supprimer</th>
+                        </tr>
+                        <tr ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">
+                            <td>{{utilisateur.matricule}}</td>
+                            <td>{{utilisateur.nom}}</td>
+                            <td>{{utilisateur.prenoms}}</td>
+                            <td>
+                                <input type="text" ng-model="utilisateur.adresseemail" class="form-control width-250"/>
+                            </td>
+                            <td><input type="checkbox" class="form-control" ng-model="consulter[$index]"></td>
+                            <td><input type="checkbox" class="form-control" ng-model="ajouter[$index]"></td>
+                            <td><input type="checkbox" class="form-control" ng-model="admin[$index]"></td>
+                            <td class="expace-table-btn">
+                                <button class="btn btn-warning" ng-click="saveModif(utilisateur.id, $index, consulter[$index], ajouter[$index], editer[$index], supprimer[$index], admin[$index], adresseemail[$index])">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                            <td class="expace-table-btn">
+                                <button class="btn btn-danger" ng-click="supprimerUser(utilisateur.id, $index)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
 
-                                </tr>
-                            </table>
-                        <!--</li>-->
+                        </tr>
+                    </table>
+                    <!--</li>-->
                     <!--</ul>-->
                 </div>
             </div>

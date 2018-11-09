@@ -20,9 +20,7 @@ try {
 
 
 //SQL
-    
-    $limit= "limit 100";
-    
+       
     $sql = "select gt.id,
 		gt.name,
 		gt.date,
@@ -34,7 +32,7 @@ try {
 		gr.name as typedemnde
                     from glpi_tickets as gt
                     inner join glpi_requesttypes as gr on gr.id=gt.requesttypes_id
-                    order by gt.date desc $limit ";
+                    order by gt.date desc ";
     $dataOut = $mysql->getSQL($connMySQL, $sql);
     $tab_sortie = [];
     foreach ($dataOut as $key => $value) {

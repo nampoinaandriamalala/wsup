@@ -34,7 +34,7 @@
     min-height: 190px;
     min-width: 190px;
     border-top: solid;
-/*    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);*/
+    /*    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%);*/
 }
 .card:hover {
     transform: scale(1.02);
@@ -118,7 +118,7 @@ legend
 
 .plan-container {
     overflow: scroll;
-    height: 800px;
+    height: 650px;
     position: static !important;
 }
 
@@ -127,10 +127,31 @@ legend
     /* min-height: 2000px; */
     min-height: 2800px;
     min-width: 14400px;
-    background-image: url(../../../../ressources/images/nv3modifie.svg);
+    background-image: url(../../../../ressources/images/niv3final__.svg);
     background-size: contain;
     background-repeat: no-repeat;
-    
+
+}
+.plann2 {
+    border: solid 1px black;
+    /* min-height: 2000px; */
+    min-height: 2800px;
+    min-width: 14400px;
+    background-image: url(../../../../ressources/images/niv2final__.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.plann1 {
+    border: solid 1px black;
+    /* min-height: 2000px; */
+    min-height: 2800px;
+    min-width: 14400px;
+    background-image: url(../../../../ressources/images/niv1final__.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
 }
 
 .plantest {
@@ -138,7 +159,7 @@ legend
     /* min-height: 2000px; */
     width: auto;
     height: auto;
-    background-image: url(../../../../ressources/images/nv3modifie.svg);
+    background-image: url(../../../../ressources/images/niv3final__.svg);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -154,7 +175,7 @@ legend
 }
 
 .post-range {
-/*    border: solid 1px red;*/
+    /*    border: solid 1px red;*/
     height: 200px;
     width: 200px;
 }
@@ -180,4 +201,52 @@ legend
     box-sizing: border-box;
 }
 
+.heart_img{margin:0 0 0 0;}
 
+
+.heart_img button {
+    animation: 2.5s ease 0s normal none infinite running animateHeartBeat;
+    overflow: inherit;
+    position: relative; display:inline-block; max-width:100px;
+}
+
+@keyframes animateHeartBeat {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1.4);
+    }
+    10% {
+        transform: scale(1.3);
+    }
+    15% {
+        transform: scale(1.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes animateHeartBeat {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1.4);
+    }
+    10% {
+        transform: scale(1.3);
+    }
+    15% {
+        transform: scale(1.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
