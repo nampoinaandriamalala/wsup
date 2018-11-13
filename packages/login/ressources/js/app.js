@@ -274,7 +274,7 @@ angular.module('raptorApp')
                         editer: editer,
                         supprimer: supprimer,
                         admin: admin,
-                        adresseemail: adresseemail,
+                        adresseemail: adresseemail
                     };
                     utilisateurDroit.saveModifUser(dataObj).then(function (datas) {
                         ngToast.create({
@@ -526,7 +526,8 @@ angular.module("raptorApp")
                                     $cookieStore.put('ajouter', output.ajouter);
                                     $cookieStore.put('editer', output.editer);
                                     $cookieStore.put('supprimer', output.supprimer);
-
+                                    $cookieStore.put('email', output.email);
+                                    
 
                                     $rootScope.hideYourBannerRoot(true);
 

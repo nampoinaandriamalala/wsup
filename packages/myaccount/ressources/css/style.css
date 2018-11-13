@@ -61,4 +61,176 @@ body{
     margin-top: 10%;
 }
 
+/* USER PROFILE PAGE */
+ .card-user-profil {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: rgba(214, 224, 226, 0.2);
+    -webkit-border-top-left-radius:5px;
+    -moz-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.card-user-profil.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 1);
+}
+.card-user-profil.hovercard .card-background {
+    height: 250px;
+}
+.card-background img {
+    background-color: #00ccff;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    margin-left: -25px;
+    margin-top: -200px;
+    min-width: 120%;
+    
+}
 
+
+.card-user-profil.hovercard .useravatar {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+}
+.card-user-profil.hovercard .useravatar img {
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+}
+.card-user-profil.hovercard .card-info {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+}
+.card-user-profil.hovercard .card-info .card-title {
+    padding:0 5px;
+    font-size: 20px;
+    line-height: 1;
+    color: #262626;
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.card-user-profil.hovercard .card-info {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 40px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+.card-user-profil.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.btn-pref .btn {
+    -webkit-border-radius:0 !important;
+}
+
+
+ /*bottom card*/
+ .product-card {
+  background-color: #fdfefe;
+/*  max-width: 550px;
+  min-height: 400px;*/
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 150px;
+  box-shadow: 8px 12px 30px #b3b3b3;
+  color: #919495;
+  font-weight: normal;
+  text-align: left;
+  font-size: 18px;
+  position: relative;
+}
+
+.product-details {
+  width: 53%;
+  float: left;
+  height: 100%;
+  padding: 50px;
+}
+.product-details h1 {
+  color: #333;
+  font-family: "Pacifico", cursive;
+  margin-bottom: 35px;
+}
+.product-details button {
+  width: 150px;
+  height: 50px;
+  margin-top: 20px;
+  background-color: #337AB7;
+  border-radius: 0;
+  color: #fff;
+  box-shadow: 2px 2px 7px #173853;
+}
+.product-details button:hover, .product-details button:active, .product-details button:focus {
+  color: #fff;
+}
+
+.product-image {
+  position: absolute;
+  right: -50px;
+  top: -10px;
+}
+.product-image img {
+  max-width: 350px;
+}
+
+@media (max-width: 700px) {
+  .product-card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 540px) {
+  .product-card {
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+
+  .product-details {
+    width: 60%;
+    z-index: 1;
+  }
+
+  .product-image {
+    width: 100%;
+    left: 50%;
+    top: -30px;
+  }
+}
+@media (max-width: 440px) {
+  .product-details {
+    width: 65%;
+  }
+}
+@media (max-width: 365px) {
+  .product-details {
+    width: 80%;
+    position: relative;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}

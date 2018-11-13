@@ -24,7 +24,7 @@ $sql = " update raptor set valeur = '$valeur' where identifiant = '$identifiant'
 $dataOut = $postgres->getSQL($conn, $sql);
 
 $sortie = array("erreur" => "non", "notification" => "success", "message" => "Opération terminée avec succès", "datas" => $dataOut);
-echo json_encode($sortie);
+echo json_encode($sortie); 
 
 
 

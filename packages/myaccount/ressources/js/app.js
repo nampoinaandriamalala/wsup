@@ -15,34 +15,9 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
                         deferred.resolve(datas);
                     });
             return deferred.promise;
-        },
+        }
 
-//        readAsDataUrl = function () {
-//            if (!$window.FileReader) {
-//                throw new Error('Browser does not support FileReader');
-//            }
-//
-//            function readAsDataUrl(file) {
-//                var deferred = $q.defer(),
-//                        reader = new $window.FileReader();
-//
-//                reader.onload = function () {
-//                    deferred.resolve(reader.result);
-//                };
-//
-//                reader.onerror = function () {
-//                    deferred.reject(reader.error);
-//                };
-//
-//                reader.readAsDataURL(file);
-//
-//                return deferred.promise;
-//            }
-//
-//            return {
-//                readAsDataUrl: readAsDataUrl
-//            };
-//        }
+
     };
     return factory;
 });
@@ -52,16 +27,21 @@ angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope',
 
         /*Votre code ici*/
         
-        $scope.onChange = function (files) {
-          if(files[0] == undefined) return;
-          $scope.fileExt = files[0].name.split(".").pop()
-        };
-        
-        $scope.isImage = function(ext) {
-          if(ext) {
-            return ext == "jpg" || ext == "jpeg"|| ext == "gif" || ext=="png"
-          }
-        };
+        $scope.stepsModel ="/wsup/ressources/images/profiluser.jpg";
+
+    $scope.imageUpload = function(element){
+        var reader = new FileReader();
+        reader.onload = $scope.imageIsLoaded;
+        reader.readAsDataURL(element.files[0]);
+    };
+
+    $scope.imageIsLoaded = function(e){
+        $scope.$apply(function() {
+            $scope.stepsModel=e.target.result;
+        });
+    };
+    
+    
         
         $scope.matricule = $cookieStore.get('login');
         $scope.nom = $cookieStore.get('nom');
@@ -70,20 +50,8 @@ angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope',
         $scope.sup = $cookieStore.get('editer');
         $scope.tech = $cookieStore.get('supprimer');
         $scope.adm = $cookieStore.get('admin');
+        $scope.email = $cookieStore.get('email');
 
-        $scope.imageSrc = "/wsup/ressources/images/profil.png";
-
-//        $scope.testcl = UploadController();
-//
-//        var UploadController = function (fileReader) {
-//            console.log(fileReader);
-//            $scope.getFile = function () {
-//                fileReader.readAsDataUrl($scope.file, $scope)
-//                        .then(function (result) {
-//                            $scope.imageSrc = result;
-//                        });
-//            };
-//        };
 
     }]);
 

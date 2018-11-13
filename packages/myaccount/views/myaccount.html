@@ -1,73 +1,37 @@
-
-
-<div class="py-5 ac-entete">       
-    <div class="container ">
+<div class="col-lg-12 col-sm-12">
+    <div class="card-user-profil hovercard">
+        <div class="card-background">
+            <img class="card-bkimg" alt="" src="/wsup/ressources/images/fnd2.jpg">
+        </div>
+        <div class="useravatar">
+            <img alt="" class="thumb" ng-src="{{stepsModel}}"> 
+        </div>
+        <div class="card-info"> <span class="card-title">{{prenom}}<br />{{nom}}</span>
+        </div>
+   </div>
+</div>
+<div class="col-lg-12 col-sm-12">
+    <div class="card-user-profil hovercard">
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center display-4">Mon compte</h1>
+            <div class="col-lg-5 product-card">
+                <div class="product-details">
+                    <h1>Informations</h1>
+                    <h2><b>Matricule :</b> {{matricule}}</h2>
+                    <h2><b>Nom :</b></h2> <h3>{{nom}}</h3>
+                    <h2><b>Prénom :</b></h2> <h3>{{prenom}}</h3>
+                    <h2><b>Email :</b></h2> <h3>{{email}}</h3>
+                </div>
+            </div>
+            <div class="col-lg-5 product-card">
+                <div class="product-details">
+                    <h1>Modifications</h1>
+                    <fieldset>
+                        <legend>Modifier image</legend>
+                        <input type="file" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)"/>
+                    </fieldset>
+                    <button class="btn" >Valider la modification</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="container emp-profile">
-
-    <div class="row">
-
-        <div class="col-md-6">
-            <div class="profile-head">
-                <div class="col-md-12 text-dedansmat">
-                    <h1>
-                        {{matricule}}
-                    </h1>
-                </div>
-
-                <div class="col-md-12 text-dedans">
-                    <h3>
-                        {{nom}}
-                    </h3>
-                </div>
-                <div class="col-md-12 text-dedans">
-                    <h3>
-                        {{prenom}}
-                    </h3>
-                </div>
-                <div class="col-md-12 text-dedans">
-                    <h6>
-                        Superviseur : {{sup}}
-                    </h6>
-                    <h6>
-                        Technicien : {{tech}}
-                    </h6>
-                    <h6>
-                        Administrateur : {{adm}}
-                    </h6>
-                </div>
-            </div>
-
-            <div class="btnmdp">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Changer le mot de passe"/>
-            </div>
-        </div>
-
-
-        <div class="col-md-6">
-
-            <div class="profile-img">
-                
-                <img ng-if="isImage(fileExt)" ngf-src="picFile[0]" class="thumb">
-                <!--<img id="image_profil" src={{imageSrc}} alt=""/>-->
-                <form method="post" enctype="multipart/form-data" class="hidden" id="mystupidform">
-                    <input type="file" id="file" class="input-text" ngf-change="onChange($files)" ngf-select ng-model="picFile" name="attachement" accept="image/png, image/jpeg, image/jpg, application/msword, application/vnd.ms-excel, application/pdf " />
-<!--                    <img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}" />-->
-<!--                    <input type="submit" class="btn btn-default" value="Valider" name="submit" id="downloadToLocal" ng-model="imgvaleur" ng-click="testcl()">-->
-                </form>
-
-                <!--http://jsbin.com/uboqu3/1/edit?html,js,output-->
-
-                <!-- <input type="text" class="form-control correction-groupe-btn-input" placeholder="Non du fichier" disabled="" id="indication_fichier"/> -->
-            </div>
-        </div>
-
-    </div>
-</div>  

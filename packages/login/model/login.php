@@ -33,7 +33,7 @@ $sql_pass_admin = "select r.valeur from raptor r where r.identifiant = 'super_ad
 $dataOut_pass_admin = $postgres->getSQL($conn_pass, $sql_pass_admin);
 
 $password_bdd = "sgxVIHtzRHOWimGDmUBb6O0qR3ryNvDY";
-if (is_array($dataOut_pass_admin))
+if(is_array($dataOut_pass_admin))
     $password_bdd = $dataOut_pass_admin[0]['valeur'];
 
 
@@ -78,9 +78,10 @@ if (count($dataOut) > 0 && isset($dataOut) && is_array($dataOut)) {
         $ajouter = $dataOut1[0]['ajouter'];
         $editer = $dataOut1[0]['editer'];
         $supprimer = $dataOut1[0]['supprimer'];
+        $email = $dataOut1[0]['email'];
 
 
-        $tab_sortie = array("matricule" => $matricule, "password" => $password, "nom" => $nom, "prenoms" => $prenoms, "verification" => TRUE, "administrateur" => $administrateur, "consulter" => $consulter, "ajouter" => $ajouter, "editer" => $editer, "supprimer" => $supprimer);
+        $tab_sortie = array("matricule" => $matricule, "password" => $password, "nom" => $nom, "prenoms" => $prenoms, "verification" => TRUE, "administrateur" => $administrateur, "consulter" => $consulter, "ajouter" => $ajouter, "editer" => $editer, "supprimer" => $supprimer,"email" => $email);
         echo json_encode($tab_sortie);
     }
 } else {
