@@ -19,11 +19,11 @@
 <div class="espace-user">
     <div class="add-user">
         <fieldset>
-            <legend>Ajout des Utilisateurs</legend>
+            <legend style="font-size: 150%;">Ajout des Utilisateurs</legend>
             <div class="position-tab">
                 <div class="gestion_utilisateur">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Matricule
                         </div>
                         <div class="col-sm-10">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="row espacetopbot">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Nom
                         </div>
                         <div class="col-sm-10">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Prénom
                         </div>
                         <div class="col-sm-10">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="row espacetopbot">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Adresse email
                         </div>
                         <div class="col-sm-10 ">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="row espacetopbot">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Superviseur
                         </div>
                         <div class="col-sm-10">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="row espacetopbot">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Technicien
                         </div>
                         <div class="col-sm-10">
@@ -77,15 +77,11 @@
                         </div>
                     </div>
                     <div class="row espacetopbot">
-                        <div class="col-sm-2">
+                        <div style="font-size: 150%;" class="col-sm-2">
                             Administrateur
                         </div>
                         <div class="col-sm-10">
-                            
-<!--                            <label class="switch ">
-                            <input type="checkbox" class="default">
-                            <span class="slider round"></span>
-                            </label>-->
+                          
                             
                             <label class="switch ">
                             <input type="checkbox" class="form-control primary" ng-disabled="varUser.ajouter || varUser.consulter" ng-model="varUser.admin">
@@ -95,7 +91,7 @@
                     </div>
                     <div class="row espacetopbot">
                         <div class="offset-2 col-sm-10 text-right-btn">
-                            <button class="btn btn-success width-btn force-btn-correction" ng-click="ajouterUtilisateur(varUser)">
+                            <button class="btn btn-success width-btn force-btn-correction" style="width: 100%;" ng-click="ajouterUtilisateur(varUser)">
                                 Ajouter
                             </button>
                         </div>
@@ -106,7 +102,7 @@
     </div>
     <div class="lister-utilisateur espacetopbot">
         <fieldset>
-            <legend>Liste des utilisateur avec ses droits:</legend>
+            <legend style="font-size: 150%;">Liste des utilisateur avec ses droits:</legend>
             <div class="position-recherche padding-left-40 ">
                 <input type="text" class="form-control margin-top-10" ng-model="filtreAll" placeholder="Recherche globale">
             </div>
@@ -116,28 +112,28 @@
                         <!--<li  class="listview-html active">nomFichier.pdf</li>-->
                         <!--<li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">-->
                         <!--<li  class="listview-html" ng-class="valstrike[$index]" strike.nomfichier ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">-->
-                            <table class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered" >
                                 <tr>
-                                    <th class="espace-entre-matricule">Matricule</th>
-                                    <th class="espace-entre-matricule">Nom</th>
-                                    <th class="espace-entre-matricule">Prénom</th>
-                                    <th class="espace-entre-matricule">Adresse message</th>
-                                    <th class="espace-entre-tableau">Superviseur</th>
-                                    <th class="espace-entre-tableau">Technicien </th>
-                                    <th class="espace-entre-tableau">Administrateur</th>
-                                    <th class="espace-btn-anime">Enregistrer modificaiton</th>
-                                    <th class="espace-btn-anime">Supprimer</th>
+                                    <th style="font-size: 150%;" class="espace-entre-matricule">Matricule</th>
+                                    <th style="font-size: 150%;" class="espace-entre-matricule">Nom</th>
+                                    <th style="font-size: 150%;" class="espace-entre-matricule">Prénom</th>
+                                    <th style="font-size: 150%;" class="espace-entre-matricule">Adresse message</th>
+                                    <th style="font-size: 150%;" class="espace-entre-tableau">Superviseur</th>
+                                    <th style="font-size: 150%;" class="espace-entre-tableau">Technicien </th>
+                                    <th style="font-size: 150%;" class="espace-entre-tableau">Administrateur</th>
+                                    <th style="font-size: 150%;" class="espace-btn-anime">Enregistrer modificaiton</th>
+                                    <th style="font-size: 150%;" class="espace-btn-anime">Supprimer</th>
                                 </tr>
                                 <tr ng-repeat="utilisateur in listAllUtilisateur| filter: filtreAll">
-                                    <td>{{utilisateur.matricule}}</td>
-                                    <td>{{utilisateur.nom}}</td>
-                                    <td>{{utilisateur.prenoms}}</td>
+                                    <td style="font-size: 150%;">{{utilisateur.matricule}}</td>
+                                    <td style="font-size: 150%;">{{utilisateur.nom}}</td>
+                                    <td style="font-size: 150%;">{{utilisateur.prenoms}}</td>
                                     <td>
-                                        <input type="text" ng-model="adresseemail[$index]" class="form-control width-250"/>
+                                        <input type="text" style="font-size: 150%;" ng-model="adresseemail[$index]" class="form-control width-250"/>
                                     </td>
-                                    <td><input type="checkbox" class="form-control" ng-model="consulter[$index]"></td>
-                                    <td><input type="checkbox" class="form-control" ng-model="ajouter[$index]"></td>
-                                    <td><input type="checkbox" class="form-control" ng-model="admin[$index]"></td>
+                                    <td style="font-size: 150%;"><input type="checkbox" class="form-control" ng-model="consulter[$index]"></td>
+                                    <td style="font-size: 150%;"><input type="checkbox" class="form-control" ng-model="ajouter[$index]"></td>
+                                    <td style="font-size: 150%;"><input type="checkbox" class="form-control" ng-model="admin[$index]"></td>
                                     <td class="expace-table-btn">
                                         <button class="btn btn-warning" ng-click="saveModif(utilisateur.id, $index, consulter[$index], ajouter[$index], editer[$index], supprimer[$index], admin[$index],adresseemail[$index])">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>

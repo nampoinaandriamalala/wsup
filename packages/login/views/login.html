@@ -9,23 +9,76 @@
         <form>
             <div class="espace-saisie">
                 <div class="full-ligne">
-                    <input type="text" class="login form-control" placeholder="Matricule" ng-model="login.matricule" required/>
+
+
+                    <div class="md-form">
+                        <i class="fa fa-id-card prefix black-text"></i>
+                        <input type="text" id="defaultForm-mat" class="form-control" ng-model="login.matricule" required/>
+                        <label for="defaultForm-mat">Matricule</label>
+                    </div>
                 </div>        
                 <div class="full-ligne">
-                    <div class="input-group">
-                        <input type="{{typePassword}}" class="password form-control" placeholder="Mot de passe" ng-model="login.password" required/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary couleur-gris" type="button" ng-click="montrerCacherPass()" >
-                                <i class="fa fa-eye-slash" aria-hidden="true"></i> 
-                            </button>
-                        </span>
-                    </div>
+
+                    <div class="md-form">
+                        <div class="row espace-inp">
+
+                            <div class="col-9">
+                                <i class="fa fa-lock prefix black-text"></i>
+                                <input type="{{typePassword}}" id="defaultForm-pass" class="form-control" ng-model="login.password" required>
+                                <label for="defaultForm-pass">Mot de passe</label>   
+                            </div>
+                            <div class="col-3">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info couleur-gris" type="button" ng-click="montrerCacherPass()" >
+                                        <i class="fa fa-eye-slash" aria-hidden="true"></i> 
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>                       
                 </div>
                 <div class="full-ligne">
-                    <button class="btn btn-secondary" ng-click="actionLogin(login)">Valider</button>
+                    <button class="btn btn-info btn-lg wave" style="width: 100%;" ng-click="actionLogin(login)">Valider</button>
                     <span class="txt-alert" ng-show="showError">Matricule ou Mot de passe incorrect</span>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+
+<!--<div class="full-screen">
+
+     Grid column 
+    <div class="col-md-12">
+        <div class="card-login">
+
+            
+
+            <div class="card-body-login">
+                <div class="mdb-card-header info-color white-text text-center">
+                    <span ng-controller="Ctrltitle as title">Authentification projet <span class="uppercase" ng-cloak ng-bind="nom_projet"></span></span>
+                    <h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Login:</h3>
+                </div>
+                
+                Body
+                <div class="centre-login-form">
+                    <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="text" id="defaultForm-email" class="form-control">
+                    <label for="defaultForm-email">Matricule</label>
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control">
+                    <label for="defaultForm-pass">Mot de passe</label>
+                </div>
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn btn-default waves-effect waves-light">Se connecter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->

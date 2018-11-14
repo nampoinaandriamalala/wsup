@@ -18,7 +18,6 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 <!--        <script src="plugins/angular/1.4.8/angular.min.js"></script>
         <script src="plugins/angular/1.4.8/angular-route.js"></script>
         <script src="plugins/angular/1.4.8/angular-cookies.js"></script>-->
-
         <!-- Angular and module-->
         <script src="plugins/angular/1.6.7/angular.min.js"></script>
         <script src="plugins/angular/1.6.7/angular-route.js"></script>
@@ -28,17 +27,10 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
         <!--bootstrap 4 test -->
         <link rel="stylesheet" href="plugins/bootstrap4/css/bootstrap.css"/>
-        <!-- <script src="plugins/bootstrap4/js/jquery-3.1.1.slim.min.js"></script> -->
-        <script src="plugins/jquery/jquery-3.2.0.min.js"></script>
+        <!--<script src="plugins/bootstrap4/js/jquery-3.1.1.slim.min.js"></script>-->
+        <script src="plugins/bootstrap4/js/jquery-3.1.1.js"></script>
         <script src="plugins/bootstrap4/js/tether.min.js"></script>
         <script src="plugins/bootstrap4/js/bootstrap.min.js" ></script>
-        <!-- tokenfield -->
-        <script src="plugins/jquery/jquery-3.2.0.min.js"></script>
-        <script src="plugins/jquery-ui-dist/jquery-ui.min.js"></script>
-        <script src="plugins/bootstrap-tokenfield/dist/bootstrap-tokenfield.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="plugins/bootstrap-tokenfield/dist/css/bootstrap-tokenfield.min.css">
-        <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-dist/jquery-ui.min.css">
-
 
         <!-- fin bootstrap 4 test -->
         <!-- bootstrap -->
@@ -58,11 +50,10 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
         <link rel="stylesheet" href="plugins/calendar/fullcalendar.css"/>
 
         <!-- jquery, moment, and angular have to get included before fullcalendar -->
-        <script type="text/javascript" src="plugins/calendar/moment.js"></script>
+<!--        <script type="text/javascript" src="plugins/calendar/moment.js"></script>
         <script type="text/javascript" src="plugins/calendar/calendar.js"></script>
         <script type="text/javascript" src="plugins/calendar/fullcalendar.js"></script>
-        <script type="text/javascript" src="plugins/calendar/gcal.js"></script>
-<!--        <script type="text/javascript" src="plugins/calendar/lang/fr.js"></script>-->
+        <script type="text/javascript" src="plugins/calendar/gcal.js"></script>-->
         <!-- Router-->
         <script src="ressources/router.js?version=<?php echo date('Ymdms'); ?>"></script>
 
@@ -314,7 +305,8 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        } else if (id_droped.indexOf('input') !== -1)
+                        }
+                        if (id_droped.indexOf('input') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -325,7 +317,8 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        } else if (id_droped.indexOf('label') !== -1)
+                        }
+                        if (id_droped.indexOf('label') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -336,7 +329,8 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        } else if (id_droped.indexOf('textarea') !== -1)
+                        }
+                        if (id_droped.indexOf('textarea') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -347,7 +341,8 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        } else if (id_droped.indexOf('table') !== -1)
+                        }
+                        if (id_droped.indexOf('table') !== -1)
                         {
                             var elToPosition = document.getElementById(id_droped);
                             var mLeft = ev.clientX - 94;
@@ -358,8 +353,6 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
                             elToPosition.style["margin-left"] = StrLeft;
                             elToPosition.style["margin-top"] = StrTop;
-                        } else {                           
-                            ev.target.appendChild(document.getElementById(id_droped));
                         }
                         break;
                 }
@@ -378,4 +371,8 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
 
         </script>		
     </body>
+    <!-- Material design mdb -->
+        <link rel="stylesheet" href="plugins/mdb/css/mdb.min.css"/>
+        <script type="text/javascript" src="plugins/mdb/js/mdb.js"></script>
+        <script src="plugins/mdb/js/mdb.min.js" charset="UTF-8"></script>
 </html>

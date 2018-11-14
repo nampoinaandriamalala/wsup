@@ -444,7 +444,7 @@ angular.module('raptorApp').controller('CtrlRConfig', ['$scope', '$rootScope', '
         }
         //Enregistrer les données
         $scope.enregistrerData = function (data) {
-//            console.log(data);
+//            //console.log(data);
             var dataObj = {
                 valeur: data.valeur,
                 identifiant: data.identifiant,
@@ -465,7 +465,7 @@ angular.module('raptorApp').controller('CtrlRConfig', ['$scope', '$rootScope', '
         {
             var dataObj = {};
             urlRaptor.list(dataObj).then(function (datas) {
-//                console.log(datas);
+//                //console.log(datas);
                 $scope.tab_var_url = datas.data;
             });
         }
