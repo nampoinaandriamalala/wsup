@@ -123,8 +123,20 @@ app.config(function ($routeProvider, $locationProvider) {
 
 });
 
+
+
+
+// Possibly unhandled rejection: {}
+
+//app.config(function ($qProvider) {
+//    $qProvider.errorOnUnhandledRejections(false);
+//});
+
+
+
+
 //ROUTER Administration RAPTOR à ne pas modifier
-app.config(function ($routeProvider, $locationProvider) {
+    app.config(function ($routeProvider, $locationProvider) {
     //check browser support
 //    if (window.history && window.history.pushState) {
     //$locationProvider.html5Mode(true); will cause an error $location in HTML5 mode requires a  tag to be present! Unless you set baseUrl tag after head tag like so: <head> <base href="/">

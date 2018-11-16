@@ -109,6 +109,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$filter', '
 
 //        $scope.emplacements=[];
 //        $scope.listposteglpi=[];
+//            $qProvider.errorOnUnhandledRejections(false);
 
         $scope.recherchetype = function () {
             console.log($scope.rechercheTypes);
@@ -260,55 +261,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$filter', '
             });
         };
 
-        $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = $scope.IsVisible1 = false;
 
-        //Afichage des postes suivants les nombres des emplacements
-        $scope.Show1 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible1 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = false;
-
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-        };
-        $scope.Show2 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible1 = $scope.IsVisible2 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = false;
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-        };
-        $scope.Show3 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible1 = $scope.IsVisible3 = $scope.IsVisible2 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = false;
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-
-        };
-        $scope.Show4 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible2 = $scope.IsVisible1 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = $scope.IsVisible5 = false;
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-        };
-        $scope.Show5 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = $scope.IsVisible6 = false;
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-        };
-        $scope.Show6 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible1 = $scope.IsVisible6 = $scope.IsVisible5 = $scope.IsVisible4 = $scope.IsVisible3 = $scope.IsVisible2 = true;
-            $scope.IsVisible11 = $scope.IsVisible12 = $scope.IsVisible10 = $scope.IsVisible9 = $scope.IsVisible8 = $scope.IsVisible7 = false;
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-        };
-        $scope.Show12 = function ($niveau, $lettre, $ordre) {
-            $scope.IsVisible1 = $scope.IsVisible2 = $scope.IsVisible3 = $scope.IsVisible4 = $scope.IsVisible5 = $scope.IsVisible6 = $scope.IsVisible7 = $scope.IsVisible8 = $scope.IsVisible9 = $scope.IsVisible10 = $scope.IsVisible11 = $scope.IsVisible12 = true;
-            console.log('niveau : ' + $niveau + ' lettre : ' + $lettre + ' ordre : ' + $ordre);
-
-
-            $scope.tabnbr.forEach((item) => {
-                $(`#place` + item).append(`
-                    <div >
-                        <h2>Poste ${item} </h2>
-                    </div>
-                `);
-
-            });
-        };
 
         //Action sur l'ajout ou modification des emplacements
 
@@ -423,7 +376,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$filter', '
                     $scope.apresfiltre = $filter('filter')($scope.postes, {ip_adress: recherche});
                     break;
                 case "ps":
-                    $scope.apresfiltre = $filter('filter')($scope.postes, {designation_processeurs: recherche});
+                    $scope.apresfiltre = $filter('filter')($scope.postes, {processors_designation: recherche});
                     break;
                 case "oi":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {name_system: recherche});

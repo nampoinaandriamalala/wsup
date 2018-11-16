@@ -28,12 +28,19 @@ class conmysql {
         return $conn;
     }
 
-    public function getSQL($conn, $sql) {
+    public function getSQL($conn, $sql, $assoc=false) {
         $result = mysqli_query($conn, $sql);
         $d = array();
-        while ($alldata = mysqli_fetch_object($result))
+        if ($assoc) {
+            while ($alldata = mysqli_fetch_assoc($result))
                 array_push($d, $alldata);
-        return $d;
+            return $d;
+        } else {
+            while ($alldata = mysqli_fetch_object($result))
+               array_push($d, $alldata);
+            return $d;
+        }
+
     }
     
     //besoin de retourner Id
