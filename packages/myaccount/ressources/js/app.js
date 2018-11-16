@@ -16,8 +16,6 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
                     });
             return deferred.promise;
         }
-
-
     };
     return factory;
 });
@@ -26,8 +24,23 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
 angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast) {
 
         /*Votre code ici*/
+        $scope.matricule = $cookieStore.get('login');
+        $scope.nom = $cookieStore.get('nom');
+        $scope.prenom = $cookieStore.get('prenoms');
+
+        $scope.sup = $cookieStore.get('editer');
+        $scope.tech = $cookieStore.get('supprimer');
+        $scope.adm = $cookieStore.get('admin');
+        $scope.email = $cookieStore.get('email');
         
-        $scope.stepsModel ="/wsup/ressources/images/profiluser.jpg";
+        
+        
+        $scope.stepsModel="/wsup/ressources/images/profil/"+$scope.matricule+".jpg";
+        
+        
+       
+        
+//        $scope.stepsModel ="/wsup/ressources/images/profiluser.jpg";
 
     $scope.imageUpload = function(element){
         var reader = new FileReader();
@@ -43,14 +56,7 @@ angular.module('raptorApp').controller('CtrlMyAccount', ['$scope', '$rootScope',
     
     
         
-        $scope.matricule = $cookieStore.get('login');
-        $scope.nom = $cookieStore.get('nom');
-        $scope.prenom = $cookieStore.get('prenoms');
-
-        $scope.sup = $cookieStore.get('editer');
-        $scope.tech = $cookieStore.get('supprimer');
-        $scope.adm = $cookieStore.get('admin');
-        $scope.email = $cookieStore.get('email');
+        
 
 
     }]);

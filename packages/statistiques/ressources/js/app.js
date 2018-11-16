@@ -16,6 +16,7 @@ angular.module('raptorApp').factory('myPostgresExemple', function ($http, $q) { 
                     });
             return deferred.promise;
         }
+
     };
     return factory;
 });
@@ -38,6 +39,46 @@ angular.module('raptorApp').factory('stat', function ($http, $q) {
             return deferred.promise;
         },
 
+        getListProc: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/statistiques/model/listProc.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
+        },
+        getListMem: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/statistiques/model/listMem.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
+        },
+        getListEtat: function (dataObj) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'packages/statistiques/model/listEtat.php',
+                data: $.param(dataObj),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).
+                    then(function (datas) {
+                        deferred.resolve(datas);
+                    });
+            return deferred.promise;
+        }
+
     };
     return factory;
 
@@ -52,259 +93,225 @@ angular.module('raptorApp').controller('Ctrl1', ['$scope', '$rootScope', '$http'
     }]);
 
 
-angular.module('raptorApp').controller('CtrlStat', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast','stat', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast,stat) {
+angular.module('raptorApp').controller('CtrlStat', ['$scope', '$rootScope', '$http', 'myPostgresExemple', '$location', '$sce', '$cookies', '$cookieStore', '$window', '$timeout', 'ngToast', 'stat', function ($scope, $rootScope, $http, myPostgresExemple, $location, $sce, $cookies, $cookieStore, $window, $timeout, ngToast, stat) {
 
         /*Votre code ici*/
-        
-        stat.statEmplacement.then(function (datas) {
-            $scope.ChartObjectPostes = {
-                    "type": "LineChart",
-                    "displayed": false,
-                    "data": {
-                        "cols": [
-                            {
-                                "id": "demande",
-                                "label": "Demande",
-                                "type": "string",
-                                "p": {}
-                            },
 
-                            {
-                                "id": "AnPrec-id",
-                                "label": "Année actuelle",
-                                "type": "number",
-                                "p": {}
-                            },
-                            {
-                                "id": "An-id",
-                                "label": "Année précédente",
-                                "type": "number",
-                                "p": {}
-                            },
-                        ],
-                        "rows": datas.data[0]
-                    },
-                    "options": {
-                        "title": "Courbes de variation des demandes dans l'année",
-                        "isStacked": "true",
-                        "fill": 20,
-                        "displayExactValues": true,
-                        "vAxis": {
-                            "title": "Nombre de demande",
-                            "gridlines": {
-                                "count": 10
-                            }
-                        },
-                        "hAxis": {
-                            "title": "Mois"
-                        }
-                    },
-                    "formatters": {}
-                }
+// Stat des etats des postes
+var dataObj = {};
+        stat.getListEtat(dataObj).then(function (datas) {
+            console.log(datas.data);
+            $scope.listnotifetat = datas.data;
+
+
+            var avaliacoes_descTipo = [];
+            var avaliacoes_quantidade = [];
+            var tt = [];
+            var val = [];
+            var i;
+            var val1 = [];
+            $scope.avaliacoesetat = {};
+            for (var i in $scope.listnotifetat) {
+                avaliacoes_descTipo.push($scope.listnotifetat[i].designation);
+                avaliacoes_quantidade.push(parseInt($scope.listnotifetat[i].counttotal, 10));
+            }
+            for (i = 0; i < avaliacoes_descTipo.length; i++) {
+                val = {c: [
+                        {v: avaliacoes_descTipo[i]},
+                        {v: avaliacoes_quantidade[i]}
+                    ]};
+
+                val1.push(val);
+            }
+
+            $scope.avaliacoesetat.type = "PieChart";
+
+            $scope.onions = [
+                {v: avaliacoes_descTipo[0]},
+                {v: avaliacoes_quantidade[0]}
+            ];
+
+            $scope.avaliacoesetat.data = {"cols": [
+                    {id: "t", label: "Topping", type: "string"},
+                    {id: "s", label: "Slices", type: "number"}
+                ], "rows":
+                        val1
+            };
+
+            $scope.avaliacoesetat.options = {
+                'title': 'Nombres des Ordinateurs ayant le processeurs',
+                "isStacked": "true",
+                "fill": 100,
+                'legend': {'position': 'right'}
+            };
         });
 
-        $scope.Lesannees = [
 
-            {
-                "numero": "00",
-                mois: 'Mois en cours'
-            },
-            {
-                "numero": "01",
-                mois: 'Janvier'
-            },
-            {
-                "numero": "02",
-                mois: 'Février'
-            }
-            ,
-            {
-                "numero": "03",
-                mois: 'Mars'
-            }
-            ,
-            {
-                "numero": "04",
-                mois: 'Avril'
-            }
-            ,
-            {
-                "numero": "05",
-                mois: 'Mai'
-            }
-            ,
-            {
-                "numero": "06",
-                mois: 'Juin'
-            }
-            ,
-            {
-                "numero": "07",
-                mois: 'Juillet'
-            }
-            ,
-            {
-                "numero": "08",
-                mois: 'Août'
-            }
-            ,
-            {
-                "numero": "09",
-                mois: 'Septembre'
-            }
-            ,
-            {
-                "numero": "10",
-                mois: 'Octobre'
-            }
-            ,
-            {
-                "numero": "11",
-                mois: 'Novembre'
-            }
-            ,
-            {
-                "numero": "12",
-                mois: 'Décembre'
-            }
-        ];
-        $scope.lalistedesannees = $scope.Lesannees[0];
+// Stat pour memoire
+        var dataObj = {};
+        stat.getListMem(dataObj).then(function (datas) {
+            console.log(datas.data);
+            $scope.listnotifmem = datas.data;
 
-        $scope.ChartObjectUC = {};
 
-        $scope.ChartObjectUC.type = "PieChart";
+            var avaliacoes_descTipomem = [];
+            var avaliacoes_quantidademem = [];
+            var tt = [];
+            var valmem = [];
+            var i;
+            var val1mem = [];
+            $scope.avaliacoesmem = {};
+            console.log('testaffiche', $scope.listnotifmem[0].designation);
+            console.log('tt1', tt);
 
-        $scope.onions = [
-            {v: "Onions"},
-            {v: 3},
-        ];
+            for (var i in $scope.listnotifmem) {
+                avaliacoes_descTipomem.push($scope.listnotifmem[i].designation+" Mo");
+                avaliacoes_quantidademem.push(parseInt($scope.listnotifmem[i].counttotal, 10));
+            }
+            for (i = 0; i < avaliacoes_descTipomem.length; i++) {
+                valmem = {c: [
+                        {v: avaliacoes_descTipomem[i]},
+                        {v: avaliacoes_quantidademem[i]}
+                    ]};
 
-        $scope.ChartObjectUC.data = {"cols": [
-                {id: "allume", label: "Allumé", type: "string"},
-                {id: "eteint", label: "Eteint", type: "string"}
-            ], "rows": [
-                {c: [
-                        {v: "Allumé"},
-                        {v: 839},
-                    ]},
-                {c: [
-                        {v: "Eteint"},
-                        {v: 122},
-                    ]}
-            ]};
+                val1mem.push(valmem);
+            }
 
-        $scope.ChartObjectUC.options = {
-            "title": "Statistiques de Postes Allumés et Eteints",
-            "isStacked": "true",
-            "fill": 20,
-            "displayExactValues": true,
-            "vAxis": {
-                "title": "test titre",
-                "gridlines": {
-                    "count": 10
+            $scope.avaliacoesmem.type = "PieChart";
+
+            $scope.onions = [
+                {v: avaliacoes_descTipomem[0]},
+                {v: avaliacoes_quantidademem[0]}
+            ];
+
+            $scope.avaliacoesmem.data = {"cols": [
+                    {id: "t", label: "Topping", type: "string"},
+                    {id: "s", label: "Slices", type: "number"}
+                ], "rows":
+                        val1mem
+            };
+
+            $scope.avaliacoesmem.options = {
+                'title': 'Nombres des Ordinateurs ayant le Memoire Vive',
+                "isStacked": "true",
+                "fill": 100,
+                'legend': {'position': 'right'}
+            };
+        });
+
+
+// Stat pour processeurs
+        var dataObj = {};
+        stat.getListProc(dataObj).then(function (datas) {
+            console.log(datas.data);
+            $scope.listnotif = datas.data;
+
+
+            var avaliacoes_descTipo = [];
+            var avaliacoes_quantidade = [];
+            var tt = [];
+            var val = [];
+            var i;
+            var val1 = [];
+            $scope.avaliacoes = {};
+            console.log('testaffiche', $scope.listnotif[0].valeursub);
+            console.log('tt1', tt);
+
+            for (var i in $scope.listnotif) {
+                avaliacoes_descTipo.push($scope.listnotif[i].valeursub);
+                avaliacoes_quantidade.push(parseInt($scope.listnotif[i].counttotal, 10));
+            }
+            for (i = 0; i < avaliacoes_descTipo.length; i++) {
+                val = {c: [
+                        {v: avaliacoes_descTipo[i]},
+                        {v: avaliacoes_quantidade[i]}
+                    ]};
+
+                val1.push(val);
+            }
+
+            $scope.avaliacoes.type = "PieChart";
+
+            $scope.onions = [
+                {v: avaliacoes_descTipo[0]},
+                {v: avaliacoes_quantidade[0]}
+            ];
+
+            $scope.avaliacoes.data = {"cols": [
+                    {id: "t", label: "Topping", type: "string"},
+                    {id: "s", label: "Slices", type: "number"}
+                ], "rows":
+                        val1
+            };
+
+            $scope.avaliacoes.options = {
+                'title': 'Nombres des Ordinateurs ayant le processeurs',
+                "isStacked": "true",
+                "fill": 100,
+                'legend': {'position': 'right'}
+            };
+        });
+
+        $scope.initialisationNotif = function ()
+        {
+            var dataObj = {};
+            stat.getListProc(dataObj).then(function (datas) {
+                $scope.listnotif = datas.data.datas;
+                $scope.listnotif.push('');
+                console.log(datas.data.datas);
+
+            });
+        };
+        $scope.initialisationNotifMem = function ()
+        {
+            var dataObj = {};
+            stat.getListMem(dataObj).then(function (datas) {
+                $scope.listnotif = datas.data.datas;
+                $scope.listnotif.push('');
+                console.log(datas.data.datas);
+
+            });
+        };
+
+        $scope.getListProc = function (data) {
+            stat.getListProc(data).then(function (response) {
+                $scope.proclist = data;
+
+                console.log('proc', data);
+
+                var proc = [];
+                var nombre = [];
+
+                for (var i in data) {
+                    proc.push("procname " + data[i].designation);
+                    nombre.push(data[i].counttotal);
                 }
-            },
-            "hAxis": {
-                "title": "Semaine"
-            },
-            "formatters": {}
+
+                var chartdata = {
+                    labels: proc,
+                    datasets: [
+                        {
+                            label: 'Stat des processeurs',
+                            backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                            borderColor: 'rgba(200, 200, 200, 0.75)',
+                            hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                            data: nombre
+                        }
+                    ]
+                };
+                var ctx = $("#mycanvas");
+
+                var barGraph = new Chart(ctx, {
+                    type: 'bar',
+                    data: chartdata
+                });
+
+            }, function (errors) {
+                console.error(errors);
+            });
         };
 
 
-//        $scope.ChartObjectPostes = {};
-//
-//        $scope.ChartObjectPostes.type = "PieChart";
-//
-//        $scope.onions = [
-//            {v: "Onions"},
-//            {v: 3},
-//        ];
-//
-//        $scope.ChartObjectPostes.data = {"cols": [
-//                {id: "occupe", label: "Occupé", type: "string"},
-//                {id: "libre", label: "Libre", type: "string"}
-//            ], "rows": [
-//                {c: [
-//                        {v: "Libre"},
-//                        {v: 74},
-//                    ]},
-//                {c: [
-//                        {v: "Occupé"},
-//                        {v: 1200},
-//                    ]}
-//            ]};
-//
-//        $scope.ChartObjectPostes.options = {
-//            "title": "Statistiques de Postes Libres",
-//            "isStacked": "true",
-//            "fill": 20,
-//            "displayExactValues": true,
-//            "vAxis": {
-//                "title": "test titre",
-//                "gridlines": {
-//                    "count": 10
-//                }
-//            },
-//            "hAxis": {
-//                "title": "Semaine"
-//            },
-//            "formatters": {}
-//        };
-
-        $scope.ChartObjectCarac = {};
-
-        $scope.ChartObjectCarac.type = "PieChart";
-
-        $scope.onions = [
-            {v: "Onions"},
-            {v: 3},
-        ];
-
-        $scope.ChartObjectCarac.data = {"cols": [
-                {id: "occupe", label: "Occupé", type: "string"},
-                {id: "libre", label: "Libre", type: "string"}
-            ], "rows": [
-                {c: [
-                        {v: "Pentium 4"},
-                        {v: 74},
-                    ]},
-                {c: [
-                        {v: "Core 2 Duo"},
-                        {v: 120},
-                    ]},
-                {c: [
-                        {v: "Core ï3"},
-                        {v: 864},
-                    ]},
-                {c: [
-                        {v: "Core ï5"},
-                        {v: 560},
-                    ]},
-                {c: [
-                        {v: "Core ï7"},
-                        {v: 115},
-                    ]},
-                {c: [
-                        {v: "Core ï9"},
-                        {v: 09},
-                    ]}
-            ]};
-
-        $scope.ChartObjectCarac.options = {
-            "title": "Caracteristiques des UC",
-            "isStacked": "true",
-            "fill": 20,
-            "displayExactValues": true,
-            "vAxis": {
-                "title": "test titre",
-                "gridlines": {
-                    "count": 10
-                }
-            },
-            "hAxis": {
-                "title": "Semaine"
-            },
-            "formatters": {}
-        };
 
     }]);

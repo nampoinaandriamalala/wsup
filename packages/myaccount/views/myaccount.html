@@ -4,7 +4,7 @@
             <img class="card-bkimg" alt="" src="/wsup/ressources/images/fnd2.jpg">
         </div>
         <div class="useravatar">
-            <img alt="" class="thumb" ng-src="{{stepsModel}}"> 
+            <img alt="" class="thumb" ng-if="" ng-src="{{stepsModel}}"> 
         </div>
         <div class="card-info"> <span class="card-title">{{prenom}}<br />{{nom}}</span>
         </div>
@@ -25,13 +25,17 @@
             <div class="col-lg-5 product-card">
                 <div class="product-details">
                     <h1>Modifications</h1>
+                    <form method="post" enctype="multipart/form-data" action="./packages/myaccount/model/upload_image.php">
                     <fieldset>
                         <legend>Modifier image</legend>
-                        <input type="file" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)"/>
+                        
+                        <input type="file" name="file" ng-model-instant onchange="angular.element(this).scope().imageUpload(this)"/>
                     </fieldset>
-                    <button class="btn" >Valider la modification</button>
+                        <button class="btn" ng-click="ajoutImage">Valider la modification</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+    

@@ -28,7 +28,8 @@ angular.module('raptorApp').factory('tanaNotifFactory', function ($http, $q) {
                         deferred.resolve(datas);
                     });
             return deferred.promise;
-        }
+        },
+        
     };
     return factory;
 });

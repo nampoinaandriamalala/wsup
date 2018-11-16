@@ -31,6 +31,9 @@ ini_set('error_log', dirname(__file__) . 'error/log_error_php.txt');
         <script src="plugins/bootstrap4/js/jquery-3.1.1.js"></script>
         <script src="plugins/bootstrap4/js/tether.min.js"></script>
         <script src="plugins/bootstrap4/js/bootstrap.min.js" ></script>
+        
+        <!-- angular drag drop -->
+        <script src="plugins/angular/angular-drag-and-drop-lists.js"></script>
 
         <!-- fin bootstrap 4 test -->
         <!-- bootstrap -->

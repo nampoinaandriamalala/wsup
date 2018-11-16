@@ -30,6 +30,22 @@ try {
         return $_POST;
     }
 
+    function array_push_assoc($array, $key, $value) {
+        $array[$key] = $value;
+        return $array;
+    }
+
+    function ping($host) {
+        $tB = microtime(true);
+        $fP = @fsockopen($host, 80, $errno, $errstr, 10);
+        if (!$fP) {
+            return "pingko";
+        }
+        $tA = microtime(true);
+        $msgok = "pingok";
+        return $msgok;
+    }
+
     function response($data, $status_code = 200) {
         if (is_array($data) && isset($data['error'])) {
             if ($status_code == 200) {
@@ -72,6 +88,7 @@ try {
             $connMySQL = $mysql->connect();
 
             $sql = "select DISTINCT
+                        '' as resultping,
                         gc.id as id_poste,
                         gl.name as location,
                         gc.name as nom_poste,
@@ -114,9 +131,11 @@ try {
                                 inner join glpi_devicesoundcards as gdsc on gdsc.id = gidsc.devicesoundcards_id
 
                                 inner join glpi_items_deviceharddrives as gidhd on gidhd.items_id = gc.id
-                                inner join glpi_deviceharddrives as gdhd on gdhd.id = gidhd.deviceharddrives_id";
+                                inner join glpi_deviceharddrives as gdhd on gdhd.id = gidhd.deviceharddrives_id
+                                
             
-//                        		where gl.name in ('3/G/0001', '3/A/0007', '3/K/0013')	    
+
+                        		where gl.name in ('3/G/0001', '3/A/0007', '3/K/0013')	";    
 
 
             $postes = $mysql->getSQL($connMySQL, $sql);
@@ -124,10 +143,22 @@ try {
             $placements = $postgres->getSQL($conn, $sql);
 
             $postesPlacements = [];
+            $resultatping = [];
+
+//            foreach ($postes as $key => $value){
+//                $post_key = $value['ip_adress'];
+//                
+//            }
 
             foreach ($postes as $key => $value) {
                 $post_key = $value->location;
                 $postesPlacements[$post_key] = $value;
+                $adressip = $value->ip_adress;
+                
+//                print_r(ping($adressip));
+//
+                $postes[$key]->resultping = ping($adressip);
+                
             }
 
             // print_r($postesPlacements);
@@ -145,6 +176,8 @@ try {
             foreach ($postesPlacements as $key => $value) {
                 $result[] = $value;
             }
+            
+            
 
             response($result);
 

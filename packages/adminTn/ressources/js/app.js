@@ -196,6 +196,7 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$filter', '
             $('div#svgidzoom').css(
                     {
                         'transform': str
+                        
                     });
         };
 
