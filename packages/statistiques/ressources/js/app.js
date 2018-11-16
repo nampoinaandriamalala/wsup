@@ -142,7 +142,9 @@ var dataObj = {};
                 'title': 'Nombres des Ordinateurs ayant le processeurs',
                 "isStacked": "true",
                 "fill": 100,
-                'legend': {'position': 'right'}
+                'legend': {'position': 'right'},
+                width: 1000,
+                height: 800
             };
         });
 
@@ -195,7 +197,9 @@ var dataObj = {};
                 'title': 'Nombres des Ordinateurs ayant le Memoire Vive',
                 "isStacked": "true",
                 "fill": 100,
-                'legend': {'position': 'right'}
+                'legend': {'position': 'right'},
+                width: 1000,
+                height: 800
             };
         });
 
@@ -248,7 +252,9 @@ var dataObj = {};
                 'title': 'Nombres des Ordinateurs ayant le processeurs',
                 "isStacked": "true",
                 "fill": 100,
-                'legend': {'position': 'right'}
+                'legend': {'position': 'right'},
+                width: 1000,
+                height: 800
             };
         });
 

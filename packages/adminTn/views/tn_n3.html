@@ -4,18 +4,17 @@
             <div class="input-group">
                 <div class="input-group-btn search-panel">       
                     <div class="input-group" id="type-search">
-                        <select class="form-control" ng-model="rechercheTypes" ng-change="recherchetype()">
-                                <option value="0" >Nom-UC</option>                       
-                                <option value="1">Utilisateur</option>
-                                <option value="2">Emplacement</option>
-                                <option value="3">Adresse IP</option>
-                                <option value="4">Processeurs</option>
-                                <option value="5">OS Installé</option>
-                                <option value="6">Memoire Vive Total</option>
-                                <option value="7">Frequence memoire</option>
-                                <option value="8">Carte Graphique</option>
-                                <option value="9">Adresse MAC</option>
-
+                        <select class="form-control mdb-select colorful-select dropdown-primary" ng-model="rechercheTypes" ng-change="recherchetype()">
+                                <option value="uc" >Nom-UC</option>                       
+                                <option value="ut">Utilisateur</option>
+                                <option value="em">Emplacement</option>
+                                <option value="ai">Adresse IP</option>
+                                <option value="ps">Processeurs</option>
+                                <option value="oi">OS Installé</option>
+                                <option value="mv">Memoire Vive Total</option>
+                                <option value="fm">Frequence memoire</option>
+                                <option value="cg">Carte Graphique</option>
+                                <option value="am">Adresse MAC</option>
                             </select>
                     </div>
                 </div>
@@ -62,152 +61,5 @@
         </div>
     </div>
 </div>
-
-<!--<div class="background" >
-    <div class="h-100 w-100">
-        <div class="container w-100 h-100">
-            <div class="row">
-                <div class="col-md-3 h-100 w-100 border border-primary m-2 text-center espace-echange">
-                    <div class="row text-center">
-                        <div class="col-md-12 w-100 bg-primary">
-                            <span class="size-font-drag">Espace des échanges</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 h-100 align-items-center justify-content-center">
-                            <div class="w-100 m-0 text-center p-2 h-100 justify-content-center align-items-center" >
-                                <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)" >
-                                </div>
-                                <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)" ng-repeat="postelocal in postelocals">
-                                  
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <div class="card-title green white-text">
-                                                    <h1>{{postelocal.nom_poste}}</h1>
-                                                    <h5>{{postelocal.possesseur}}</h5>
-                                                </div>                                              
-                                            </div>
-                                            <div class="card-action">
-                                                
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="column col-md-12" id="columnTest" ondrop="drop(event)" ng-model="insertBloc" ng-bind-html="htmlbindtest" ondragover="allowDrop(event)">
-                                </div>
-                                <div class="column col-md-12" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a class="btn btn-primary w-100" href="#"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8 h-100 w-100 m-2 border border-dark">
-                    <div class="row margin-5">
-                        <div id="place{{tbn}}" class="column col-md-6" ng-repeat="tbn in tabnbr" ng-show="IsVisible{{tbn}}" ondrop="drop(event)" data-toggle="modal" href="#myModal" ondragover="allowDrop(event)" ng-click="initialisationEmplacement()">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-<!--<div class="modal fade" id="myModal" class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-    <div class="modal-dialog" >
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title" id="titre">Ajout ou modification des Postes</h1>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body p-4">
-                <form id="postForm" ng-submit="savePoste(poste)">
-                    <div class="row p-4">
-                        <fieldset class="col-md-12 ">    	
-                            <legend>Emplacement</legend>
-                            <div class="row p-2">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span><span class="input-group-addon">Siège</span>
-                                    <select class="form-control" ng-model="poste.siege" id="siege" required>
-                                        <option value="">Veuillez choisir un siège</option>
-                                        <option value="{{e.siege}}" ng-repeat="e in emplacements| unique :'siege'">{{e.siege}}</option>
-                                    </select>                                      
-                                </div>
-                            </div>
-                            <div class="row p-2">
-                                <div class="input-group"> 
-                                    <span class="input-group-addon"><i class="fa fa-navicon" aria-hidden="true"></i></span><span class="input-group-addon">Niveau</span>
-                                    <select class="form-control" ng-model="poste.niveau" id="siege" ng-disabled="poste.siege === '' || !poste.siege" required>
-                                        <option value="">Veuillez choisir un niveau</option>
-                                        <option value="{{e.niveau}}" ng-repeat="e in emplacements| unique :'niveau'">{{e.niveau}}</option>
-                                    </select>                                    
-                                </div>
-                            </div>
-                            <div class="row p-2">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-sort-alpha-desc" aria-hidden="true"></i></span><span class="input-group-addon">Lettre</span>
-                                    <select class="form-control" ng-model="poste.lettre" id="siege" ng-disabled="poste.niveau === '' || !poste.niveau" required>
-                                        <option value="">Veuillez choisir une lettre</option>
-                                        <option value="{{e.lettre}}" ng-repeat="e in emplacements| unique :'lettre'">{{e.lettre}}</option>
-                                    </select>                                    
-                                </div>
-                            </div>
-                            <div class="row p-2">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span><span class="input-group-addon">Numero</span>
-                                    <select class="form-control" ng-model="poste.numero" id="siege" ng-disabled="poste.lettre === '' || !poste.lettre" required> 
-                                        <option value="">Veuillez choisir un numéro</option>
-                                        <option value="{{e.numero}}" ng-repeat="e in emplacements| unique :'numero' ">{{e.numero}}</option>
-                                    </select>                                         
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="row p-4">
-                        <fieldset class="col-md-12 p-4">    	
-                            <legend>Poste</legend>
-                            <input type="text" name="nomPoste" placeholder="Nom poste" list="_poste" ng-model="poste.nomposte" style='width:100%' required>
-                            <datalist id="_poste">
-                                <option ng-repeat="p in listposteglpi">{{p.nom_poste}}</option>
-                            </datalist>
-                        </fieldset>
-                    </div>
-                    <div class="row p-4">
-                        <fieldset class="col-md-12 p-4">   	
-                            <legend>IP</legend>
-                            <div class="col-md-12">
-                                <select class="form-control" ng-model="poste.ip" id="ip" ng-disabled="poste.nomposte === '' || !poste.nomposte">
-                                    <option value="">Veuillez choisir un numéro</option>
-                                    <option value="{{p.ip_adress}}" ng-repeat="p in listposteglpi| filter: {nom_poste : poste.nomposte}">{{p.ip_adress}}</option>
-                                </select>
-                            </div>
-                        </fieldset>	
-                    </div>
-                    <div class="row p-4">
-                        <fieldset class="col-md-12 p-4">    	
-                            <legend>Possesseur</legend>
-                            <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="Nom du possesseur" ng-model="poste.possesseur" required></div>
-                        </fieldset>
-                    </div>
-                    <div class="row p-4">
-                        <fieldset class="col-md-12 p-4">    	
-                            <legend>Date</legend>
-                            <div class="col-md-12"><input type="text" class="form-control form-control-lg" placeholder="date d'ajout" ng-model="poste.date" ng-datepicker required></div>
-                        </fieldset>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="reset" form="postForm" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="submit" form="postForm" class="btn btn-primary" >Sauvegarder</button>
-            </div>
-        </div>
-    </div>
-</div>-->
 
 <toast></toast>

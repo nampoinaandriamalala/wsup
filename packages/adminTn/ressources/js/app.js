@@ -404,46 +404,46 @@ angular.module('raptorApp').controller('CtrlAdminTn_n3', ['$scope', '$filter', '
                     $(`#${item.plan_id}`).empty();
                 }
             });
+            
+//            $scope.apresfiltre = $filter('filter')($scope.postes, {nom_poste: recherche});
+            
+            
 
             switch ($scope.rechercheTypes) {
-                case '0':
+                case "uc":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {nom_poste: recherche});
                     break;
-                case '1':
+                case "ut":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {possesseur: recherche});
                     break;
-                case '2':
+                case "em":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {location: recherche});
                     break;
-                case '3':
+                case "ai":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {ip_adress: recherche});
                     break;
-                case '4':
+                case "ps":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {designation_processeurs: recherche});
                     break;
-                case '5':
+                case "oi":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {name_system: recherche});
                     break;
-                case '6':
+                case "mv":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {size_memories: recherche});
                     break;
-                case '7':
+                case "fm":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {frequence_memory: recherche});
                     break;
-                case '8':
+                case "cg":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {designation_graphic_card: recherche});
                     break;
-                case '9':
+                case "am":
                     $scope.apresfiltre = $filter('filter')($scope.postes, {mac: recherche});
                     break;
 
                 default:
                     $scope.apresfiltre = $filter('filter')($scope.postes, {nom_poste: recherche});
             }
-
-
-
-            swit
 
             $scope.populatePlanPostes($scope.apresfiltre);
         };

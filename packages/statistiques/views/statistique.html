@@ -22,11 +22,11 @@
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">- <i class="fa fa-hand-o-right prefix black-text"></i> - PC ayant les processeurs   -</a>
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">- <i class="fa fa-hand-o-right prefix black-text"></i> - PC ayant les Memoires vive   -</a>
                         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">- <i class="fa fa-hand-o-right prefix black-text"></i> - Statistiques des Etats des postes   -</a>
-                        <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">_________________________</a>
+                        <!--<a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">_________________________</a>-->
                     </div>
                 </nav>
-                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent" style="margin: auto;">
+                    <div class="tab-pane fade show active text-center" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <fieldset>
                             <div class="row justify-content-between">
                                 <div class="col-sm-12"> 
@@ -35,7 +35,7 @@
 
 
                                         </legend>
-                                        <div google-chart chart="avaliacoes" style="height:800px; width:100%;"></div>
+                                        <div google-chart chart="avaliacoes" ></div>
                                     </fieldset>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
 
 
                                         </legend>
-                                        <div google-chart chart="avaliacoesmem" style="height:800px; width:100%;"></div>
+                                        <div google-chart chart="avaliacoesmem" ></div>
                                     </fieldset>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
 
 
                                         </legend>
-                                        <div google-chart chart="avaliacoesetat" style="height:800px; width:100%;"></div>
+                                        <div google-chart chart="avaliacoesetat" ></div>
                                     </fieldset>
                                 </div>
                             </div>
